@@ -11,7 +11,7 @@ def livro(request):
     return render(request, 'livro.html', {'livro': livro})
 
 def sobre(request):
-    sobre_info = Sobre.objects.first()  
+    sobre_info = Sobre.objects.prefetch_related('galeria', 'membros').first()
     return render(request, 'sobre.html', {'sobre': sobre_info})
 
 def lerlivro(request):

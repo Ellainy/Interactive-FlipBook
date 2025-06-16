@@ -15,112 +15,42 @@
     <!-- Introdução -->
     <main class="container my-5">
         <section class="mb-5 text-center">
-            <p class="lead w-75 mx-auto">
-                A inspiração para este livro nasceu de nossa jornada de aprendizado e das reflexões sobre as mudanças
-                climáticas e seus impactos ao redor do mundo. Observamos como essas transformações afetam de maneira
-                desigual diferentes comunidades, sendo as mais vulneráveis as que sofrem com maior intensidade. Com esta
-                história, buscamos não apenas evidenciar esses desafios, mas também mostrar que pequenas ações locais
-                podem gerar grandes impactos globais.
-            </p>
+            <p class="lead w-75 mx-auto">{{ sobre.sobre_nos}}</p> 
         </section>
     </main>
 
     <!-- Galeria -->
-    <div class="container my-5">
-        <h2 class="fw-bold verdeTexto text-uppercase text-center">Galeria</h2>
+    {% if sobre.galeria.all %}
+    <div id="carouselGaleria" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner text-center">
+            {% for imagem in sobre.galeria.all %}
+                {% if forloop.counter0|divisibleby:3 %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <div class="row justify-content-center">
+                {% endif %}
 
-        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner text-center">
-                <!-- Primeira página ativa -->
-                <div class="carousel-item active">
-                    <div class="row justify-content-center">
-                        <div class="col-md-4 d-none d-md-block">
-                            <div class="news-card rounded"
-                                style="background-image: url('{% static 'imgs/imgcarrosel1.jpeg' %}'); height: 400px; background-size: cover; background-position: center;">
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-none d-md-block">
-                            <div class="news-card rounded"
-                                style="background-image: url('{% static 'imgs/imgcarrosel2.jpeg' %}'); height: 400px; background-size: cover; background-position: center;">
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-none d-md-block">
-                            <div class="news-card rounded"
-                                style="background-image: url('{% static 'imgs/imgcarrosel3.jpeg' %}'); height: 400px; background-size: cover; background-position: center;">
-                            </div>
-                        </div>
-                        <div class="col-12 d-block d-md-none">
-                            <div class="news-card rounded"
-                                style="background-image: url('{% static 'imgs/imgcarrosel1.jpeg' %}'); height: 400px; background-size: cover; background-position: center;">
-                            </div>
-                        </div>
+                <div class="col-md-4">
+                    <div class="news-card rounded"
+                        style="background-image: url('{{ imagem.imagem.url }}'); height: 400px; background-size: cover; background-position: center;">
                     </div>
                 </div>
 
-                <!-- Segunda página -->
-                <div class="carousel-item">
-                    <div class="row justify-content-center">
-                        <div class="col-md-4 d-none d-md-block">
-                            <div class="news-card rounded"
-                                style="background-image: url('{% static 'imgs/imgcarrosel4.jpeg' %}'); height: 400px; background-size: cover; background-position: center;">
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-none d-md-block">
-                            <div class="news-card rounded"
-                                style="background-image: url('{% static 'imgs/imgcarrosel5.jpeg' %}'); height: 400px; background-size: cover; background-position: center;">
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-none d-md-block">
-                            <div class="news-card rounded"
-                                style="background-image: url('{% static 'imgs/imgcarrosel6.jpeg' %}'); height: 400px; background-size: cover; background-position: center;">
-                            </div>
-                        </div>
-                        <div class="col-12 d-block d-md-none">
-                            <div class="news-card rounded"
-                                style="background-image: url('{% static 'imgs/imgcarrosel4.jpeg' %}'); height: 400px; background-size: cover; background-position: center;">
-                            </div>
+                {% if forloop.counter|divisibleby:3 or forloop.last %}
                         </div>
                     </div>
-                </div>
-
-                <!-- Terceira página -->
-                <div class="carousel-item">
-                    <div class="row justify-content-center">
-                        <div class="col-md-4 d-none d-md-block">
-                            <div class="news-card rounded"
-                                style="background-image: url({% static 'imgs/imgcarrosel7.jpeg' %}); height: 400px; background-size: cover; background-position: center;">
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-none d-md-block">
-                            <div class="news-card rounded"
-                                style="background-image: url('{% static 'imgs/imgcarrosel8.jpeg' %}'); height: 400px; background-size: cover; background-position: center;">
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-none d-md-block">
-                            <div class="news-card rounded"
-                                style="background-image: url('{% static 'imgs/imgcarrosel9.jpeg' %}'); height: 400px; background-size: cover; background-position: center;">
-                            </div>
-                        </div>
-                        <div class="col-12 d-block d-md-none">
-                            <div class="news-card rounded"
-                                style="background-image: url('{% static 'imgs/imgcarrosel7.jpeg' %}'); height: 400px; background-size: cover; background-position: center;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Botões de navegação -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Próximo</span>
-            </button>
+                {% endif %}
+            {% endfor %}
         </div>
+
+        <!-- Controles -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselGaleria" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselGaleria" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
     </div>
+    {% endif %}
 
 
     <!-- Seção sobre o livro -->
@@ -129,12 +59,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <h2 class="fw-bold">Sobre o livro!</h2>
-                    <p>
-                        O livro acompanha Zoila e Juan, dois jovens que chegam a São Paulo do Potengi para um
-                        intercâmbio e acabam se hospedando na casa de Júlia, uma estudante de Meio Ambiente do IFRN.
-                        Juntos, percebem que, apesar de suas origens diferentes, enfrentam um desafio comum: o impacto
-                        das mudanças climáticas. Motivados, decidem agir localmente para fazer a diferença.
-                    </p>
+                    <p>{{ sobre.sobre_o_livro }}</p>
                 </div>
                 <div class="col-md-6 text-center">
                     <img src="{% static 'imgs/capa.jpg' %}" height="200" class="rounded shadow" alt="Capa do Livro">
@@ -144,64 +69,23 @@
     </section>
 
     <!-- Seção Nossa Equipe -->
-    <section class="container my-5">
-        <div class="d-flex align-items-center justify-content-center gap-3">
-            <h2 class="fw-bold verdeTexto text-uppercase mb-0">Nossa Equipe</h2>
-        </div>
-        <p class="verdinho lead text-center mb-5">Conheça os membros da nossa equipe que tornaram este projeto possível.
-        </p>
-
-        <div id="carouselEquipe" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner text-center">
-                <div class="carousel-item active">
+    <div class="carousel-inner text-center">
+        {% for membro in sobre.membros.all %}
+            {% if forloop.counter0|divisibleby:3 %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
                     <div class="row justify-content-center">
-                        <div class="col-md-4">
-                            <img src="{% static 'imgs/perfil.png' %}" class="rounded-circle" width="150" alt="Membro 1">
-                            <h5 class="verdeTexto mt-2 fw-bold">Ilustrador 1</h5>
-                            <p class="verdinho fw-bold">Ilustrador</p>
-                        </div>
-                        <div class="col-md-4">
-                            <img src="{% static 'imgs/perfil.png' %}" class="rounded-circle" width="150" alt="Membro 2">
-                            <h5 class="verdeTexto mt-2 fw-bold">Orientador</h5>
-                            <p class="verdinho fw-bold">Orientador</p>
-                        </div>
-                        <div class="col-md-4">
-                            <img src="{% static 'imgs/perfil.png' %}" class="rounded-circle" width="150" alt="Membro 3">
-                            <h5 class="verdeTexto mt-2 fw-bold">Ilustrador 2</h5>
-                            <p class="verdinho fw-bold">Ilustrador</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row justify-content-center">
-                        <div class="col-md-4">
-                            <img src="{% static 'imgs/perfil.png' %}" class="rounded-circle" width="150" alt="Membro 4">
-                            <h5 class="verdeTexto mt-2 fw-bold">Escritor 1</h5>
-                            <p class="verdinho fw-bold">Escritor</p>
-                        </div>
-                        <div class="col-md-4">
-                            <img src="{% static 'imgs/perfil.png' %}" class="rounded-circle" width="150" alt="Membro 5">
-                            <h5 class="verdeTexto mt-2 fw-bold">Escritor 2</h5>
-                            <p class="verdinho fw-bold">Escritor</p>
-                        </div>
-                        <div class="col-md-4">
-                            <img src="{% static 'imgs/perfil.png' %}" class="rounded-circle" width="150" alt="Membro 6">
-                            <h5 class="verdeTexto mt-2">Ellainy Nayara</h5>
-                            <p class="verdinho fw-bold">Desenvolvimento do site</p>
-                        </div>
-                    </div>
-                </div>
+            {% endif %}
+    
+            <div class="col-md-4">
+                <img src="{% static 'imgs/perfil.png' %}" class="rounded-circle" width="150" alt="{{ membro.nome }}">
+                <h5 class="verdeTexto mt-2 fw-bold">{{ membro.nome }}</h5>
+                <p class="verdinho fw-bold">{{ membro.cargo }}</p>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselEquipe" data-bs-slide="prev"
-                style="filter: invert(100%);">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselEquipe" data-bs-slide="next"
-                style="filter: invert(100%);">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Próximo</span>
-            </button>
-        </div>
-    </section>
+    
+            {% if forloop.counter|divisibleby:3 or forloop.last %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
 {% endblock %}
