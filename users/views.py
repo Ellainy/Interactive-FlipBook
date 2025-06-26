@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
 from django.contrib.auth.models import Group
-from .forms import CadastroForm, ProfileForm, CursoForm, VinculoForm
-from .models import Profile, Curso, Vinculo, User
+from .forms import CadastroForm, ProfileForm, VinculoForm
+from .models import Profile, Vinculo, User
 from django.db.models import Q
 
 def cadastro(request):
@@ -11,30 +11,29 @@ def cadastro(request):
 
         if form.is_valid():
             usuario = form.save(commit=False)
-
+            usuario.vinculo = form.cleaned_data['vinculo']  # atribuir o vínculo
             usuario.save()
 
-            if usuario.vinculo:
-                if usuario.vinculo.vinculo == "Aluno":
-                    grupo_nome = "Alunos"
-                     
-                elif usuario.vinculo.vinculo == "Professor": 
-                    grupo_nome = "Professores"
-                
-                elif usuario.vinculo.vinculo != "Aluno" and usuario.vinculo.vinculo != "Professor":
-                    grupo_nome = "Outros"
+            # ✅ Adiciona ao grupo com base no vínculo
+            grupo_nome = None
+            if usuario.vinculo.vinculo == "Aluno":
+                grupo_nome = "Alunos"
+            elif usuario.vinculo.vinculo == "Professor":
+                grupo_nome = "Professores"
+            else:
+                grupo_nome = "Outros"
 
-                if grupo_nome:
-                    grupo, _ = Group.objects.get_or_create(name=grupo_nome)
-                    usuario.groups.add(grupo)
+            if grupo_nome:
+                grupo, _ = Group.objects.get_or_create(name=grupo_nome)
+                usuario.groups.add(grupo)
 
             return redirect('login')
         else:
             return render(request, 'registration/cadastro.html', {'form': form})
-
     else:
         form = CadastroForm()
         return render(request, 'registration/cadastro.html', {'form': form})
+
 
 @login_required
 def verperfil(request):
@@ -76,57 +75,13 @@ def superuser_required(user):
 @login_required
 @user_passes_test(superuser_required)
 def paineladmin(request):
-    cursos = Curso.objects.all()
     vinculos = Vinculo.objects.all()
     usuarios = User.objects.all()
     context = {
-        "cursos": cursos,
         "vinculos": vinculos,
         "usuarios": usuarios,
     }
     return render(request, 'paineladmin.html', context)
-
-@login_required
-@permission_required('users.add_curso', raise_exception=True)
-def adicionarcurso(request):
-    if request.method == 'POST':
-        form = CursoForm(request.POST, request.FILES)
-
-        if form.is_valid():
-            form.save()
-
-            return redirect('painel')
-        else:
-            return render(request, 'adicionarcurso.html', {'form': form})
-
-    else:
-        form = CursoForm()
-        return render(request, 'adicionarcurso.html', {'form': form})
-    
-@login_required
-@permission_required('users.change_curso', raise_exception=True)
-def editarcurso(request, id_curso):
-    curso = get_object_or_404(Curso, pk=id_curso)
-    if request.method == 'POST':
-        form = CursoForm(request.POST, request.FILES, instance=curso)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = CursoForm(instance=curso)
-    return render(request, 'adicionarcurso.html', {'form': form})
-
-@login_required
-@permission_required('users.delete_curso', raise_exception=True)
-def removercurso(request, id_curso):
-    curso = get_object_or_404(Curso, pk=id_curso)
-    
-    if request.method == 'POST':
-        curso.delete()
-        return redirect('painel')  
-
-    return redirect('index')  
-
 
 @login_required
 @permission_required('users.add_vinculo', raise_exception=True)

@@ -1,94 +1,185 @@
 {% extends 'registration/userbase.html' %}
 {% load static crispy_forms_filters %}
-{% block title %}
-  Cadastre-se
-{% endblock %}
+{% block title %}Cadastre-se{% endblock %}
 {% block conteudo %}
-  <div class="d-flex flex-column py-5">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cadastro</title>
+  <style>
+    body {
+      background-color: #f0f2f5;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    .register-container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 900px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 32px;
+      color: #5a2d82; /* roxinho */
+    }
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: space-between;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      width: 48%;
+      min-width: 300px;
+    }
+    label {
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #e07b39; /* laranja */
+    }
+    input, select {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline-offset: 2px;
+      outline-color: transparent;
+      transition: outline-color 0.3s ease;
+    }
+    input:focus, select:focus {
+      outline-color: #5a2d82;
+      border-color: #5a2d82;
+    }
+    .text-danger {
+      color: #dc3545;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background-color: #5a2d82;
+      border: none;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 32px;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #3e1f56;
+    }
+    /* Mensagem de erro geral */
+    .error-box {
+      background-color: #dce7f9;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      color: #e07b39;
+      font-weight: 700;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Mobile */
+    @media (max-width: 650px) {
+      form {
+        flex-direction: column;
+      }
+      .form-group {
+        width: 100%;
+        min-width: auto;
+      }
+      .btn {
+        margin-top: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+
+    <h2>Cadastre-se</h2>
+
     {% if form.non_field_errors %}
-      <div class="blueback m-auto rounded-4 px-2 py-3 mb-4" style="width: 500px;">
+      <div class="error-box">
         {% for error in form.non_field_errors %}
-          <p class="laranja mb-0">{{ error }}</p>
+          <p>{{ error }}</p>
         {% endfor %}
       </div>
     {% endif %}
 
-    <form style="max-width: 1000px;" class="blueback rounded-4 m-auto p-5" method="post">
+    <form method="post" action="">
       {% csrf_token %}
 
-      <h2 class="text-center roxinho">Cadastre-se</h2>
-      <div class="row g-2">
-        <div class="col-md-6">
-          <div class="form-group {% if form.username.errors %}has-error{% endif %}">
-            <label class="laranja" for="username">Usuário:</label>
-            {{ form.username }}
-            {% if form.username.errors %}
-              {% for error in form.username.errors %}
-                <p class="text-danger fw-bold text-left ms-0">{{ error }}</p>
-              {% endfor %}
-            {% endif %}
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group {% if form.email.errors %}has-error{% endif %}">
-            <label class="laranja" for="email">Email:</label>
-            {{ form.email }}
-            {% if form.email.errors %}
-              {% for error in form.email.errors %}
-                <p class="text-danger fw-bold text-left ms-0">{{ error }}</p>
-              {% endfor %}
-            {% endif %}
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group {% if form.curso.errors %}has-error{% endif %}">
-            <label class="laranja" for="curso">Curso:</label>
-            {{ form.curso }}
-            {% if form.curso.errors %}
-              {% for error in form.curso.errors %}
-                <p class="text-danger fw-bold text-left ms-0">{{ error }}</p>
-              {% endfor %}
-            {% endif %}
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group {% if form.vinculo.errors %}has-error{% endif %}">
-            <label class="laranja" for="vinculo">Vínculo:</label>
-            {{ form.vinculo }}
-            {% if form.vinculo.errors %}
-              {% for error in form.vinculo.errors %}
-                <p class="text-danger fw-bold text-left ms-0">{{ error }}</p>
-              {% endfor %}
-            {% endif %}
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group {% if form.password1.errors %}has-error{% endif %}">
-            <label class="laranja" for="password1">Senha:</label>
-            {{ form.password1 }}
-            {% if form.password1.errors %}
-              {% for error in form.password1.errors %}
-                <p class="text-danger fw-bold text-left ms-0">{{ error }}</p>
-              {% endfor %}
-            {% endif %}
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group {% if form.password2.errors %}has-error{% endif %}">
-            <label class="laranja" for="password2">Confirmar senha:</label>
-            {{ form.password2 }}
-            {% if form.password2.errors %}
-              {% for error in form.password2.errors %}
-              <p class="text-danger fw-bold text-left ms-0">{{ error }}</p>
-              {% endfor %}
-            {% endif %}
-          </div>
-        </div>
+      <div class="form-group {% if form.username.errors %}has-error{% endif %}">
+        <label for="{{ form.username.id_for_label }}">Usuário:</label>
+        {{ form.username }}
+        {% if form.username.errors %}
+          {% for error in form.username.errors %}
+            <p class="text-danger">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
       </div>
 
-      <div class="form-group">
-        <button type="submit" class="btn">Cadastrar</button>
+      <div class="form-group {% if form.email.errors %}has-error{% endif %}">
+        <label for="{{ form.email.id_for_label }}">Email:</label>
+        {{ form.email }}
+        {% if form.email.errors %}
+          {% for error in form.email.errors %}
+            <p class="text-danger">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
       </div>
+
+      <div class="form-group {% if form.vinculo.errors %}has-error{% endif %}">
+        <label for="{{ form.vinculo.id_for_label }}">Vínculo:</label>
+        {{ form.vinculo }}
+        {% if form.vinculo.errors %}
+          {% for error in form.vinculo.errors %}
+            <p class="text-danger">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <div class="form-group {% if form.password1.errors %}has-error{% endif %}">
+        <label for="{{ form.password1.id_for_label }}">Senha:</label>
+        {{ form.password1 }}
+        {% if form.password1.errors %}
+          {% for error in form.password1.errors %}
+            <p class="text-danger">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <div class="form-group {% if form.password2.errors %}has-error{% endif %}">
+        <label for="{{ form.password2.id_for_label }}">Confirmar senha:</label>
+        {{ form.password2 }}
+        {% if form.password2.errors %}
+          {% for error in form.password2.errors %}
+            <p class="text-danger">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <button type="submit" class="btn">Cadastrar</button>
     </form>
+
   </div>
+</body>
+</html>
 {% endblock %}

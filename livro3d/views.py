@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import HomePage, Livro, Sobre, Pagina
 
-def home(request):
+def index(request):
     home_page = HomePage.objects.first() 
     return render(request, 'index.html', {'home_page': home_page})
 

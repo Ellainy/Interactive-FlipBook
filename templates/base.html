@@ -15,11 +15,11 @@
 
     <!-- Cabeçalho -->
     <header class="gradient d-flex justify-content-between align-items-center p-3 shadow">
-        <h1><a class="branco text-decoration-none" href="{% url 'home' %}">TÍTULO PROJETO</a></h1>
+        <h1><a class="branco text-decoration-none" href="{% url 'index' %}">TÍTULO PROJETO</a></h1>
         <nav>
             <ul class="nav">
                 <li class="nav-item d-none d-md-inline-block">
-                    <a class="nav-link text-white" href="{% url 'home' %}">Início</a>
+                    <a class="nav-link text-white" href="{% url 'index' %}">Início</a>
                 </li>
                 <li class="nav-item d-none d-md-inline-block">
                     <a class="nav-link text-white" href="{% url 'livro' %}">Livro</a>
@@ -35,7 +35,7 @@
                     Menu
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{% url 'home' %}">Início</a></li>
+                    <li><a class="dropdown-item" href="{% url 'index' %}">Início</a></li>
                     <li><a class="dropdown-item" href="{% url 'livro' %}">Livro</a></li>
                     <li><a class="dropdown-item" href="{% url 'sobre' %}">Sobre</a></li>
                 </ul>
