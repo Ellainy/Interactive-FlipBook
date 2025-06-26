@@ -17,5 +17,4 @@ def sobre(request):
 def lerlivro(request):
     return render(request, 'lerlivro.html')
 
-def login(request):
-    return render(request, 'login.html')
+

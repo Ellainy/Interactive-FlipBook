@@ -1,0 +1,13 @@
+{% extends 'registration/userbase.html' %}
+{% load static crispy_forms_tags %}
+{% block title %}
+  Editar perfil
+{% endblock %}
+
+{% block conteudo %}
+  <form action="{% url 'editarperfil' %}" method="POST" enctype="multipart/form-data" class="p-5 rounded-3 blueback" style="max-width: 600px;">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-light fundo-roxinho">Salvar</button>
+  </form>
+{% endblock %}

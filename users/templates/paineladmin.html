@@ -1,0 +1,156 @@
+{% extends 'base_admin.html' %}
+{% block title %}
+  Painel de administração
+{% endblock %}
+
+{% block content %}
+  <section class="content-header">
+    <div class="container-fluid">
+      <h1 class="roxinho">Lista de cursos</h1>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="div p-2 border-0 shadow-sm">
+            {% if perms.app.add_curso %}
+              <a href="{% url 'adicionarcurso' %}" class="btn btn-primary mb-3">Novo Curso</a>
+            {% endif %}
+            <div class="table-responsive">
+              <table class="table table-dark table-hover table-hover">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Título</th>
+                    {% if request.user.is_authenticated %}
+                      <th>Opções</th>
+                    {% endif %}
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for curso in cursos %}
+                    <tr>
+                      <th>{{ curso.id }}</th>
+                      <td>{{ curso.titulo }}</td>
+                      <td class="d-flex">
+                        {% if perms.app.edit_curso %}
+                          <form action="{% url 'editarcurso' curso.id %}">
+                            {% csrf_token %}
+                            <button class="btn btn-warning">Editar</button>
+                          </form>
+                        {% endif %}
+                        {% if perms.app.delete_curso %}
+                          <form method="POST" action="{% url 'removercurso' curso.id %}">
+                            {% csrf_token %}
+                            <button class="btn btn-danger ms-1">Excluir</button>
+                          </form>
+                        {% endif %}
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-header">
+    <div class="container-fluid">
+      <h1 class="roxinho">Lista de vinculos</h1>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="div p-2 border-0 shadow-sm">
+            {% if perms.app.add_vinculo %}
+              <a href="{% url 'adicionarvinculo' %}" class="btn btn-primary mb-3">Novo vinculo</a>
+            {% endif %}
+            <div class="table-responsive">
+              <table class="table table-dark table-hover table-hover">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Título</th>
+                    {% if request.user.is_authenticated %}
+                      <th>Opções</th>
+                    {% endif %}
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for vinculo in vinculos %}
+                    <tr>
+                      <th>{{ vinculo.id }}</th>
+                      <td>{{ vinculo.vinculo }}</td>
+                      <td class="d-flex">
+                        {% if perms.users.edit_vinculo %}
+                          <form action="{% url 'editarvinculo' vinculo.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-warning">Editar</button>
+                          </form>
+                        {% endif %}
+                        {% if perms.users.delete_vinculo %}
+                          <form method="POST" action="{% url 'removervinculo' vinculo.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger ms-1">Excluir</button>
+                          </form>
+                        {% endif %}
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-header">
+    <div class="container-fluid">
+      <h1 class="roxinho">Lista de Usuários</h1>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="div p-2 border-0 shadow-sm">
+            {% if perms.app.add_vinculo %}
+              <a href="{% url 'cadastro' %}" class="btn btn-primary mb-3">Novo Usuário</a>
+            {% endif %}
+            <div class="table-responsive">
+              <table class="table table-dark table-hover table-hover">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for usuario in usuarios %}
+                    <tr>
+                      <td>{{ usuario.id }}</td>
+                      <td>{{ usuario.username }}</td>
+                      <td>{{ usuario.email }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
