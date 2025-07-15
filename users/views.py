@@ -11,10 +11,9 @@ def cadastro(request):
 
         if form.is_valid():
             usuario = form.save(commit=False)
-            usuario.vinculo = form.cleaned_data['vinculo']  # atribuir o vínculo
+            usuario.vinculo = form.cleaned_data['vinculo']  
             usuario.save()
 
-            # ✅ Adiciona ao grupo com base no vínculo
             grupo_nome = None
             if usuario.vinculo.vinculo == "Aluno":
                 grupo_nome = "Alunos"
@@ -48,7 +47,7 @@ def verperfil(request):
         "projetos": projetos,
     }
 
-    return render(request, "verperfil.html", context)
+    return render(request, "index.html", context)
 
 @login_required
 def editarperfil(request):

@@ -93,7 +93,7 @@
 <body>
   <div class="login-container">
 
-    <h2>Login <a class="roxinho" href="{% url 'index' %}" style="color:#5a2d82; text-decoration:none;">PPI</a></h2>
+    <h2>Login <a class="roxinho" href="{% url 'index' %}" style="color:#5a2d82; text-decoration:none;"></a></h2>
 
     {% if form.non_field_errors %}
       <div class="error-box">
@@ -103,7 +103,7 @@
       </div>
     {% endif %}
 
-    <form method="post" action="">
+    <form method="post" action="{% url 'login' %}">
       {% csrf_token %}
 
       <div class="input-group {% if form.username.errors %}has-error{% endif %}">

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import HomePage, Livro, Pagina, Sobre, Membro, Image
-from users.models import User, Profile, Curso, Vinculo
+from users.models import User, Profile, Vinculo
 
 
 admin.site.register(HomePage)

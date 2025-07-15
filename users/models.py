@@ -4,12 +4,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from PIL import Image
 
-class Curso(models.Model):
-    titulo = models.CharField(max_length=50)
-    logo = models.FileField(blank=True)
-    
-    def __str__(self):
-        return self.titulo
 
 class Vinculo(models.Model):
     vinculo = models.CharField(max_length=50)
@@ -19,8 +13,6 @@ class Vinculo(models.Model):
 
 class User(AbstractUser):
     vinculo = models.ForeignKey(Vinculo, on_delete=models.CASCADE, null=True, blank=True)
-    
-    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.username
