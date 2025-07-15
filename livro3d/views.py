@@ -1,9 +1,16 @@
 from django.shortcuts import render
-from .models import HomePage, Livro, Sobre, Pagina
+from .models import HomePage, Livro, Sobre, ModoLeitura
 
 def index(request):
     home_page = HomePage.objects.first() 
-    return render(request, 'index.html', {'home_page': home_page})
+    sobre = Sobre.objects.prefetch_related('galeria').first()
+    imagens_galeria = sobre.galeria.all() if sobre else []
+
+    return render(request, 'index.html', {
+        'home_page': home_page,
+        'sobre': sobre,
+        'imagens_galeria': imagens_galeria
+    })
 
 def livro(request):
     livro = Livro.objects.first()

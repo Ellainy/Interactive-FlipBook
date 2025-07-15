@@ -8,7 +8,7 @@
     <div class="w-100 d-flex flex-column py-5 align-items-center">
         <img src="{% static 'imgs/whitebook.svg' %}" alt="ícone livro branco" height="50">
         <h4 class="text-center w-75">
-            Explore a história e descubra como pequenas ações podem gerar grandes mudanças!
+            {{ home_page.fraseInicio}}
         </h4>
         <button class="btn-custom">
             <a href="{% url 'livro' %}" class="mx-auto btn text-white fw-bold">Leia o livro!</a>
@@ -22,9 +22,7 @@
             <div class="col-md-9">
                 <h2 class="verdeTexto">O que é esse site?</h2>
                 <h6>
-                    Este site foi criado para armazenar e expor um livro escrito por alunos do curso de Meio Ambiente, 
-                    desenvolvido como projeto integrador. O livro aborda mudanças climáticas e experiências de 
-                    intercâmbio, promovendo reflexões e debates sobre sustentabilidade e os desafios ambientais atuais.
+                   {{ home_page.oqueeosite }}
                 </h6>
             </div>
             <img src="{% static 'imgs/greenstar.svg' %}" alt="estrela verde" height="100"
@@ -34,79 +32,38 @@
 </main>
 
 <!-- Galeria -->
-<div class="container my-5">
-    <h2 class="fw-bold verdeTexto text-uppercase text-center">Galeria</h2>
+{% if sobre.galeria.all %}
+<div id="carouselGaleria" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner text-center">
+        {% for imagem in sobre.galeria.all %}
+            {% if forloop.counter0|divisibleby:3 %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="row justify-content-center">
+            {% endif %}
 
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner text-center">
-
-            <!-- Primeira página -->
-            <div class="carousel-item active">
-                <div class="row justify-content-center">
-                    {% for i in "123" %}
-                    <div class="col-md-3 d-none d-md-block">
-                        <div class="news-card rounded"
-                             style="background-image: url('{% static 'imgs/imgcarrosel'|add:i|add:'.jpeg' %}'); height: 250px; background-size: cover; background-position: center;">
-                        </div>
-                    </div>
-                    {% endfor %}
-                    <div class="col-12 d-block d-md-none">
-                        <div class="news-card rounded"
-                             style="background-image: url('{% static 'imgs/imgcarrosel1.jpeg' %}'); height: 250px; background-size: cover; background-position: center;">
-                        </div>
-                    </div>
+            <div class="col-md-4">
+                <div class="news-card rounded"
+                    style="background-image: url('{{ imagem.imagem.url }}'); height: 400px; background-size: cover; background-position: center;">
                 </div>
             </div>
 
-            <!-- Segunda página -->
-            <div class="carousel-item">
-                <div class="row justify-content-center">
-                    {% for i in "456" %}
-                    <div class="col-md-3 d-none d-md-block">
-                        <div class="news-card rounded"
-                             style="background-image: url('{% static 'imgs/imgcarrosel'|add:i|add:'.jpeg' %}'); height: 250px; background-size: cover; background-position: center;">
-                        </div>
-                    </div>
-                    {% endfor %}
-                    <div class="col-12 d-block d-md-none">
-                        <div class="news-card rounded"
-                             style="background-image: url('{% static 'imgs/imgcarrosel4.jpeg' %}'); height: 250px; background-size: cover; background-position: center;">
-                        </div>
+            {% if forloop.counter|divisibleby:3 or forloop.last %}
                     </div>
                 </div>
-            </div>
-
-            <!-- Terceira página -->
-            <div class="carousel-item">
-                <div class="row justify-content-center">
-                    {% for i in "789" %}
-                    <div class="col-md-3 d-none d-md-block">
-                        <div class="news-card rounded"
-                             style="background-image: url('{% static 'imgs/imgcarrosel'|add:i|add:'.jpeg' %}'); height: 250px; background-size: cover; background-position: center;">
-                        </div>
-                    </div>
-                    {% endfor %}
-                    <div class="col-12 d-block d-md-none">
-                        <div class="news-card rounded"
-                             style="background-image: url('{% static 'imgs/imgcarrosel7.jpeg' %}'); height: 250px; background-size: cover; background-position: center;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Botões -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Próximo</span>
-        </button>
+            {% endif %}
+        {% endfor %}
     </div>
+
+    <!-- Controles -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselGaleria" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselGaleria" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
 </div>
+{% endif %}
+
 
 <!-- Seção final -->
 <section class="verde py-5 text-center text-white">

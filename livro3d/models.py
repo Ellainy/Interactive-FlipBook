@@ -1,15 +1,14 @@
 from django.db import models
 
 class HomePage(models.Model):
-    titulo = models.CharField(max_length=200)
-    leia_o_livro_url = models.URLField()
-    saiba_mais_url = models.URLField()
-    galeria_url = models.URLField()
+    titulo = models.CharField(max_length=200, blank=True, null=True)
+    fraseInicio = models.CharField(max_length=255, blank=True, null=True)
+    oqueeosite = models.CharField(max_length=1000, blank=True, null=True)
 
     def __str__(self):
         return self.titulo
 
-class Livro(models.Model):
+class ModoLeitura(models.Model):
     MODOS_LEITURA = [
         ('flipbook', 'Flipbook'),
         ('pdf', 'PDF'),
@@ -44,12 +43,12 @@ class Image(models.Model):
     def __str__(self):
         return f"Imagem {self.id}"
 
-class Pagina(models.Model):
-    livro = models.ForeignKey(Livro, related_name='paginas', on_delete=models.CASCADE)
-    titulo = models.CharField(max_length=200)
-    conteudo = models.TextField()
+class Livro(models.Model):
+    Titulo = models.ForeignKey(ModoLeitura, related_name='paginas', on_delete=models.CASCADE, null=True, blank=True)
+    tipo = models.CharField(max_length=200, null=True, blank=True)
+    descricao = models.TextField( null=True, blank=True)
     imagem = models.ImageField(upload_to='paginas_livro/', null=True, blank=True)
-    numero_pagina = models.IntegerField()
+    numero_pagina = models.IntegerField( null=True, blank=True)
 
     def __str__(self):
         return f"Página {self.numero_pagina} - {self.titulo}"
