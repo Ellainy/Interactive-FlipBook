@@ -62,7 +62,7 @@
                     <p>{{ sobre.sobre_o_livro }}</p>
                 </div>
                 <div class="col-md-6 text-center">
-                    <img src="{% static 'imgs/capa.jpg' %}" height="200" class="rounded shadow" alt="Capa do Livro">
+                    <img src="{{ livro.capa.url }}" height="200" class="rounded shadow" alt="Capa do Livro">
                 </div>
             </div>
         </div>

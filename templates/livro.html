@@ -16,8 +16,8 @@
             <!-- Card do Livro 3D -->
             <div class="col-md-5">
                 <div class="card shadow-lg text-center p-4"
-                    style="border-radius: 15px; background: url('{% static 'imgs/background_card.jpg' %}') center/cover;">
-                    <img src="{% static 'imgs/capa.jpg' %}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro 3D"
+                    style="border-radius: 15px">
+                    <img src=" {{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro 3D"
                         style="width: 80px;">
                     <div class="card-body">
                         <h5 class="card-title fw-bold">Leia o Livro em 3D</h5>
@@ -30,8 +30,8 @@
             <!-- Card do Livro PDF -->
             <div class="col-md-5">
                 <div class="card shadow-lg text-center p-4"
-                    style="border-radius: 15px; background: url('{% static 'imgs/background_card.jpg' %}') center/cover;">
-                    <img src="{% static 'imgs/capa.jpg' %}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro PDF"
+                    style="border-radius: 15px">
+                    <img src="{{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro PDF"
                         style="width: 80px;">
                     <div class="card-body">
                         <h5 class="card-title fw-bold">Ler Livro em PDF</h5>
