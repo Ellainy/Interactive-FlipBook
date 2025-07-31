@@ -1,6 +1,6 @@
 # Livro Interativo 3D - TCC
 
-## 📘 INTRODUÇÃO
+##  INTRODUÇÃO
 
 No IFRN – Campus São Paulo do Potengi, alunos de diferentes cursos desenvolvem projetos de extensão com o objetivo de aproximar a comunidade do ambiente escolar e promover ações de impacto social, ambiental e educativo. Um desses projetos resultou na criação do livro **“Um Festival de Mudanças”**, escrito por estudantes do curso técnico em Meio Ambiente e ilustrado por alunos de outros cursos, com foco na educação ambiental, nas experiências de intercâmbio e na internacionalização.
 
@@ -12,50 +12,37 @@ O projeto também integra conhecimentos adquiridos ao longo da formação técni
 
 ---
 
-## 🧩 JUSTIFICATIVA
-
-O livro “Um Festival de Mudanças”, desenvolvido por alunos do curso técnico em Meio Ambiente do IFRN – Campus São Paulo do Potengi, surgiu de um projeto de extensão que aborda mudanças climáticas e intercâmbio cultural. No entanto, há limitação ao seu alcance e sua acessibilidade é reduzida.
-
-A proposta deste trabalho de **Prática Profissional Integrada** é desenvolver um site com efeito de **livro 3D**, responsivo e visualmente atrativo, utilizando tecnologias como:
-
-- Django  
-- HTML  
-- CSS  
-- Bootstrap  
-- Turn.js  
-- jQuery  
-
-Essa plataforma permitirá o **gerenciamento dinâmico do conteúdo** por meio de um painel administrativo, facilitando atualizações e manutenção da obra digital.
-
-Ao unir design, funcionalidade e tecnologia, o projeto promove a integração entre cursos e áreas do conhecimento, incentivando a divulgação científica e a educação ambiental de forma inovadora. A iniciativa também reforça a importância da extensão como espaço de formação **crítica, criativa e cidadã**.
+##  JUSTIFICATIVA
+O livro “Um Festival de Mudanças”, desenvolvido por alunos do curso técnico em Meio Ambiente do IFRN – Campus São Paulo do Potengi, surgiu de um projeto de extensão que aborda mudanças climáticas e intercâmbio cultural. No entanto, há limitação a  seu alcance e a acessibilidade é limitada.
+A proposta deste trabalho de Prática Profissional Integrada é desenvolver um site com efeito de livro 3D, responsivo e visualmente atrativo, utilizando tecnologias como Django, HTML, CSS, Bootstrap, Turn.js e jQuery. Essa plataforma permitirá o gerenciamento dinâmico do conteúdo por meio de um painel administrativo, facilitando atualizações e manutenção da obra digital.
+Ao unir design, funcionalidade e tecnologia, o projeto promove a integração entre cursos e áreas do conhecimento, incentivando a divulgação científica e a educação ambiental de forma inovadora. A iniciativa também reforça a importância da extensão como espaço de formação crítica, criativa e cidadã, e demonstra, na prática, as competências desenvolvidas ao longo do curso técnico em Informática para Internet.
 
 ---
 
-## 🎯 PÚBLICO-ALVO
+##  PÚBLICO-ALVO
 
 Nosso principal público-alvo são os **estudantes do IFRN - Campus São Paulo do Potengi**, interessados em projetos acadêmicos e extracurriculares. Também contempla:
 
 - Professores
-- Representantes externos
-- Parceiros em potencial para estágios e projetos acadêmico-profissionais
+- Alunos
+- 
 
 ---
 
-## 🎯 OBJETIVOS
+##  OBJETIVOS
 
-Este projeto busca fortalecer a divulgação do conhecimento produzido por meio da extensão e promover a conexão entre estudantes, comunidade acadêmica e público em geral. A seguir, os objetivos principais:
-
+No IFRN Campus São Paulo do Potengi, este projeto busca fortalecer a divulgação do conhecimento produzido por meio da extensão e promover a conexão entre estudantes, comunidade acadêmica e público em geral. A seguir, os objetivos deste trabalho:
 - Desenvolver uma **plataforma digital interativa** para divulgação do livro “Um Festival de Mudanças”.
 - Facilitar o acesso e a leitura do conteúdo de forma **dinâmica, atrativa e acessível**.
 - Promover a integração entre os cursos de **Meio Ambiente** e **Informática para Internet**, estimulando a interdisciplinaridade.
 - Estimular o uso de **tecnologias digitais** aplicadas à educação ambiental e à comunicação científica.
-- Valorizar o trabalho dos estudantes e ampliar a visibilidade do projeto de extensão.
+- Valorizar o trabalho dos estudantes e ampliar a visibilidade do projeto de extensão dentro e fora do campus..
 
 ---
 
-## 🧠 ANÁLISE E PROJETO
+##  ANÁLISE E PROJETO
 
-### 🔍 VISÃO GERAL DO SISTEMA
+###  VISÃO GERAL DO SISTEMA
 
 O sistema **Livro Interativo 3D** é uma plataforma digital desenvolvida para disponibilizar de forma acessível e interativa o livro “Um Festival de Mudanças”.  
 
@@ -67,7 +54,7 @@ Funcionalidades principais:
 
 ---
 
-### 👤 ATORES DO SISTEMA
+###  ATORES DO SISTEMA
 
 | Ator | Descrição |
 |------|-----------|
@@ -78,9 +65,9 @@ Funcionalidades principais:
 
 ---
 
-## ✅ LEVANTAMENTO DE REQUISITOS
+## LEVANTAMENTO DE REQUISITOS
 
-### 📌 Requisitos Funcionais
+###  Requisitos Funcionais
 
 | Código | Nome | Descrição | Prioridade |
 |--------|------|-----------|------------|
@@ -97,7 +84,7 @@ Funcionalidades principais:
 
 ---
 
-### ⚙️ Requisitos Não Funcionais
+### Requisitos Não Funcionais
 
 | Código | Descrição | Categoria |
 |--------|-----------|-----------|
@@ -110,4 +97,4 @@ Funcionalidades principais:
 
 ---
 
-**🚧 Projeto em desenvolvimento - IFRN-SPP | TCC 2025**
+** Projeto em desenvolvimento - IFRN-SPP |  2025**
