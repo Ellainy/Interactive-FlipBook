@@ -97,4 +97,4 @@ Funcionalidades principais:
 
 ---
 
-** Projeto em desenvolvimento - IFRN-SPP |  2025**
+> Projeto em desenvolvimento - IFRN-SPP |  2025 
