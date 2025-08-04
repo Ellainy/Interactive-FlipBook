@@ -3,7 +3,9 @@ from django.db import models
 class HomePage(models.Model):
     titulo = models.CharField(max_length=200, blank=True, null=True)
     fraseInicio = models.CharField(max_length=255, blank=True, null=True)
+    oqueeositeTit = models.CharField(max_length=1000, blank=True, null=True)
     oqueeosite = models.CharField(max_length=1000, blank=True, null=True)
+    saibamaisTit =models.CharField(max_length=1000, blank=True, null=True)
     saibamais =models.CharField(max_length=1000, blank=True, null=True)
 
     def __str__(self):
@@ -33,7 +35,7 @@ class Image(models.Model):
 
 class Pagina(models.Model):
     numero_pagina = models.IntegerField()
-    pagina= models.ImageField(upload_to='administracao_page/')
+    pagina= models.ImageField(upload_to='paginas_livro/')
 
     def __str__(self):
         return f"Página {self.numero_pagina}"
@@ -43,7 +45,8 @@ class Pagina(models.Model):
 
 
 class Livro(models.Model):
-    capa = models.ImageField(upload_to='paginas_livro/',null=True, blank=True)
+    capa = models.ImageField(upload_to='administracao_page/',null=True, blank=True)
+    imgs = models.ImageField(upload_to='galeria_sobre/', null=True, blank=True)
     titulo = models.CharField(max_length=200, null=True, blank=True)
     tipo = models.CharField(max_length=200, null=True, blank=True)
     descricao = models.TextField( null=True, blank=True)

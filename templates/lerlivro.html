@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'styles2.css' %}" />
-    <title>Um festival de mudanças!</title>
+    <title>{{ livro.titulo }}</title>
 </head>
 
 <body>
@@ -18,13 +18,13 @@
     </div>
 
     <div class="flipbook">
-        <div class="hard"><img src="{% static 'imgs/capa.jpg' %}" alt=""></div>
+        <div class="hard"><img src="{{ pagina.capaFrente.url }}" alt=""></div>
         <div class="hard"></div>
         {% for pagina in paginas %}
             <div><img src="{{ pagina.pagina.url }}" alt="Página {{ pagina.numero_pagina }}" /></div>
         {% endfor %}
 
-        <div class="hard"><img src="{% static 'imgs/26.jpg' %}" alt="" /></div>
+        <div class="hard"><img src="{{ pagina.capaCostas.url }}" alt="" /></div>
 
         <div class="hard"></div>
     </div>

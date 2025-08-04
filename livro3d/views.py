@@ -21,9 +21,11 @@ def livro(request):
     })
 
 def lerlivro(request):
+    livro = Livro.objects.first() 
     pagina = Pagina.objects.all().order_by('numero_pagina')
     return render(request, 'lerlivro.html', {
-        'paginas': pagina
+        'paginas': pagina,
+        'livro': livro  
         })
 
 
