@@ -12,7 +12,9 @@ class HomePage(models.Model):
         return self.titulo
 
 class Sobre(models.Model):
+    paginaTit = models.TextField(max_length=200)
     sobre_nos = models.TextField()
+    secaoTit = models.TextField(max_length=200)
     sobre_o_livro = models.TextField()
     galeria = models.ManyToManyField('Image', related_name='galerias')
     membros = models.ManyToManyField('Membro')
@@ -50,3 +52,11 @@ class Livro(models.Model):
     titulo = models.CharField(max_length=200, null=True, blank=True)
     tipo = models.CharField(max_length=200, null=True, blank=True)
     descricao = models.TextField( null=True, blank=True)
+
+
+class ModoLeitura(models.Model):
+    pageTitulo = models.TextField(max_length=100)
+    cardTitulo = models.TextField()
+    descricao = models.TextField()
+    pdf = models.FileField(upload_to='livro_pdf')
+
