@@ -8,7 +8,7 @@
     <section class="gradient py-5">
         <div class="container d-flex flex-column align-items-center">
             <img src="{% static 'imgs/whitebook.svg' %}" alt="Livro Branco" height="50" />
-            <h1 class="text-center fw-bold">{{ ModoLeitura.pageTitulo }}</h1>
+            <h1 class="text-center fw-bold">{{ livro.pageTitulo }}</h1>
         </div>
     </section>
     <main class="container my-5">
@@ -20,8 +20,8 @@
                     <img src=" {{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro 3D"
                         style="width: 80px;">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">Leia o Livro em 3D</h5>
-                        <p class="card-text">Explore o livro interativo em 3D com animações imersivas.</p>
+                        <h5 class="card-title fw-bold">{{ modoLeitura.cardTitulo }}</h5>
+                        <p class="card-text">{{ modoLeitura.descricao }}</p>
                         <a href="{% url 'lerlivro' %}" class="btn btn-success btn-lg mt-2">Acessar Livro 3D</a>
                     </div>
                 </div>
@@ -34,9 +34,9 @@
                     <img src="{{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro PDF"
                         style="width: 80px;">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">Ler Livro em PDF</h5>
-                        <p class="card-text">Leia o livro em PDF ou faça o download para leitura offline.</p>
-                        <a href="{% static 'livro.pdf' %}" class="btn btn-primary btn-lg mt-2" target="_blank" rel="noopener noreferrer">
+                        <h5 class="card-title fw-bold">{{ modoLeitura.cardTitulo }}</h5>
+                            <p class="card-text">{{ modoLeitura.descricao }}</p>
+                        <a href="{{ modoLeitura.pdf.url }}" class="btn btn-primary btn-lg mt-2" target="_blank" rel="noopener noreferrer">
                             Abrir PDF
                           </a>                          
                     </div>

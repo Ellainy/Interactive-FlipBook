@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Textos do Site{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="fw-bold">Editar Página Inicial</h2>
+    <form method="post" class="mt-4 p-4 border rounded bg-light shadow-sm">
+        {% csrf_token %}
+        {{ home_form.as_p }}
+        <button type="submit" name="salvar_home" class="btn btn-success">Salvar Alterações</button>
+        <a href="{% url 'index' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+<div class="container my-5">
+    <h2 class="fw-bold">Editar Página Sobre</h2>
+    <form method="post" class="mt-4 p-4 border rounded bg-light shadow-sm">
+        {% csrf_token %}
+        {{ sobre_form.as_p }}
+        <button type="submit" name="salvar_sobre" class="btn btn-success">Salvar Alterações</button>
+        <a href="{% url 'sobre' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

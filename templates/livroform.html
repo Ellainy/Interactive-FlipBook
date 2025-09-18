@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Gerenciar Livro{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="mb-4 fw-bold">Adicionar Novo Livro</h2>
+    <form method="post" enctype="multipart/form-data" class="p-4 border rounded shadow-sm bg-light">
+        {% csrf_token %}
+        {{ livro_form.as_p }}
+        <button type="submit" class="btn btn-success mt-3">Salvar Livro</button>
+        <a href="{% url 'index' %}" class="btn btn-secondary mt-3">Cancelar</a>
+    </form>
+</div>
+
+<div class="container my-5">
+    <h2 class="fw-bold">Adicionar Página ao Livro</h2>
+    <form method="post" enctype="multipart/form-data" class="p-4 border rounded bg-light shadow-sm">
+        {% csrf_token %}
+        {{ pagina_form.as_p }}
+        <button type="submit" name="salvar_pagina" class="btn btn-success">Adicionar Página</button>
+    </form>
+
+    <h3 class="mt-5">Páginas já cadastradas</h3>
+    <ul class="list-group mt-3">
+        {% for p in paginas %}
+        <div class="list-group-item">
+            <strong>Página {{ p.numero_pagina }}</strong>
+            <img src="{{ p.pagina.url }}" alt="Página {{ p.numero_pagina }}" class="img-fluid border rounded shadow-sm"
+                style="height:100px;">
+        </div>
+        {% empty %}
+        <li class="list-group-item">Nenhuma página cadastrada ainda.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<hr class="my-5">
+
+<div class="container my-5">
+    <h2 class="fw-bold">Configuração do Modo de Leitura</h2>
+    <form method="post" enctype="multipart/form-data" class="p-4 border rounded bg-light shadow-sm">
+        {% csrf_token %}
+        {{ modo_form.as_p }}
+        <button type="submit" name="salvar_modo" class="btn btn-primary">Salvar Configuração</button>
+    </form>
+</div>
+{% endblock %}

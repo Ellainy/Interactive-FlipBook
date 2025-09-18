@@ -8,7 +8,7 @@
     <section class="gradient py-5 text-center">
         <div class="container">
             <img src="{% static 'imgs/whitestar.svg' %}" alt="White Star" height="50" />
-            <h1 class="my-4">Sobre nós!</h1>
+            <h1 class="my-4">{{ sobre.paginaTitulo }}</h1>
         </div>
     </section>
 
@@ -58,7 +58,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h2 class="fw-bold">Sobre o livro!</h2>
+                    <h2 class="fw-bold">{{ sobre.secaoTitulo }}</h2>
                     <p>{{ sobre.sobre_o_livro }}</p>
                 </div>
                 <div class="col-md-6 text-center">
