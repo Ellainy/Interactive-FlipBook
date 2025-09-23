@@ -4,88 +4,113 @@
 {% block title %}Livro{% endblock %}
 
 {% block content %}
-    <!-- Seção de apresentação -->
-    <section class="gradient py-5">
-        <div class="container d-flex flex-column align-items-center">
-            <img src="{% static 'imgs/whitebook.svg' %}" alt="Livro Branco" height="50" />
-            <h1 class="text-center fw-bold">{{ livro.pageTitulo }}</h1>
-        </div>
-    </section>
-    <main class="container my-5">
-        <div class="my-3">
-            <a href="{% url 'gerenciar_livro' %}" class="btn btn-primary">Editar Livro</a>
-            <a href="{% url 'deletar_livro' livro.id %}" class="btn btn-danger">Deletar Livro</a>
-        </div>
-        <div class="my-3">
-            <a href="{% url 'editar_textos' %}" class="btn btn-primary">Editar Site</a>
-        </div>
+<!-- Seção de apresentação -->
+<section class="gradient py-5">
+    <div class="container d-flex flex-column align-items-center">
+        <img src="{% static 'imgs/whitebook.svg' %}" alt="Livro Branco" height="50" />
+        <h1 class="text-center fw-bold">{{ livro.pageTitulo }}</h1>
+    </div>
+</section>
+<main class="container my-5">
+    <div class="my-3">
+        <a href="{% url 'gerenciar_livro' %}" class="btn btn-primary">Editar Livro</a>
+        <a href="{% url 'deletar_livro' livro.id %}" class="btn btn-danger" data-bs-toggle="modal"
+            data-bs-target="#deletarLivroModal">Deletar Livro</a>
+    </div>
 
-        <div class="row justify-content-center">
-            <!-- Card do Livro 3D -->
-            <div class="col-md-5">
-                <div class="card shadow-lg text-center p-4"
-                    style="border-radius: 15px">
-                    <img src=" {{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro 3D"
-                        style="width: 80px;">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">{{ modoLeitura.cardTitulo }}</h5>
-                        <p class="card-text">{{ modoLeitura.descricao }}</p>
-                        <a href="{% url 'lerlivro' %}" class="btn btn-success btn-lg mt-2">Acessar Livro 3D</a>
-                    </div>
+    <!-- Modal de confirmação -->
+    <div class="modal fade" id="deletarLivroModal" tabindex="-1" aria-labelledby="deletarLivroModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deletarLivroModalLabel">Deletar Livro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
-            </div>
-
-            <!-- Card do Livro PDF -->
-            <div class="col-md-5">
-                <div class="card shadow-lg text-center p-4"
-                    style="border-radius: 15px">
-                    <img src="{{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro PDF"
-                        style="width: 80px;">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">{{ modoLeitura.cardTitulo }}</h5>
-                            <p class="card-text">{{ modoLeitura.descricao }}</p>
-                        <a href="{{ livro.pdf.url }}" class="btn btn-primary btn-lg mt-2" target="_blank" rel="noopener noreferrer">
-                            Abrir PDF
-                          </a>                          
-                    </div>
+                <div class="modal-body">
+                    Tem certeza que deseja deletar o livro "<strong>{{ livro.titulo }}</strong>"? Esta ação não pode ser
+                    desfeita.
                 </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Seção sobre o livro -->
-    <section class="gradient py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h2 class="fw-bold">Sinopse:</h2>
-                    <p>
-                       {{ livro.descricao }}
-                    </p>
-                </div>
-                <div class="col-md-6 text-center">
-                    <img src="{% static 'imgs/whiteBook.svg' %}" height="200" alt="Livro Branco">
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <div class="container my-5">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="news-card" style="background-image: url('{{ livro.imgs}}');">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="news-card" style="background-image: url('{{ livro.imgs}}');">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="news-card" style="background-image: url('{{ livro.imgs}}');">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <form method="post" action="{% url 'deletar_livro' livro.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Deletar</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <div class="my-3">
+        <a href="{% url 'editar_textos' %}" class="btn btn-primary">Editar Site</a>
+    </div>
+
+    <div class="row justify-content-center">
+        <!-- Card do Livro 3D -->
+        <div class="col-md-5">
+            <div class="card shadow-lg text-center p-4" style="border-radius: 15px">
+                <img src=" {{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro 3D"
+                    style="width: 80px;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{{ modoLeitura.cardTitulo }}</h5>
+                    <p class="card-text">{{ modoLeitura.descricao }}</p>
+                    <a href="{% url 'lerlivro' %}" class="btn btn-success btn-lg mt-2">Acessar Livro 3D</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card do Livro PDF -->
+        <div class="col-md-5">
+            <div class="card shadow-lg text-center p-4" style="border-radius: 15px">
+                <img src="{{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro PDF"
+                    style="width: 80px;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{{ modoLeitura.cardTitulo }}</h5>
+                    <p class="card-text">{{ modoLeitura.descricao }}</p>
+                    <a href="{{ livro.pdf.url }}" class="btn btn-primary btn-lg mt-2" target="_blank"
+                        rel="noopener noreferrer">
+                        Abrir PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Seção sobre o livro -->
+<section class="gradient py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="fw-bold">Sinopse:</h2>
+                <p>
+                    {{ livro.descricao }}
+                </p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="{% static 'imgs/whiteBook.svg' %}" height="200" alt="Livro Branco">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container my-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="news-card" style="background-image: url('{{ livro.imgs}}');">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="news-card" style="background-image: url('{{ livro.imgs}}');">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="news-card" style="background-image: url('{{ livro.imgs}}');">
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
-   

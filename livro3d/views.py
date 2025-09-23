@@ -75,7 +75,6 @@ def deletar_livro(request, livro_id):
         livro.delete()
         return redirect('gerenciar_livro')
 
-    return render(request, 'confirmar_deletar_livro.html', {'livro': livro})
 
 def editar_textos(request):
     home = HomePage.objects.first()
