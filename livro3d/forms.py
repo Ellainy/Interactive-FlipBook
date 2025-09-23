@@ -1,14 +1,15 @@
 from django import forms
-from .models import Livro, HomePage, Sobre, Pagina, ModoLeitura
+from .models import Livro, HomePage, Sobre, Pagina
 
 class LivroForm(forms.ModelForm):
     class Meta:
         model = Livro
-        fields = ['capa', 'costas', 'imgs', 'titulo', 'tipo', 'descricao']  # incluí costas
+        fields = ['capa', 'titulo', 'pdf', 'descricao']  
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite o título do livro'}),
             'tipo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite o tipo do livro'}),
             'descricao': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Escreva a descrição'}),
+            'pdf': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
 
 class PaginaForm(forms.ModelForm):
@@ -18,17 +19,6 @@ class PaginaForm(forms.ModelForm):
         widgets = {
             'numero_pagina': forms.NumberInput(attrs={'class': 'form-control'}),
             'pagina': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-        }
-
-class ModoLeituraForm(forms.ModelForm):
-    class Meta:
-        model = ModoLeitura
-        fields = ['pageTitulo', 'cardTitulo', 'descricao', 'pdf']
-        widgets = {
-            'pageTitulo': forms.TextInput(attrs={'class': 'form-control'}),
-            'cardTitulo': forms.TextInput(attrs={'class': 'form-control'}),
-            'descricao': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
-            'pdf': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
 
 

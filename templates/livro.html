@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Página Inicial{% endblock %}
+{% block title %}Livro{% endblock %}
 
 {% block content %}
     <!-- Seção de apresentação -->
@@ -36,7 +36,7 @@
                     <div class="card-body">
                         <h5 class="card-title fw-bold">{{ modoLeitura.cardTitulo }}</h5>
                             <p class="card-text">{{ modoLeitura.descricao }}</p>
-                        <a href="{{ modoLeitura.pdf.url }}" class="btn btn-primary btn-lg mt-2" target="_blank" rel="noopener noreferrer">
+                        <a href="{{ livro.pdf.url }}" class="btn btn-primary btn-lg mt-2" target="_blank" rel="noopener noreferrer">
                             Abrir PDF
                           </a>                          
                     </div>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import HomePage, Livro, Sobre, Pagina, ModoLeitura
-from .forms import LivroForm, HomePageForm, SobreForm, PaginaForm, ModoLeituraForm
+from .models import HomePage, Livro, Sobre, Pagina
+from .forms import LivroForm, HomePageForm, SobreForm, PaginaForm
 
 def index(request):
     home_page = HomePage.objects.first() 
@@ -17,10 +17,8 @@ def index(request):
 
 def livro(request):
     livro = Livro.objects.first() 
-    modoLeitura = ModoLeitura.objects.first()
     return render(request, 'livro.html', {
         'livro': livro,
-        'modoLeitura': modoLeitura,  
     })
 
 def lerlivro(request):
@@ -42,16 +40,13 @@ def sobre(request):
 
 def gerenciar_livro(request):
     livro = Livro.objects.first()
-    modo = ModoLeitura.objects.first()
 
     if request.method == "POST":
         livro_form = LivroForm(request.POST, request.FILES, instance=livro)
         pagina_form = PaginaForm(request.POST, request.FILES)
-        modo_form = ModoLeituraForm(request.POST, request.FILES, instance=modo)
 
-        if livro_form.is_valid() and modo_form.is_valid():
+        if livro_form.is_valid():
             livro_form.save()
-            modo_form.save()
 
         if pagina_form.is_valid():
             pagina_form.save()
@@ -61,14 +56,12 @@ def gerenciar_livro(request):
     else:
         livro_form = LivroForm(instance=livro)
         pagina_form = PaginaForm()
-        modo_form = ModoLeituraForm(instance=modo)
 
     paginas = Pagina.objects.all()
 
     return render(request, "livroform.html", {
         'livro_form': livro_form,
         'pagina_form': pagina_form,
-        'modo_form': modo_form,
         'paginas': paginas,
     })
 

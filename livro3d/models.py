@@ -48,16 +48,11 @@ class Pagina(models.Model):
 
 class Livro(models.Model):
     capa = models.ImageField(upload_to='administracao_page/',null=True, blank=True)
-    costas = models.ImageField(upload_to='administracao_page/',null=True, blank=True)
-    imgs = models.ImageField(upload_to='galeria_sobre/', null=True, blank=True)
+    pdf = models.FileField(upload_to='livro_pdf', null=True, blank=True)
     titulo = models.CharField(max_length=200, null=True, blank=True)
     tipo = models.CharField(max_length=200, null=True, blank=True)
     descricao = models.TextField( null=True, blank=True)
 
 
-class ModoLeitura(models.Model):
-    pageTitulo = models.TextField(max_length=100)
-    cardTitulo = models.TextField()
-    descricao = models.TextField()
-    pdf = models.FileField(upload_to='livro_pdf')
+
 
