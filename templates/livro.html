@@ -12,6 +12,14 @@
         </div>
     </section>
     <main class="container my-5">
+        <div class="my-3">
+            <a href="{% url 'gerenciar_livro' %}" class="btn btn-primary">Editar Livro</a>
+            <a href="{% url 'deletar_livro' livro.id %}" class="btn btn-danger">Deletar Livro</a>
+        </div>
+        <div class="my-3">
+            <a href="{% url 'editar_textos' %}" class="btn btn-primary">Editar Site</a>
+        </div>
+
         <div class="row justify-content-center">
             <!-- Card do Livro 3D -->
             <div class="col-md-5">

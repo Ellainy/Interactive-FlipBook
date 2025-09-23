@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}Editar Textos do Site{% endblock %}
+{% block title %}Gerenciar Site{% endblock %}
 
 {% block content %}
 <div class="container my-5">
+    <h1>{% if editar %}Editar Textos do Site{% else %}Adicionar Textos do Site{% endif %}</h1>
     <h2 class="fw-bold">Editar Página Inicial</h2>
     <form method="post" class="mt-4 p-4 border rounded bg-light shadow-sm">
         {% csrf_token %}

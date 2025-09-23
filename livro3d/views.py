@@ -60,11 +60,22 @@ def gerenciar_livro(request):
     paginas = Pagina.objects.all()
 
     return render(request, "livroform.html", {
-        'livro_form': livro_form,
-        'pagina_form': pagina_form,
-        'paginas': paginas,
-    })
+    'livro_form': livro_form,
+    'pagina_form': pagina_form,
+    'paginas': paginas,
+    'livro': livro,
+})
 
+
+
+def deletar_livro(request, livro_id):
+    livro = get_object_or_404(Livro, id=livro_id)
+
+    if request.method == "POST":
+        livro.delete()
+        return redirect('gerenciar_livro')
+
+    return render(request, 'confirmar_deletar_livro.html', {'livro': livro})
 
 def editar_textos(request):
     home = HomePage.objects.first()
