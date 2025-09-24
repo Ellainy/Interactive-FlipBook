@@ -1,0 +1,22 @@
+from django.shortcuts import render, redirect
+from .forms import CadastroForm
+
+
+def register(request):
+    form = CadastroForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('login')
+    else:
+        form = CadastroForm()
+        context = {
+            'form': form
+        }
+        return render(request, 'register.html', context)
+
+
+def profile(request):
+    return render(request, 'perfil.html')
+
+def editar(request):
+    return render(request, 'editprofile.html')

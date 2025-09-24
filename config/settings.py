@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'livro3d',
     'crispy_forms',
     'crispy_bootstrap5', 
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -133,6 +134,8 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 LOGIN_REDIRECT_URL = 'index'  
+
+AUTH_USER_MODEL = 'users.User'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
