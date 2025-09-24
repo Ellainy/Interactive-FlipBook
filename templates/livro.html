@@ -14,8 +14,10 @@
 <main class="container my-5">
     <div class="my-3">
         <a href="{% url 'gerenciar_livro' %}" class="btn btn-primary">Editar Livro</a>
+        {% if livro.instance %}
         <a href="{% url 'deletar_livro' livro.id %}" class="btn btn-danger" data-bs-toggle="modal"
             data-bs-target="#deletarLivroModal">Deletar Livro</a>
+        {% endif %}
     </div>
 
     <!-- Modal de confirmação -->
@@ -33,10 +35,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    {% if livro.instance %}
                     <form method="post" action="{% url 'deletar_livro' livro.id %}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger">Deletar</button>
                     </form>
+                    {% endif %}
                 </div>
             </div>
         </div>
