@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     {% block extra_css %}{% endblock %}
 </head>
+
 <body>
 
     <!-- Cabeçalho -->
@@ -27,11 +29,22 @@
                 <li class="nav-item d-none d-md-inline-block">
                     <a class="nav-link text-white" href="{% url 'sobre' %}">Sobre</a>
                 </li>
+
+                <div class="btn-group-minimal mb-4">
+                    <button class="btn-minimal filled flex-fill">
+                        <i class="fas fa-user-plus me-2"></i> Cadastrar
+                    </button>
+                    <a class="btn-minimal flex-fill" href="{% url 'login' %}" >
+                        <i class="fas fa-sign-in-alt me-2"></i> Entrar
+                    </a>
+                </div>
+
             </ul>
 
             <!-- Dropdown mobile (fora da <ul>) -->
             <div class="dropdown d-md-none mt-2">
-                <button class="verdeTexto fw-bold btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                <button class="verdeTexto fw-bold btn btn-light dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown">
                     Menu
                 </button>
                 <ul class="dropdown-menu">
@@ -56,5 +69,5 @@
     {% block extra_js %}{% endblock %}
 
 </body>
-</html>
 
+</html>

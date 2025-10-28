@@ -1,13 +1,12 @@
-{% extends "registration/userbase.html" %}
+{% extends 'registration/userbase.html' %}
 {% load static crispy_forms_tags %}
 {% block content %}
-  <div class="form-container col-md-3 m-auto">
-    <h1 class="text-center">LOG IN</h1>
-
-    <form method="post" id="loginForm">
+  <div class="form-container col-md-3 mx-auto my-5">
+    <h1 class="text-center">Criar Conta</h1>
+    <form method="post">
       {% csrf_token %}
-      {{ form|crispy }}
-      <button type="submit" class="form-button">Log in</button>
+      {{ form }}
+      <button type="submit" class="form-button">Cadastrar</button>
     </form>
 
     <div class="divider">
@@ -27,9 +26,5 @@
         <img width="24" height="24" viewBox="0 0 24 24" src="https://suap.ifrn.edu.br/static/comum/img/favicon.png" alt="Logo Suap" />
       </div>
     </div>
-
-    <p class="text-white pt-1 text-center">
-      Não tem uma conta? <a href="{% url "cadastro" %}" class="form-link">Cadastre-se</a>
-    </p>
   </div>
 {% endblock %}

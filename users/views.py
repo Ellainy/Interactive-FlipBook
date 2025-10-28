@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import CadastroForm
 
 
-def register(request):
+def cadastro(request):
     form = CadastroForm(request.POST)
     if form.is_valid():
         form.save()
@@ -12,7 +12,7 @@ def register(request):
         context = {
             'form': form
         }
-        return render(request, 'register.html', context)
+        return render(request, 'registration/cadastro.html', context)
 
 
 def profile(request):
