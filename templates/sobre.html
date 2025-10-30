@@ -12,12 +12,18 @@
         </div>
     </section>
 
-    <!-- Introdução -->
-    <main class="container my-5">
-        <section class="mb-5 text-center">
-            <p class="lead w-75 mx-auto">{{ sobre.sobre_nos}}</p> 
-        </section>
-    </main>
+    <div class="card container my-4 shadow-lg ">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center">
+                <img src="" alt="foto" class="img-fluid" style="max-height: 120px;">
+            </div>
+            <div class="col-md-7 py-4">
+                <h2 class="mb-3">O que é esse site?</h2>
+                <p>Este site foi criado para armazenar e expor um livro escrito por alunos do curso de Meio
+                    Ambiente, desenvolvido como projeto integrador.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Galeria -->
     {% if sobre.galeria.all %}
