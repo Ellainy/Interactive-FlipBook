@@ -10,11 +10,12 @@ body {
   background-color: #f8f9fa;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .header {
   background-color: var(--verde-principal);
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
