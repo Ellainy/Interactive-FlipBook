@@ -20,3 +20,6 @@ def profile(request):
 
 def editar(request):
     return render(request, 'editprofile.html')
+
+def administracao(request):
+    return render(request, 'paineladmin.html')

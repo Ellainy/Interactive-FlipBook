@@ -1,112 +1,161 @@
 {% load static %}
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      {% block title %}
-        Projeto de Extensão
-      {% endblock %}
-    </title>
 
-    <link rel="icon" href="{% static 'imgs/favicon.svg' %}" type="image/png" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    {% block extra_css %}
-
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    {% block title %}
+    Projeto de Extensão
     {% endblock %}
-  </head>
+  </title>
 
-  <body>
-    <!-- Header melhorado -->
-    <header class="header py-4">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <h1 class="mb-0"><a class="text-white text-decoration-none logo" href="{% url 'index' %}">{{ home_page.titulo }}</a></h1>
+  <link rel="icon" href="{% static 'imgs/favicon.svg' %}" type="image/png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  {% block extra_css %}
 
-          <nav>
-            <!-- Menu para desktop -->
-            <ul class="nav d-none d-md-flex">
+  {% endblock %}
+</head>
+
+<body>
+  <header class="header py-3">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <!-- Logo -->
+        <h1 class="mb-0">
+          <a class="text-white text-decoration-none logo fw-bold fs-3" href="{% url 'index' %}">
+            {{ home_page.titulo }}
+          </a>
+        </h1>
+
+        <!-- Menu de Navegação -->
+        <nav>
+          <!-- Desktop -->
+          <div class="d-none d-md-flex align-items-center gap-3">
+            <ul class="navbar-nav flex-row gap-2">
               <li class="nav-item">
-                <a class="nav-link active" href="{% url 'index' %}">Início</a>
+                <a class="nav-link text-white px-3 py-2 rounded-4 {% if request.resolver_match.url_name == 'index' %}bg-white text-verde-principal fw-semibold{% else %}opacity-85{% endif %}"
+                  href="{% url 'index' %}">
+                  Início
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'livro' %}">Livro</a>
+                <a class="nav-link text-white px-3 py-2 rounded-4 {% if request.resolver_match.url_name == 'livro' %}bg-white text-verde-principal fw-semibold{% else %}opacity-85{% endif %}"
+                  href="{% url 'livro' %}">
+                  Livro
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'sobre' %}">Sobre</a>
+                <a class="nav-link text-white px-3 py-2 rounded-4 {% if request.resolver_match.url_name == 'sobre' %}bg-white text-verde-principal fw-semibold{% else %}opacity-85{% endif %}"
+                  href="{% url 'sobre' %}">
+                  Sobre
+                </a>
               </li>
-
-              <div class="btn-group-minimal mb-4">
-                <button class="btn-minimal filled flex-fill"><i class="fas fa-user-plus me-2"></i> Cadastrar</button>
-                <a class="btn-minimal flex-fill" href="{% url 'login' %}"><i class="fas fa-sign-in-alt me-2"></i> Entrar</a>
-              </div>
             </ul>
 
-            <!-- Dropdown para mobile -->
-            <div class="dropdown d-md-none">
-              <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-list"></i> Menu</button>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item active" href="{% url 'index' %}">Início</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="{% url 'livro' %}">Livro</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="{% url 'sobre' %}">Sobre</a>
-                </li>
-              </ul>
+            <!-- Botões de Ação -->
+            <div class="d-flex gap-2 ms-3">
+              <button class="btn btn-light btn-sm fw-semibold px-3 rounded-3">
+                <i class="fas fa-user-plus me-1"></i>Cadastrar
+              </button>
+              <a href="{% url 'login' %}" class="btn btn-outline-light btn-sm fw-semibold px-3 rounded-3">
+                <i class="fas fa-sign-in-alt me-1"></i>Entrar
+              </a>
             </div>
-          </nav>
+          </div>
+
+          <!-- Mobile -->
+          <div class="d-md-none">
+            <button class="btn btn-light rounded-3" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#mobileMenu">
+              <i class="bi bi-list"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Offcanvas para Mobile -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
+    <div class="offcanvas-header bg-verde-principal text-white">
+      <h5 class="offcanvas-title">Menu</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="d-flex flex-column gap-3">
+        <a class="btn {% if request.resolver_match.url_name == 'index' %}btn-verde-principal text-white{% else %}btn-outline-verde-principal{% endif %} w-100 text-start py-3 rounded-3"
+          href="{% url 'index' %}">
+          <i class="bi bi-house me-2"></i>Início
+        </a>
+        <a class="btn {% if request.resolver_match.url_name == 'livro' %}btn-verde-principal text-white{% else %}btn-outline-verde-principal{% endif %} w-100 text-start py-3 rounded-3"
+          href="{% url 'livro' %}">
+          <i class="bi bi-book me-2"></i>Livro
+        </a>
+        <a class="btn {% if request.resolver_match.url_name == 'sobre' %}btn-verde-principal text-white{% else %}btn-outline-verde-principal{% endif %} w-100 text-start py-3 rounded-3"
+          href="{% url 'sobre' %}">
+          <i class="bi bi-info-circle me-2"></i>Sobre
+        </a>
+
+        <hr class="my-2">
+
+        <button class="btn btn-verde-principal text-white w-100 py-3 rounded-3">
+          <i class="fas fa-user-plus me-2"></i>Cadastrar
+        </button>
+        <a href="{% url 'login' %}" class="btn btn-outline-verde-principal w-100 py-3 rounded-3">
+          <i class="fas fa-sign-in-alt me-2"></i>Entrar
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteúdo principal -->
+  {% block content %}
+
+  {% endblock %}
+
+  <!-- Footer -->
+  <footer class="py-5 about-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h3 class="fw-bold mb-3">Saiba mais sobre essa iniciativa!</h3>
+          <p class="mb-4">Conheça mais sobre nosso projeto de extensão, nossa missão e impacto. Descubra como estamos
+            contribuindo para a conscientização ambiental.</p>
+          <a href="sobre.html" class="btn btn-light fw-bold"><i class="bi bi-info-circle me-2"></i>Saiba mais!</a>
+        </div>
+        <div class="col-md-6 text-center">
+          <ul class="list-unstyled">
+            <li>aaa</li>
+            <li>aaa</li>
+            <li>eee</li>
+          </ul>
         </div>
       </div>
-    </header>
+    </div>
+  </footer>
 
-    <!-- Conteúdo principal -->
-    {% block content %}
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    {% endblock %}
+  <script>
+    // Adicionar interatividade ao carousel
+    document.addEventListener('DOMContentLoaded', function () {
+      const carousel = document.getElementById('projectCarousel')
 
-    <!-- Footer -->
-    <footer class="py-5 about-section">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6">
-            <h3 class="fw-bold mb-3">Saiba mais sobre essa iniciativa!</h3>
-            <p class="mb-4">Conheça mais sobre nosso projeto de extensão, nossa missão e impacto. Descubra como estamos contribuindo para a conscientização ambiental.</p>
-            <a href="sobre.html" class="btn btn-light fw-bold"><i class="bi bi-info-circle me-2"></i>Saiba mais!</a>
-          </div>
-          <div class="col-md-6 text-center">
-            <ul class="list-unstyled">
-              <li>aaa</li>
-              <li>aaa</li>
-              <li>eee</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-      // Adicionar interatividade ao carousel
-      document.addEventListener('DOMContentLoaded', function () {
-        const carousel = document.getElementById('projectCarousel')
-      
-        // Pausar carousel quando o mouse estiver sobre ele
-        carousel.addEventListener('mouseenter', function () {
-          this.querySelector('.carousel').carousel('pause')
-        })
-      
-        carousel.addEventListener('mouseleave', function () {
-          this.querySelector('.carousel').carousel('cycle')
-        })
+      // Pausar carousel quando o mouse estiver sobre ele
+      carousel.addEventListener('mouseenter', function () {
+        this.querySelector('.carousel').carousel('pause')
       })
-    </script>
-  </body>
+
+      carousel.addEventListener('mouseleave', function () {
+        this.querySelector('.carousel').carousel('cycle')
+      })
+    })
+  </script>
+</body>
+
 </html>

@@ -4,68 +4,34 @@
 {% block title %}Livro{% endblock %}
 
 {% block content %}
-<!-- Seção de apresentação -->
-<section class="gradient py-5">
-    <div class="container d-flex flex-column align-items-center">
-        <img src="{% static 'imgs/whitebook.svg' %}" alt="Livro Branco" height="50" />
-        <h1 class="text-center fw-bold">{{ livro.pageTitulo }}</h1>
-    </div>
-</section>
-<main class="container my-5">
-    <div class="my-3">
-        <a href="{% url 'gerenciar_livro' %}" class="btn btn-primary">Editar Livro</a>
-        {% if livro.instance %}
-        <a href="{% url 'deletar_livro' livro.id %}" class="btn btn-danger" data-bs-toggle="modal"
-            data-bs-target="#deletarLivroModal">Deletar Livro</a>
-        {% endif %}
-    </div>
-
-    <!-- Modal de confirmação -->
-    <div class="modal fade" id="deletarLivroModal" tabindex="-1" aria-labelledby="deletarLivroModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deletarLivroModalLabel">Deletar Livro</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-                </div>
-                <div class="modal-body">
-                    Tem certeza que deseja deletar o livro "<strong>{{ livro.titulo }}</strong>"? Esta ação não pode ser
-                    desfeita.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    {% if livro.instance %}
-                    <form method="post" action="{% url 'deletar_livro' livro.id %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Deletar</button>
-                    </form>
-                    {% endif %}
-                </div>
+<!-- Conteúdo Principal -->
+<div class="header fade-in rounded-bottom-5 d-flex">
+    <div class="container row mx-auto">
+        <div class="gradient py-5">
+            <div class="container d-flex flex-column align-items-center">
+                <img src="{% static 'imgs/whitebook.svg' %}" alt="Livro Branco" height="50" />
+                <h1 class="text-center fw-bold">{{ livro.pageTitulo }}</h1>
             </div>
         </div>
     </div>
+</div>
 
-
-    <div class="my-3">
-        <a href="{% url 'editar_textos' %}" class="btn btn-primary">Editar Site</a>
-    </div>
-
+<!-- Cards do Livro PDF -->
+<div class="p-5">
+    <h2 class="text-center fw-bold mb-5">Selecione o modo de leitura:</h2>
     <div class="row justify-content-center">
-        <!-- Card do Livro 3D -->
         <div class="col-md-5">
             <div class="card shadow-lg text-center p-4" style="border-radius: 15px">
-                <img src=" {{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro 3D"
+                <img src=" {{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro 3De"
                     style="width: 80px;">
                 <div class="card-body">
                     <h5 class="card-title fw-bold">{{ modoLeitura.cardTitulo }}</h5>
                     <p class="card-text">{{ modoLeitura.descricao }}</p>
-                    <a href="{% url 'lerlivro' %}" class="btn btn-success btn-lg mt-2">Acessar Livro 3D</a>
+                    <a href="lerlivro.html" class="btn btn-success btn-lg mt-2">Acessar Livro 3D</a>
                 </div>
             </div>
         </div>
 
-        <!-- Card do Livro PDF -->
         <div class="col-md-5">
             <div class="card shadow-lg text-center p-4" style="border-radius: 15px">
                 <img src="{{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro PDF"
@@ -81,39 +47,119 @@
             </div>
         </div>
     </div>
-</main>
+</div>
 
-<!-- Seção sobre o livro -->
-<section class="gradient py-5">
-    <div class="container">
+
+<!-- Conteúdo Principal -->
+<div class="py-5">
+    <div class="container my-5 fade-in">
         <div class="row align-items-center">
-            <div class="col-md-6">
-                <h2 class="fw-bold">Sinopse:</h2>
-                <p>
-                    {{ livro.descricao }}
-                </p>
+            <div class="col-md-8">
+                <h2 class="verdeTexto mb-3">O que é esse site?</h2>
+                <p class="lead">Este site foi criado para armazenar e expor um livro escrito por alunos do curso de
+                    Meio
+                    Ambiente, desenvolvido como projeto integrador.</p>
             </div>
-            <div class="col-md-6 text-center">
-                <img src="{% static 'imgs/whiteBook.svg' %}" height="200" alt="Livro Branco">
+            <div class="col-md-4 text-center">
+                <img src="" alt="foto" class="img-fluid" style="max-height: 150px;">
             </div>
         </div>
     </div>
-</section>
 
-
-<div class="container my-5">
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="news-card" style="background-image: url('{{ livro.imgs}}');">
+    <div class="container my-5 fade-in">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center">
+                <img src="" alt="foto" class="img-fluid" style="max-height: 150px;">
+            </div>
+            <div class="col-md-8">
+                <h2 class="verdeTexto mb-3 text-end">O que é esse site?</h2>
+                <p class="lead text-end">Este site foi criado para armazenar e expor um livro escrito por alunos do
+                    curso de Meio
+                    Ambiente, desenvolvido como projeto integrador.</p>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="news-card" style="background-image: url('{{ livro.imgs}}');">
+    </div>
+</div>
+
+<!-- Galeria Melhorada -->
+<div class="container my-5 fade-in">
+    <h2 class="fw-bold verdeTexto text-center mb-4">Galeria do Projeto</h2>
+
+    <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <!-- Página 1 -->
+            <div class="carousel-item active">
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="news-card" style="background-image: url('static/imgs/imgcarrosel1.jpeg');">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 d-none d-sm-block">
+                        <div class="news-card" style="background-image: url('static/imgs/imgcarrosel2.jpeg');">
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-none d-md-block">
+                        <div class="news-card" style="background-image: url('static/imgs/imgcarrosel3.jpeg');">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 2 -->
+            <div class="carousel-item">
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="news-card" style="background-image: url('static/imgs/imgcarrosel4.jpeg');">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 d-none d-sm-block">
+                        <div class="news-card" style="background-image: url('static/imgs/imgcarrosel5.jpeg');">
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-none d-md-block">
+                        <div class="news-card" style="background-image: url('static/imgs/imgcarrosel6.jpeg');">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 3 -->
+            <div class="carousel-item">
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="news-card" style="background-image: url('static/imgs/imgcarrosel7.jpeg');">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 d-none d-sm-block">
+                        <div class="news-card" style="background-image: url('static/imgs/imgcarrosel8.jpeg');">
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-none d-md-block">
+                        <div class="news-card" style="background-image: url('static/imgs/imgcarrosel9.jpeg');">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="news-card" style="background-image: url('{{ livro.imgs}}');">
-            </div>
+
+        <!-- Controles do Carousel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+        </button>
+    </div>
+
+    <!-- Indicadores do Carousel -->
+    <div class="text-center mt-4">
+        <div class="carousel-indicators position-static">
+            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="0"
+                class="active bg-success"></button>
+            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="1" class="bg-success"></button>
+            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="2" class="bg-success"></button>
         </div>
     </div>
 </div>

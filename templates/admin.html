@@ -1,0 +1,12 @@
+<div class="my-3">
+    <a href="{% url 'editar_textos' %}" class="btn btn-primary">Editar Site</a>
+</div>
+
+<main class="container my-5">
+    <div class="my-3">
+        <a href="{% url 'gerenciar_livro' %}" class="btn btn-primary">Editar Livro</a>
+        {% if livro.instance %}
+        <a href="{% url 'deletar_livro' livro.id %}" class="btn btn-danger" data-bs-toggle="modal"
+            data-bs-target="#deletarLivroModal">Deletar Livro</a>
+        {% endif %}
+    </div>

@@ -5,12 +5,17 @@
 
 {% block content %}
     <!-- Seção de apresentação -->
-    <section class="gradient py-5 text-center">
-        <div class="container">
-            <img src="{% static 'imgs/whitestar.svg' %}" alt="White Star" height="50" />
-            <h1 class="my-4">{{ sobre.paginaTitulo }}</h1>
+    <div class="header fade-in rounded-bottom-5 d-flex">
+        <div class="container row mx-auto">
+            <div class="gradient py-5 text-center">
+                <div class="container">
+                    <img src="{% static 'imgs/whitestar.svg' %}" alt="White Star" height="50" />
+                    <h1 class="my-4">{{ sobre.paginaTitulo }}</h1>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+    
 
     <div class="card container my-4 shadow-lg ">
         <div class="row align-items-center">
