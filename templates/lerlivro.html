@@ -18,7 +18,7 @@
     </div>
 
     <div class="flipbook">
-        <div class="hard"><img src="{{ livro.capa.url }}" alt=""></div>
+        <div class="hard"><img src="{{ livro.capa.url }}" alt="capa"></div>
         <div class="hard"></div>
         {% for pagina in paginas %}
             <div><img src="{{ pagina.pagina.url }}" alt="Página {{ pagina.numero_pagina }}" /></div>

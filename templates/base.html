@@ -54,7 +54,7 @@
               </li>
             </ul>
 
-            <!-- Botões de Ação -->
+            {% if not user.is_authenticated %}
             <div class="d-flex gap-2 ms-3">
               <button class="btn btn-light btn-sm fw-semibold px-3 rounded-3">
                 <i class="fas fa-user-plus me-1"></i>Cadastrar
@@ -64,6 +64,7 @@
               </a>
             </div>
           </div>
+          {% endif %}
 
           <!-- Mobile -->
           <div class="d-md-none">

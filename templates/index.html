@@ -21,9 +21,9 @@ Página Inicial
   </div>
 </div>
 {% else %}
-<div class="col-md-8 mx-auto d-flex justify-content-center my-5">
-  <h2 class="hero-title text-center">{{ home_page.titulo }}</h2>
-  <p class="lead text-white">{{ home_page.fraseInicio }}</p>
+<div class="mx-auto justify-content-center my-5">
+  <h2 class="verdeTexto mb-3 text-white text-center">{{ home_page.titulo }}</h2>
+  <p class="lead text-white text-center">{{ home_page.fraseInicio }}</p>
   <a href="{% url 'lerlivro' %}" class="btn-custom mt-3"><i class="bi bi-book me-2"></i>Leia o livro!</a>
 </div>
 </div>
