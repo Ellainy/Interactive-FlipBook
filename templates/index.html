@@ -2,23 +2,33 @@
 {% load static %}
 
 {% block title %}
-  Página Inicial
+Página Inicial
 {% endblock %}
 
 {% block content %}
-  <!-- Conteúdo Principal -->
-  <div class="header fade-in rounded-bottom-5 d-flex">
-    <div class="container row mx-auto">
-      <div class="col-md-8 py-5 ">
-        <h2 class="verdeTexto mb-3 text-white">O que é esse site?</h2>
-        <p class="lead text-white">Este site foi criado para armazenar e expor um livro escrito por alunos do curso de Meio Ambiente, desenvolvido como projeto integrador.</p>
-        <a href="{% url 'lerlivro' %}" class="btn-custom mt-3"><i class="bi bi-book me-2"></i>Leia o livro!</a>
-      </div>
-      <div class="col-md-4 p-4">
-        <img src="" alt="foto" class="img-fluid" style="max-height: 150px;" />
-      </div>
+<!-- Conteúdo Principal -->
+<div class="header fade-in rounded-bottom-5 d-flex">
+  {% if livro.capa %}
+  <div class="container row mx-auto">
+    <div class="col-md-8 py-5 ">
+      <h2 class="verdeTexto mb-3 text-white">{{ home_page.titulo }}</h2>
+      <p class="lead text-white">{{ home_page.fraseInicio }}</p>
+      <a href="{% url 'lerlivro' %}" class="btn-custom mt-3"><i class="bi bi-book me-2"></i>Leia o livro!</a>
+    </div>
+    <div class="col-md-4 p-4">
+      <img src="{{ livro.capa.url }}" class="img-fluid ms-auto" alt="{{ livro.titulo }}" />
     </div>
   </div>
+</div>
+{% else %}
+<div class="col-md-8 mx-auto d-flex justify-content-center my-5">
+  <h2 class="hero-title text-center">{{ home_page.titulo }}</h2>
+  <p class="lead text-white">{{ home_page.fraseInicio }}</p>
+  <a href="{% url 'lerlivro' %}" class="btn-custom mt-3"><i class="bi bi-book me-2"></i>Leia o livro!</a>
+</div>
+</div>
+{% endif %}
+<div>
 
   <!-- Galeria Melhorada -->
   <div class="container my-5 fade-in">
@@ -92,4 +102,4 @@
       </div>
     </div>
   </div>
-{% endblock %}
+  {% endblock content %}

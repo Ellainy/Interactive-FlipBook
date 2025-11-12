@@ -783,7 +783,6 @@ input[type="password"]:focus {
   color: var(--verde-hover);
 }
 
-/* Conteúdo Principal - CORREÇÃO AQUI */
 .content {
   flex: 1;
   padding: 2.5rem;
@@ -863,7 +862,7 @@ input[type="password"]:focus {
   transform: scale(1.1);
 }
 
-/* Responsividade */
+
 @media (max-width: 992px) {
   .main-container {
       flex-direction: column;
