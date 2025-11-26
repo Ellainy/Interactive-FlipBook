@@ -20,3 +20,6 @@ A proposta do sistema é criar uma versão digital do livro, proporcionando uma 
 ### 2 - Aplique as migrações:
     python .\manage.py migrate
 
+### 3 - Por fim, rode o sistema:
+    python .\manage.py runserver
+
