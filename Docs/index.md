@@ -25,7 +25,7 @@ Nosso principal público-alvo são os **estudantes do IFRN - Campus São Paulo d
 
 - Professores
 - Alunos
-- 
+- Usuários externos 
 
 ---
 
@@ -97,4 +97,4 @@ Funcionalidades principais:
 
 ---
 
-> Projeto em desenvolvimento - IFRN-SPP |  2025 
+> Projeto em *desenvolvimento* - IFRN-SPP |  2025 
