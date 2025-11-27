@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoVida - Soluções Sustentáveis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --verde-primario: #2E8B57;
+            --verde-secundario: #3CB371;
+            --verde-claro: #90EE90;
+            --bege: #F5F5DC;
+            --bege-escuro: #E6D7B3;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bege);
+        }
+        
+        .rounded-section {
+            border-radius: 20px;
+        }
+        
+        .btn-primary {
+            background-color: var(--verde-primario);
+            border-color: var(--verde-primario);
+            border-radius: 10px;
+            padding: 10px 25px;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--verde-secundario);
+            border-color: var(--verde-secundario);
+        }
+        
+        .btn-outline-primary {
+            color: var(--verde-primario);
+            border-color: var(--verde-primario);
+            border-radius: 10px;
+            padding: 10px 25px;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--verde-primario);
+            border-color: var(--verde-primario);
+        }
+        
+        .navbar {
+            background-color: white;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--verde-primario) 0%, var(--verde-secundario) 100%);
+            color: white;
+            padding: 100px 0;
+            border-radius: 0 0 30px 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            height: 100%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            background-color: var(--bege);
+            color: var(--verde-primario);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .cta-section {
+            background-color: var(--verde-primario);
+            color: white;
+            padding: 80px 0;
+            border-radius: 30px;
+        }
+        
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--verde-secundario);
+        }
+        
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+        }
+        
+        .form-control:focus {
+            border-color: var(--verde-primario);
+            box-shadow: 0 0 0 0.25rem rgba(46, 139, 87, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#" style="color: var(--verde-primario);">
+                <i class="bi bi-tree-fill me-2"></i>EcoVida
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicos">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#depoimentos">Depoimentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+                <a href="#contato" class="btn btn-primary ms-3">Começar Agora</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Soluções Sustentáveis para um Futuro Melhor</h1>
+                    <p class="lead mb-4">Transformamos ideias em ações ecológicas que beneficiam o planeta e sua empresa. Junte-se a nós nessa jornada verde.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#servicos" class="btn btn-light btn-lg">Nossos Serviços</a>
+                        <a href="#contato" class="btn btn-outline-light btn-lg">Fale Conosco</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sustentabilidade" class="img-fluid rounded-section">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Nossos Serviços</h2>
+                <p class="text-muted">Oferecemos soluções completas para empresas que buscam sustentabilidade</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon mx-auto">
+                            <i class="bi bi-recycle fs-3"></i>
+                        </div>
+                        <h4 class="text-center mb-3">Gestão de Resíduos</h4>
+                        <p class="text-center">Implementamos sistemas eficientes de coleta seletiva e reciclagem para reduzir o impacto ambiental.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon mx-auto">
+                            <i class="bi bi-lightbulb fs-3"></i>
+                        </div>
+                        <h4 class="text-center mb-3">Eficiência Energética</h4>
+                        <p class="text-center">Consultoria para redução do consumo energético e implementação de fontes renováveis.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon mx-auto">
+                            <i class="bi bi-tree fs-3"></i>
+                        </div>
+                        <h4 class="text-center mb-3">Reflorestamento</h4>
+                        <p class="text-center">Programas de compensação ambiental através do plantio de árvores nativas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-5 bg-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1569163139394-de44cb54d521?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sobre nós" class="img-fluid rounded-section">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">Compromisso com o Meio Ambiente</h2>
+                    <p class="mb-4">A EcoVida nasceu da necessidade de unir desenvolvimento econômico e preservação ambiental. Acreditamos que é possível crescer sem agredir o planeta.</p>
+                    <p class="mb-4">Nossa equipe multidisciplinar combina expertise técnica com paixão pela natureza para oferecer soluções inovadoras e eficazes.</p>
+                    <div class="d-flex">
+                        <div class="me-4">
+                            <h3 class="fw-bold text-success">500+</h3>
+                            <p class="text-muted">Projetos Concluídos</p>
+                        </div>
+                        <div class="me-4">
+                            <h3 class="fw-bold text-success">120</h3>
+                            <p class="text-muted">Clientes Satisfeitos</p>
+                        </div>
+                        <div>
+                            <h3 class="fw-bold text-success">15</h3>
+                            <p class="text-muted">Prêmios Recebidos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="depoimentos" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">O que Nossos Clientes Dizem</h2>
+                <p class="text-muted">Confira alguns depoimentos de empresas que já adotaram nossas soluções</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Cliente" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-0">Mariana Silva</h5>
+                                <p class="text-muted mb-0">Diretora, Empresa Verde</p>
+                            </div>
+                        </div>
+                        <p class="mb-0">"A EcoVida transformou nossa relação com o meio ambiente. Reduzimos 40% do nosso consumo energético em apenas 6 meses."</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-0">Ricardo Almeida</h5>
+                                <p class="text-muted mb-0">CEO, TechSolutions</p>
+                            </div>
+                        </div>
+                        <p class="mb-0">"O programa de reflorestamento não só compensou nossa pegada de carbono como melhorou nossa imagem no mercado."</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-0">Carla Santos</h5>
+                                <p class="text-muted mb-0">Gerente, Indústria Sustentável</p>
+                            </div>
+                        </div>
+                        <p class="mb-0">"A gestão de resíduos implementada pela EcoVida nos trouxe economia financeira além dos benefícios ambientais."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section my-5">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">Pronto para Transformar sua Empresa?</h2>
+            <p class="lead mb-4">Entre em contato conosco e descubra como podemos ajudar sua empresa a se tornar mais sustentável.</p>
+            <a href="#contato" class="btn btn-light btn-lg">Solicitar Orçamento</a>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="py-5 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">Entre em Contato</h2>
+                    <p class="mb-4">Estamos aqui para responder suas perguntas e ajudar sua empresa a dar o próximo passo rumo à sustentabilidade.</p>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-geo-alt-fill text-success me-3 fs-4"></i>
+                        <div>
+                            <h5 class="mb-0">Endereço</h5>
+                            <p class="text-muted mb-0">Rua das Flores, 123 - Jardim Verde, São Paulo - SP</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-telephone-fill text-success me-3 fs-4"></i>
+                        <div>
+                            <h5 class="mb-0">Telefone</h5>
+                            <p class="text-muted mb-0">(11) 3456-7890</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <i class="bi bi-envelope-fill text-success me-3 fs-4"></i>
+                        <div>
+                            <h5 class="mb-0">E-mail</h5>
+                            <p class="text-muted mb-0">contato@ecovida.com.br</p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <form class="bg-light p-4 rounded-section">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="empresa" class="form-label">Empresa</label>
+                            <input type="text" class="form-control" id="empresa">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensagem" class="form-label">Mensagem</label>
+                            <textarea class="form-control" id="mensagem" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4 class="fw-bold mb-3">
+                        <i class="bi bi-tree-fill me-2"></i>EcoVida
+                    </h4>
+                    <p>Transformando empresas em agentes de mudança para um futuro mais sustentável.</p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5 class="fw-bold mb-3">Links Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">Início</a></li>
+                        <li class="mb-2"><a href="#servicos" class="text-decoration-none text-light">Serviços</a></li>
+                        <li class="mb-2"><a href="#sobre" class="text-decoration-none text-light">Sobre</a></li>
+                        <li class="mb-2"><a href="#contato" class="text-decoration-none text-light">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="fw-bold mb-3">Serviços</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">Gestão de Resíduos</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">Eficiência Energética</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">Reflorestamento</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">Consultoria Ambiental</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="fw-bold mb-3">Newsletter</h5>
+                    <p class="mb-3">Inscreva-se para receber nossas novidades.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Seu e-mail">
+                        <button class="btn btn-success" type="button">Inscrever</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 EcoVida. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
