@@ -80,14 +80,6 @@ body {
   display: none;
 }
 
-.hero-section {
-  background: linear-gradient(135deg, var(--verde-principal), var(--verde-secundario));
-  color: white;
-  padding: 8rem 0;
-  margin-top: 3rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
 .nav-bottom {
   color: white;
   padding: 8rem 0;
