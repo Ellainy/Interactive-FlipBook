@@ -36,19 +36,19 @@
           <div class="d-none d-md-flex align-items-center gap-3">
             <ul class="navbar-nav flex-row gap-2">
               <li class="nav-item">
-                <a class="nav-link text-white px-3 py-2 rounded-4 {% if request.resolver_match.url_name == 'index' %}bg-white text-verde-principal fw-semibold{% else %}opacity-85{% endif %}"
+                <a class="nav-link text-white px-3 py-2 rounded-0 {% if request.resolver_match.url_name == 'index' %}underline fw-semibold{% else %}opacity-75{% endif %}"
                   href="{% url 'index' %}">
                   Início
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white px-3 py-2 rounded-4 {% if request.resolver_match.url_name == 'livro' %}bg-white text-verde-principal fw-semibold{% else %}opacity-85{% endif %}"
+                <a class="nav-link text-white px-3 py-2 rounded-0 {% if request.resolver_match.url_name == 'livro' %}underline fw-semibold{% else %}opacity-75{% endif %}"
                   href="{% url 'livro' %}">
                   Livro
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white px-3 py-2 rounded-4 {% if request.resolver_match.url_name == 'sobre' %}bg-white text-verde-principal fw-semibold{% else %}opacity-85{% endif %}"
+                <a class="nav-link text-white px-3 py-2 rounded-0 {% if request.resolver_match.url_name == 'sobre' %}underline fw-semibold{% else %}opacity-75{% endif %}"
                   href="{% url 'sobre' %}">
                   Sobre
                 </a>

@@ -12,7 +12,7 @@ Livro
     <div class="gradient py-5">
       <div class="container d-flex flex-column align-items-center text-white">
         <img src="{% static 'imgs/whitebook.svg' %}" alt="Livro Branco" height="50" />
-        <h1 class="my-4 display-4 fw-bold mb-4">{{ livro.pageTitulo }}</h1>
+        <h1 class="my-4 display-4 fw-bold mb-4">Selecione o modo de leitura</h1>
         <p class="lead mb-4">Conheça a jornada da EcoVida e nossa paixão por um planeta mais sustentável</p>
       </div>
     </div>
@@ -20,16 +20,15 @@ Livro
 </div>
 
 <!-- Cards do Livro PDF -->
-<div class="container">
-  <h2 class="text-center fw-bold mb-5">Selecione o modo de leitura:</h2>
-  <div class="row justify-content-center">
+<div class="container">        
+  <div class="row justify-content-center p-4">
     <div class="col-md-5">
       <div class="card shadow-lg text-center p-4" style="border-radius: 15px">
         {% if livro.capa %}
-        <img src=" {{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro 3De"
+        <img src=" {{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro 3D"
           style="width: 80px;" />
         {% else %}
-        <img src="{% static 'imgs/placeholder.webp' %}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro 3De"
+        <img src="{% static 'imgs/placeholder.webp' %}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Livro 3D"
           style="width: 80px;" />
         {% endif %}
         <div class="card-body">
