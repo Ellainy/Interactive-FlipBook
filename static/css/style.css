@@ -174,26 +174,6 @@
   width: 5%;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.fundo {
-  background-color: #0f2a1d;
-  height: 800px !important;
-}
-
-.form-container {
-  width: 100%;
-  max-width: 450px;
-  padding: 0 20px;
-  text-align: center;
-  z-index: 1;
-}
-
 h1 {
   color: white;
   margin-bottom: 30px;
@@ -248,32 +228,6 @@ input[type="password"]:focus {
   transition: width 0.3s, background-color 0.3s;
 }
 
-.terms {
-  display: flex;
-  align-items: flex-start;
-  margin: 15px 0;
-  text-align: left;
-}
-
-.terms input {
-  margin-right: 10px;
-  margin-top: 3px;
-}
-
-.terms label {
-  color: #555;
-  font-weight: normal;
-}
-
-.terms a {
-  color: #3b9251;
-  text-decoration: none;
-}
-
-.terms a:hover {
-  text-decoration: underline;
-}
-
 .form-button {
   background-color: #3b9251;
   color: white;
@@ -298,13 +252,6 @@ input[type="password"]:focus {
   transform: translateY(0);
 }
 
-.divider {
-  display: flex;
-  align-items: center;
-  margin: 25px 0;
-  color: #c0c0c0;
-}
-
 .divider::before,
 .divider::after {
   content: "";
@@ -315,13 +262,6 @@ input[type="password"]:focus {
 .divider span {
   padding: 0 15px;
   font-size: 14px;
-}
-
-.social-login {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 25px;
 }
 
 .social-btn {
@@ -343,10 +283,7 @@ input[type="password"]:focus {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.link-text {
-  color: #ffffff;
-  margin-top: 20px;
-}
+
 
 .form-link {
   color: #3b9251;
