@@ -30,38 +30,38 @@
         </h1>
 
         <!-- Menu de Navegação -->
-        <nav>
-          <!-- Desktop -->
-          <div class="d-none d-md-flex align-items-center gap-3">
-            <ul class="navbar-nav flex-row gap-2">
-              <li class="nav-item">
-                <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'index' %}underline fw-semibold{% else %}opacity-75{% endif %}"
-                  href="{% url 'index' %}">
-                  Início
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'livro' %}underline fw-semibold{% else %}opacity-75{% endif %}"
-                  href="{% url 'livro' %}">
-                  Livro
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'sobre' %}underline fw-semibold{% else %}opacity-75{% endif %}"
-                  href="{% url 'sobre' %}">
-                  Sobre
-                </a>
-              </li>
-            </ul>
-
-            <!-- Mobile -->
-            <div class="d-md-none">
-              <button class="btn btn-light rounded-3" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#mobileMenu">
-                <i class="bi bi-list"></i>
-              </button>
-            </div>
-        </nav>
+         <nav>
+           <!-- Desktop -->
+           <div class="d-none d-md-flex align-items-center gap-3">
+             <ul class="navbar-nav flex-row gap-2">
+               <li class="nav-item">
+                 <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'index' %}underline fw-semibold{% else %}opacity-75{% endif %}"
+                   href="{% url 'index' %}">
+                   Início
+                 </a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'livro' %}underline fw-semibold{% else %}opacity-75{% endif %}"
+                   href="{% url 'livro' %}">
+                   Livro
+                 </a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'sobre' %}underline fw-semibold{% else %}opacity-75{% endif %}"
+                   href="{% url 'sobre' %}">
+                   Sobre
+                 </a>
+               </li>
+             </ul>
+ 
+             <!-- Mobile -->
+             <div class="d-md-none">
+               <button class="btn btn-light rounded-3" type="button" data-bs-toggle="offcanvas"
+                 data-bs-target="#mobileMenu">
+                 <i class="bi bi-list"></i>
+               </button>
+             </div>
+         </nav>
       </div>
     </div>
   </header>
@@ -115,7 +115,7 @@
           <p class="mb-3 lead">Conheça mais sobre nosso projeto de extensão, nossa missão e impacto. Clique no botão
             abaixo para saber mais!</p>
           {% endif %}
-          <a href="sobre.html" class="btn btn-light fw-bold"><i class="bi me-2"></i>Saiba mais!</a>
+          <button href="sobre.html" class="btn btn-light fw-bold">Saiba mais!</button>
         </div>
 
         <div class="col-md-3 col-sm-6 footer-col mb-4">
