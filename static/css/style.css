@@ -182,37 +182,6 @@ h1 {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.input-group {
-  margin-bottom: 15px;
-  text-align: left;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  color: #3b9251;
-  font-weight: 500;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  width: 100%;
-  padding: 15px;
-  border: 2px solid #255e33;
-  border-radius: 10px;
-  font-size: 16px;
-  transition: border 0.3s, box-shadow 0.3s;
-  background-color: white;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-  border-color: #3b9251;
-  box-shadow: 0 0 0 2px rgba(59, 146, 81, 0.2);
-  outline: none;
-}
 
 .password-strength {
   height: 5px;
@@ -532,19 +501,6 @@ input[type="password"]:focus {
   margin-top: 2rem;
 }
 
-@media (max-width: 768px) {
-  .profile-info-left {
-    padding-right: 0;
-    border-right: none;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .profile-info-right {
-    padding-left: 0;
-  }
-}
 
 
 .btn-minimal {
@@ -591,13 +547,8 @@ input[type="password"]:focus {
   }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-/* Navbar admin */
+
 .navbar {
   background-color: var(--verde-principal);
   padding: 1rem 2rem;
@@ -792,16 +743,3 @@ input[type="password"]:focus {
 }
 
 
-@media (max-width: 992px) {
-  .main-container {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .sidebar {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid var(--cinza-borda);
-    padding: 1.5rem;
-  }
-}
