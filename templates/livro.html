@@ -7,7 +7,7 @@ Livro
 
 {% block content %}
 <!-- Conteúdo Principal -->
-<div class="header fade-in rounded-bottom-5 d-flex">
+<div class="header fade-in rounded-bottom-5 d-flex" style="box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);">
   <div class="container row mx-auto">
     <div class="gradient py-5">
       <div class="container d-flex flex-column align-items-center text-white">
@@ -35,7 +35,7 @@ Livro
         <div class="card-body">
           <h5 class="card-title fw-bold">{{ modoLeitura.cardTitulo }}</h5>
           <p class="card-text">{{ modoLeitura.descricao }}</p>
-          <a href="lerlivro.html" class="btn btn-success btn-lg mt-2">Acessar Livro 3D</a>
+          <a href="{% url 'lerlivro' %}" class="btn btn-success btn-lg mt-2">Acessar Livro 3D</a>
           <p class="text-muted mt-3 small">
             <i class="fas fa-info-circle me-1"></i>
             Tamanho: {{ livro.pdf.size|filesizeformat }}
@@ -57,7 +57,7 @@ Livro
           <h5 class="card-title fw-bold">{{ modoLeitura.cardTitulo }}</h5>
           <p class="card-text">{{ modoLeitura.descricao }}</p>
           {% if livro.capa %}
-          <a href="{{ livro.pdf.url }}" class="btn btn-primary btn-lg mt-2" target="_blank"
+          <a href="{ livro.pdf.url }}" class="btn btn-primary btn-lg mt-2" target="_blank"
             rel="noopener noreferrer">Abrir PDF</a>
           {% else %}
           <a href="#" class="btn btn-primary btn-lg mt-2" target="_blank" rel="noopener noreferrer">Abrir PDF</a>

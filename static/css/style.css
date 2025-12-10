@@ -121,29 +121,6 @@
   display: none;
 }
 
-.nav-bottom {
-  color: white;
-  padding: 8rem 0;
-  margin-top: 3rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-
-.content-card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-  padding: 3rem;
-  margin-bottom: 3rem;
-  border: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.content-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
 .btn-custom {
   background-color: var(--verde-claro);
   color: white;

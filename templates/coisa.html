@@ -1,363 +1,504 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repex - Site Moderno</title>
+    <title>Login - EcoVida</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
         :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --gradient: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --verde-primario: #2E8B57;
+            --verde-secundario: #3CB371;
+            --verde-claro: #90EE90;
+            --bege: #F5F5DC;
+            --bege-escuro: #E6D7B3;
         }
-
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding-top: 80px;
+            background-color: var(--bege);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-
-        /* Navbar Moderna */
-        #mainNavbar {
-            height: 80px;
-            transition: all 0.4s ease;
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(10px);
-            background: rgba(67, 97, 238, 0.95) !important;
+        
+        .rounded-section {
+            border-radius: 20px;
         }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.8rem;
-            transition: transform 0.3s ease;
+        
+        .btn-primary {
+            background-color: var(--verde-primario);
+            border-color: var(--verde-primario);
+            border-radius: 10px;
+            padding: 12px 25px;
+            font-weight: 600;
         }
-
-        .navbar-brand:hover {
-            transform: scale(1.05);
+        
+        .btn-primary:hover {
+            background-color: var(--verde-secundario);
+            border-color: var(--verde-secundario);
         }
-
-        .nav-link {
-            font-weight: 500;
-            margin: 0 8px;
-            position: relative;
-            transition: color 0.3s ease;
+        
+        .btn-outline-primary {
+            color: var(--verde-primario);
+            border-color: var(--verde-primario);
+            border-radius: 10px;
+            padding: 10px 25px;
         }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
+        
+        .btn-outline-primary:hover {
+            background-color: var(--verde-primario);
+            border-color: var(--verde-primario);
+        }
+        
+        .navbar {
             background-color: white;
-            transition: width 0.3s ease;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .search-container {
-            position: relative;
-            max-width: 500px;
-        }
-
-        .search-container input {
-            border-radius: 50px;
-            padding-left: 20px;
-            padding-right: 50px;
-            border: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .search-container button {
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            background: var(--gradient);
-            border: none;
-            color: white;
+        
+        .login-container {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
-
-        .btn-minimal {
-            border: 2px solid white;
-            background: transparent;
+        
+        .login-card {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 1000px;
+            width: 100%;
+        }
+        
+        .login-left {
+            background: linear-gradient(135deg, var(--verde-primario) 0%, var(--verde-secundario) 100%);
             color: white;
-            border-radius: 50px;
-            padding: 8px 20px;
-            font-weight: 600;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .login-right {
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
             transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--verde-primario);
+            box-shadow: 0 0 0 0.25rem rgba(46, 139, 87, 0.25);
+        }
+        
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .login-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--verde-primario);
+        }
+        
+        .login-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .divider-text {
+            padding: 0 15px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .social-login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            background-color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+        
+        .social-login-btn:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .social-login-btn img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        
+        .login-features {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        
+        .login-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .login-features i {
+            color: white;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            padding: 8px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0 20px;
+            margin-top: auto;
+        }
+        
+        .social-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--verde-secundario);
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--verde-primario);
+            border-color: var(--verde-primario);
+        }
+        
+        .form-check-input:focus {
+            border-color: var(--verde-primario);
+            box-shadow: 0 0 0 0.25rem rgba(46, 139, 87, 0.25);
+        }
+        
+        .forgot-password {
+            color: var(--verde-primario);
             text-decoration: none;
+            font-size: 0.9rem;
         }
-
-        .btn-minimal.filled {
-            background: white;
-            color: var(--primary);
+        
+        .forgot-password:hover {
+            color: var(--verde-secundario);
+            text-decoration: underline;
         }
-
-        .btn-minimal:hover {
-            background: white;
-            color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        
+        .login-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
-
-        .btn-minimal.filled:hover {
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        .btn-group-minimal {
-            display: flex;
-            gap: 12px;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            background: var(--gradient);
-            color: white;
-            padding: 80px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
-            background-size: cover;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards;
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease 0.3s forwards;
-        }
-
-        .hero-buttons {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease 0.6s forwards;
-        }
-
-        .hero-image {
-            opacity: 0;
-            transform: translateX(30px);
-            animation: fadeInRight 1s ease 0.9s forwards;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-image img {
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            max-height: 400px;
-            object-fit: cover;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Responsividade */
+        
         @media (max-width: 992px) {
-            .hero-title {
-                font-size: 2.8rem;
+            .login-left {
+                padding: 40px 30px;
             }
-
-            .search-container {
-                margin: 15px 0;
+            
+            .login-right {
+                padding: 40px 30px;
             }
         }
-
+        
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .btn-group-minimal {
+            .login-card {
                 flex-direction: column;
-                width: 100%;
             }
-
-            .btn-minimal {
+            
+            .login-left, .login-right {
                 width: 100%;
-                margin-bottom: 10px;
             }
         }
     </style>
 </head>
-
 <body>
-    <!-- Navbar Moderna -->
-    <nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top navbar-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img style="max-height: 50px;" src="https://via.placeholder.com/150x50/4361ee/FFFFFF?text=REPEX"
-                    alt="Repex" />
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--verde-primario);">
+                <i class="bi bi-tree-fill me-2"></i>EcoVida
             </a>
-
-            <form class="search-container flex-grow-1 mx-3 d-none d-lg-block">
-                <div class="position-relative">
-                    <input type="text" class="form-control" placeholder="Busque projetos..." />
-                    <button type="submit" class="btn"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Início</a>
+                        <a class="nav-link" href="index.html">Início</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Explorar</a>
+                        <a class="nav-link" href="sobre.html">Sobre Nós</a>
                     </li>
-                    <!-- Simulação de usuário logado -->
-                    <div class="dropdown">
-                        <button class="btn btn-transparent text-white dropdown-toggle" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Perfil
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Ver perfil</a></li>
-                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
-                        </ul>
-                    </div>
-                    <!--
-                    Para usuário não logado, descomente:
-                    <div class="btn-group-minimal">
-                        <a href="#" class="btn-minimal btn-sm filled flex-fill">
-                            <i class="fas fa-user-plus me-2"></i> Cadastrar
-                        </a>
-                        <a href="#" class="btn-minimal btn-sm flex-fill">
-                            <i class="fas fa-sign-in-alt me-2"></i> Entrar
-                        </a>
-                    </div>
-                    -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="servicos.html">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contato.html">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="login.html">Login</a>
+                    </li>
                 </ul>
+                <a href="contato.html" class="btn btn-primary ms-3">Fale Conosco</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7 hero-content">
-                    <h1 class="hero-title">Transforme ideias em projetos extraordinários</h1>
-                    <p class="hero-subtitle">Conectamos mentes criativas para desenvolver soluções inovadoras que fazem
-                        a diferença no mundo.</p>
-                    <div class="hero-buttons">
-                        <a href="#" class="btn btn-light btn-lg me-3 px-4 py-2 rounded-pill fw-bold">
-                            <i class="fas fa-rocket me-2"></i>Começar Agora
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-lg px-4 py-2 rounded-pill">
-                            <i class="fas fa-play-circle me-2"></i>Ver Demonstração
-                        </a>
-                    </div>
+    <!-- Login Container -->
+    <div class="login-container">
+        <div class="login-card d-flex">
+            <!-- Left Side - Welcome Message -->
+            <div class="login-left col-lg-6">
+                <div class="login-logo">
+                    <i class="bi bi-tree-fill me-2"></i>EcoVida
                 </div>
-                <div class="col-lg-5 hero-image">
-                    <img src="https://via.placeholder.com/500x400/3a0ca3/FFFFFF?text=IMAGEM+IMPACTANTE"
-                        class="img-fluid" alt="Imagem Hero" />
+                <h2 class="fw-bold mb-4">Bem-vindo de volta!</h2>
+                <p class="mb-4">Entre em sua conta para acessar todas as funcionalidades da plataforma EcoVida e continuar sua jornada rumo à sustentabilidade.</p>
+                
+                <ul class="login-features">
+                    <li>
+                        <i class="bi bi-check-circle"></i>
+                        <div>
+                            <strong>Acesso à Dashboard</strong>
+                            <p class="mb-0 small">Monitore seu progresso de sustentabilidade em tempo real</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle"></i>
+                        <div>
+                            <strong>Relatórios Personalizados</strong>
+                            <p class="mb-0 small">Acesse relatórios detalhados do impacto ambiental da sua empresa</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle"></i>
+                        <div>
+                            <strong>Ferramentas Exclusivas</strong>
+                            <p class="mb-0 small">Utilize nossas ferramentas de análise e planejamento sustentável</p>
+                        </div>
+                    </li>
+                </ul>
+                
+                <div class="mt-4">
+                    <p class="mb-2">Ainda não tem uma conta?</p>
+                    <a href="registro.html" class="btn btn-outline-light">Criar Conta</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Offcanvas Menu (para mobile) -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" style="color: #4361ee;">Menu</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body">
-            <form class="w-100 mb-4">
-                <div class="position-relative">
-                    <input type="text" class="form-control" placeholder="Busque projetos..." />
-                    <button type="submit"
-                        class="p-0 position-absolute top-50 end-0 translate-middle-y me-3 border-0 bg-transparent">
-                        <i class="fas fa-search text-muted"></i>
-                    </button>
-                </div>
-            </form>
-
-            <ul class="navbar-nav">
-                <li class="nav-item mb-3">
-                    <a class="nav-link active fw-bold" href="#" style="color: #4361ee;">Início</a>
-                </li>
-                <li class="nav-item mb-3">
-                    <a class="nav-link active fw-bold" href="#" style="color: #4361ee;">Explorar</a>
-                </li>
-                <li class="nav-item mb-3">
-                    <a class="nav-link active fw-bold" href="#" style="color: #4361ee;">Ver perfil</a>
-                </li>
-                <li class="nav-item mb-3">
-                    <a class="nav-link active fw-bold" href="#" style="color: #4361ee;">Dashboard</a>
-                </li>
-                <li class="nav-item mb-3">
-                    <a class="nav-link active fw-bold" href="#" style="color: #4361ee;">Logout</a>
-                </li>
-            </ul>
+            
+            <!-- Right Side - Login Form -->
+            <div class="login-right col-lg-6">
+                <h1 class="login-title">Entre na sua conta</h1>
+                <p class="login-subtitle">Digite suas credenciais para acessar sua conta</p>
+                
+                <form id="loginForm">
+                    <div class="mb-4">
+                        <label for="email" class="form-label">E-mail</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-envelope"></i>
+                            </span>
+                            <input type="email" class="form-control" id="email" placeholder="seu@email.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Senha</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-lock"></i>
+                            </span>
+                            <input type="password" class="form-control" id="password" placeholder="Digite sua senha" required>
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+                        <div class="d-flex justify-content-end mt-2">
+                            <a href="esqueci-senha.html" class="forgot-password">Esqueceu sua senha?</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4 form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Lembrar de mim</label>
+                    </div>
+                    
+                    <div class="d-grid mb-4">
+                        <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
+                    </div>
+                    
+                    <div class="divider">
+                        <span class="divider-text">Ou entre com</span>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <button type="button" class="social-login-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
+                                    <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
+                                </svg>
+                                <span>Google</span>
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="social-login-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-microsoft" viewBox="0 0 16 16">
+                                    <path d="M7.462 0H0v7.19h7.462V0zM16 0H8.538v7.19H16V0zM7.462 8.211H0V16h7.462V8.211zm8.538 0H8.538V16H16V8.211z"/>
+                                </svg>
+                                <span>Microsoft</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <p class="mb-0">Não tem uma conta? <a href="registro.html" class="forgot-password">Cadastre-se aqui</a></p>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4 class="fw-bold mb-3">
+                        <i class="bi bi-tree-fill me-2"></i>EcoVida
+                    </h4>
+                    <p>Transformando empresas em agentes de mudança para um futuro mais sustentável.</p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5 class="fw-bold mb-3">Navegação</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-decoration-none text-light">Início</a></li>
+                        <li class="mb-2"><a href="sobre.html" class="text-decoration-none text-light">Sobre Nós</a></li>
+                        <li class="mb-2"><a href="servicos.html" class="text-decoration-none text-light">Serviços</a></li>
+                        <li class="mb-2"><a href="contato.html" class="text-decoration-none text-light">Contato</a></li>
+                        <li class="mb-2"><a href="login.html" class="text-decoration-none text-light">Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="fw-bold mb-3">Contato</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> Rua das Flores, 123 - SP</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> (11) 3456-7890</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> contato@ecovida.com.br</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="fw-bold mb-3">Conecte-se</h5>
+                    <div class="d-flex">
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 EcoVida. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            }
+        });
+        
+        // Form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Simulação de validação básica
+            if (!email || !password) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            // Simulação de login bem-sucedido
+            alert('Login realizado com sucesso! Redirecionando...');
+            
+            // Em um caso real, aqui faríamos uma requisição para o servidor
+            // window.location.href = 'dashboard.html';
+        });
+        
+        // Social login buttons
+        document.querySelectorAll('.social-login-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const provider = this.querySelector('span').textContent;
+                alert(`Login com ${provider} selecionado. Em um sistema real, isso redirecionaria para a autenticação do ${provider}.`);
+            });
+        });
+    </script>
+</body>
 </html>
