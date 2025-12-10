@@ -19,8 +19,9 @@ Livro
   </div>
 </div>
 
+
 <!-- Cards do Livro PDF -->
-<div class="container">        
+<div class="container">
   <div class="row justify-content-center p-4">
     <div class="col-md-5">
       <div class="card shadow-lg text-center p-4" style="border-radius: 15px">
@@ -35,6 +36,10 @@ Livro
           <h5 class="card-title fw-bold">{{ modoLeitura.cardTitulo }}</h5>
           <p class="card-text">{{ modoLeitura.descricao }}</p>
           <a href="lerlivro.html" class="btn btn-success btn-lg mt-2">Acessar Livro 3D</a>
+          <p class="text-muted mt-3 small">
+            <i class="fas fa-info-circle me-1"></i>
+            Tamanho: {{ livro.pdf.size|filesizeformat }}
+          </p>
         </div>
       </div>
     </div>
