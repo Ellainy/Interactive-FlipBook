@@ -63,24 +63,58 @@
 }
 
 .nav-link {
-  padding: 8px 20px !important;
-  margin: 0 5px;
-  transition: transform 0.3s ease;
-  font-weight: 500;
-}
-
-.nav-link.active {
-  background-color: white !important;
-  color: var(--verde-principal) !important;
   font-weight: 600;
+  margin: 0 8px;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-.nav-link:not(.active):hover {
-  border-bottom: 3px solid white;
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2;
+  left: 0;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
 
 .underline {
-  border-bottom: 3px solid white;
+  border-bottom: 2px solid white;
+}
+
+.footer-col a {
+  color: white;
+  padding: 2px;
+  text-decoration: none;
+}
+
+.footer-col a:hover {
+  color: var(--verde-hover);
+  padding-left: 5px
+}
+
+.footer-col h3 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-col h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background-color: white;
 }
 
 ::-webkit-scrollbar {

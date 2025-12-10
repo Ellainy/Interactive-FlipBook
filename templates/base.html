@@ -25,8 +25,7 @@
       <div class="d-flex justify-content-between align-items-center">
         <!-- Logo -->
         <h1 class="mb-0">
-          <a class="text-white text-decoration-none logo fw-bold fs-3" href="{% url 'index' %}">
-            {{ home_page.titulo }}
+          <a class="text-white text-decoration-none logo fw-bold fs-3" href="{% url 'index' %}">{% if home_page.titulo%} {{ home_page.titulo }} {% else %}Projeto titulo{% endif %}
           </a>
         </h1>
 
@@ -36,19 +35,19 @@
           <div class="d-none d-md-flex align-items-center gap-3">
             <ul class="navbar-nav flex-row gap-2">
               <li class="nav-item">
-                <a class="nav-link text-white px-3 py-2 rounded-0 {% if request.resolver_match.url_name == 'index' %}underline fw-semibold{% else %}opacity-75{% endif %}"
+                <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'index' %}underline fw-semibold{% else %}opacity-75{% endif %}"
                   href="{% url 'index' %}">
                   Início
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white px-3 py-2 rounded-0 {% if request.resolver_match.url_name == 'livro' %}underline fw-semibold{% else %}opacity-75{% endif %}"
+                <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'livro' %}underline fw-semibold{% else %}opacity-75{% endif %}"
                   href="{% url 'livro' %}">
                   Livro
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white px-3 py-2 rounded-0 {% if request.resolver_match.url_name == 'sobre' %}underline fw-semibold{% else %}opacity-75{% endif %}"
+                <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'sobre' %}underline fw-semibold{% else %}opacity-75{% endif %}"
                   href="{% url 'sobre' %}">
                   Sobre
                 </a>
@@ -109,46 +108,82 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-sm-6 footer-col mb-4">
-          <h5>{{ home_page.saibamaisTit }}</h5>
+          <h3>Saiba mais sobre essa iniciativa!</h3>
+          {%if home_page.saibamais %}
           <p class="mb-3">{{ home_page.saibamais }}</p>
-          <a href="sobre.html" class="btn btn-light fw-bold"><i class="bi bi-info-circle me-2"></i>Saiba mais!</a>
+          {% else%}
+          <p class="mb-3 lead">Conheça mais sobre nosso projeto de extensão, nossa missão e impacto. Clique no botão
+            abaixo para saber mais!</p>
+          {% endif %}
+          <a href="sobre.html" class="btn btn-light fw-bold"><i class="bi me-2"></i>Saiba mais!</a>
         </div>
 
         <div class="col-md-3 col-sm-6 footer-col mb-4">
-          <h5>Links Rápidos</h5>
+          <h3>Links Rápidos</h3>
           <ul class="list-unstyled">
-            <li class="mb-2 "><a href="{{ cadastro }}" class="text-decoration-none text-white"> Login</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-white"> Serviços</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-white"> Portfólio</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-white"> Contato</a></li>
+            <li class="mb-2"><a href="{% url 'login' %}"> Login</a>
+            </li>
+            <li class="mb-2"><a href="{% url 'cadastro' %}">Cadastre-se</a>
+            </li>
+            <li class="mb-2"><a href="{% url 'administracao' %}">DashBoard</a>
+            </li>
           </ul>
         </div>
 
         <div class="col-md-3 col-sm-6 footer-col mb-4">
-          <h5>Contato</h5>
-          <div class="contact-info">
-            <i class="bi bi-geo-alt"></i>
-            <span>Rua Exemplo, 123 - São Paulo, SP</span>
+           {% if instituicao %}
+          <div class="col-md-3">
+            {% if instituicao.logo %}
+            <a href="{{ instituicao.site }}" class="text-white"><img src="{{ instituicao.logo.url }}"
+                alt="{{ instituicao.nome }}" class="img-fluid w-100" /></a>
+            {% endif %}
           </div>
-          <div class="contact-info">
-            <i class="bi bi-telephone"></i>
-            <span>(11) 9999-9999</span>
+          {% else %}
+          <div class="col-md-6 text-center py-2">
+              <img src="{% static 'imgs/iflogo.png' %}" height="100" alt="IFRN-logo">
+          </div>
+          {% endif %}
+           <div class="contact-info">
+            <i class="bi bi-github"></i>
+            <a href="https://github.com/Ellainy/projeto_livroDjango">GitHub</a>
           </div>
           <div class="contact-info">
             <i class="bi bi-envelope"></i>
             <span>contato@exemplo.com</span>
           </div>
-          <div class="contact-info">
-            <i class="bi bi-clock"></i>
-            <span>Seg - Sex: 9:00 - 18:00</span>
-          </div>
         </div>
       </div>
-      <hr class="my-4">
-      <div class="text-center">
-        <p class="mb-0">&copy; 2023 EcoVida. Todos os direitos reservados.</p>
+
+      <div class="row d-flex justify-content-between">
+        {% if instituicao %}
+        <div class="col-md-3">
+          {% if instituicao.logo %}
+          <a href="{{ instituicao.site }}" class="text-white"><img src="{{ instituicao.logo.url }}"
+              alt="{{ instituicao.nome }}" class="img-fluid w-100" /></a>
+          {% endif %}
+        </div>
+        <div class="col-md-6">
+          <ul class="d-flex flex-column m-0 p-0">
+            {% if instituicao.nome %}
+            <h4 class="text-white my-2 fw-bold">{{ instituicao.nome }}</h4>
+            {% endif %}
+            {% if instituicao.cep %}
+            <p class="text-white p-0 m-0">
+              <b class="fw-bold">CEP:</b> {{ instituicao.cep }}
+            </p>
+            {% endif %}
+            {% if instituicao.endereco %}
+            <p class="text-white p-0 mb-2">{{ instituicao.endereco }}</p>
+            {% endif %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <hr class="my-4">
+        <div class="text-center">
+          <p class="mb-0">&copy; 2025 IFRN-SPP. Projeto em desenvolvimento.</p>
+        </div>
       </div>
-    </div>
   </footer>
 
   <!-- Bootstrap JS -->
