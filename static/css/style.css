@@ -19,6 +19,10 @@
   background-color: var(--verde-secundario) !important;
 }
 
+.text-verde-claro {
+  color: var(--verde-claro) !important;
+}
+
 .bg-verde-claro {
   background-color: var(--verde-claro) !important;
 }
@@ -198,7 +202,7 @@ h1 {
 }
 
 .form-button {
-  background-color: #3b9251;
+  background: linear-gradient(135deg, #48634c 0%, #375534 100%);
   color: white;
   border: none;
   border-radius: 10px;
@@ -213,8 +217,10 @@ h1 {
 }
 
 .form-button:hover {
-  background-color: #255e33;
-  transform: translateY(-2px);
+  background: none;
+  background-color: #1b4626;
+  transition: 0.7s;
+  transform: translateY(-3px);
 }
 
 .form-button:active {
@@ -742,4 +748,16 @@ h1 {
   transform: scale(1.1);
 }
 
+.div-wave {
+  background-image: url('https://capsule-render.vercel.app/api?type=waving&color=ffffff&height=100&section=footer');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  padding-bottom: 100px;
+  /* Ajuste para o conteúdo não ficar sobre a imagem */
+  position: relative;
+}
 
+.form-label {
+  color: white !important;
+}
