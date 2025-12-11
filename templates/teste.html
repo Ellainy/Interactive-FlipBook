@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nós - EcoVida</title>
+    <title>Dashboard Admin - EcoVida</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
@@ -13,579 +14,807 @@
             --verde-claro: #90EE90;
             --bege: #F5F5DC;
             --bege-escuro: #E6D7B3;
+            --sidebar-width: 250px;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bege);
-            color: #333;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
         }
-        
+
         .rounded-section {
-            border-radius: 20px;
+            border-radius: 15px;
         }
-        
+
         .btn-primary {
             background-color: var(--verde-primario);
             border-color: var(--verde-primario);
-            border-radius: 10px;
-            padding: 10px 25px;
+            border-radius: 8px;
+            padding: 8px 20px;
         }
-        
+
         .btn-primary:hover {
             background-color: var(--verde-secundario);
             border-color: var(--verde-secundario);
         }
-        
-        .navbar {
-            background-color: white;
-            border-radius: 0 0 15px 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        
-        .hero-about {
-            background: linear-gradient(135deg, var(--verde-primario) 0%, var(--verde-secundario) 100%);
+
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: linear-gradient(180deg, var(--verde-primario) 0%, #1e6b3a 100%);
             color: white;
-            padding: 100px 0 80px;
-            border-radius: 0 0 30px 30px;
-            text-align: center;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: all 0.3s;
+            z-index: 1000;
         }
-        
-        .timeline-container {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .timeline-container::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: var(--verde-primario);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-        }
-        
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-            margin-bottom: 40px;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-        
-        .timeline-content {
+
+        .sidebar-header {
             padding: 20px;
-            background-color: white;
-            position: relative;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        .timeline-item:nth-child(odd) .timeline-content::after {
-            content: '';
-            position: absolute;
+
+        .sidebar-menu {
+            padding: 20px 0;
+        }
+
+        .sidebar-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--verde-claro);
+        }
+
+        .sidebar-menu i {
+            margin-right: 10px;
             width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: white;
-            top: 30px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            left: -10px;
-            background-color: white;
-            top: 30px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: var(--verde-primario);
-            border: 4px solid white;
-            border-radius: 50%;
-            top: 30px;
-            z-index: 2;
-        }
-        
-        .timeline-item:nth-child(odd)::after {
-            right: -10px;
-        }
-        
-        .timeline-item:nth-child(even)::after {
-            left: -10px;
-        }
-        
-        .team-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 25px;
             text-align: center;
-            height: 100%;
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        
-        .team-card:hover {
-            transform: translateY(-10px);
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 20px;
+            transition: all 0.3s;
         }
-        
-        .team-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
+
+        /* Header */
+        .header {
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 15px;
             margin-bottom: 20px;
-            border: 5px solid var(--bege);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
-        .value-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 30px;
-            height: 100%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            text-align: center;
+
+        .user-info {
+            display: flex;
+            align-items: center;
         }
-        
-        .value-icon {
-            background-color: var(--bege);
-            color: var(--verde-primario);
-            width: 70px;
-            height: 70px;
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
+            background-color: var(--verde-primario);
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin-right: 15px;
+            font-weight: bold;
         }
-        
-        .stats-box {
+
+        .user-details h5 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .user-details p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* Cards */
+        .dashboard-card {
             background-color: white;
             border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            height: 100%;
         }
-        
-        .footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 50px 0 20px;
-        }
-        
-        .social-icon {
-            display: inline-flex;
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-header h5 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* Tabela de Usuários */
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .users-table th {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 2px solid #eee;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .users-table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .user-status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-online {
+            background-color: rgba(46, 139, 87, 0.1);
+            color: var(--verde-primario);
+        }
+
+        .status-offline {
+            background-color: rgba(108, 117, 125, 0.1);
+            color: #6c757d;
+        }
+
+        /* Gerenciamento de Páginas */
+        .page-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s;
+        }
+
+        .page-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .page-item:last-child {
+            border-bottom: none;
+        }
+
+        .page-actions button {
+            margin-left: 5px;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+
+        /* Configuração de Cores */
+        .color-option {
             width: 40px;
             height: 40px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            margin-right: 10px;
-            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            margin: 5px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s;
         }
-        
-        .social-icon:hover {
-            background-color: var(--verde-secundario);
+
+        .color-option:hover,
+        .color-option.active {
+            border-color: #333;
+            transform: scale(1.1);
         }
-        
-        @media screen and (max-width: 768px) {
-            .timeline-container::after {
-                left: 31px;
+
+        .color-palette {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        /* Mobile Toggle */
+        .sidebar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--verde-primario);
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .sidebar {
+                margin-left: calc(-1 * var(--sidebar-width));
             }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
+
+            .sidebar.active {
+                margin-left: 0;
             }
-            
-            .timeline-item:nth-child(even) {
-                left: 0;
+
+            .main-content {
+                margin-left: 0;
             }
-            
-            .timeline-item:nth-child(odd)::after,
-            .timeline-item:nth-child(even)::after {
-                left: 21px;
+
+            .sidebar-toggle {
+                display: block;
             }
-            
-            .timeline-item:nth-child(odd) .timeline-content::after,
-            .timeline-item:nth-child(even) .timeline-content::after {
-                left: 21px;
-            }
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            color: #dc3545;
+            background: none;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            padding: 8px 20px;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #dc3545;
+            color: white;
         }
     </style>
 </head>
+
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--verde-primario);">
-                <i class="bi bi-tree-fill me-2"></i>EcoVida
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="sobre.html">Sobre Nós</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="servicos.html">Serviços</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contato.html">Contato</a>
-                    </li>
-                </ul>
-                <a href="contato.html" class="btn btn-primary ms-3">Fale Conosco</a>
-            </div>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h4 class="fw-bold">
+                <i class="bi bi-tree-fill me-2"></i>EcoVida Admin
+            </h4>
+            <p class="small mb-0">Painel de Administração</p>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-about">
-        <div class="container">
-            <h1 class="display-4 fw-bold mb-4">Nossa História e Missão</h1>
-            <p class="lead mb-4">Conheça a jornada da EcoVida e nossa paixão por um planeta mais sustentável</p>
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="#" class="active" id="dashboardLink">
+                        <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="usersLink">
+                        <i class="bi bi-people"></i> Usuários Online
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="pagesLink">
+                        <i class="bi bi-files"></i> Gerenciar Páginas
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="designLink">
+                        <i class="bi bi-palette"></i> Design do Site
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="settingsLink">
+                        <i class="bi bi-gear"></i> Configurações
+                    </a>
+                </li>
+            </ul>
         </div>
-    </section>
 
-    <!-- Nossa História -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row align-items-center mb-5">
-                <div class="col-lg-6">
-                    <h2 class="fw-bold mb-4">Quem Somos</h2>
-                    <p class="mb-4">A EcoVida nasceu em 2010 a partir de um sonho compartilhado por três amigos engenheiros ambientais: transformar a relação das empresas com o meio ambiente.</p>
-                    <p class="mb-4">Percebemos que muitas organizações queriam adotar práticas sustentáveis, mas não sabiam por onde começar. Foi então que decidimos criar uma consultoria que une expertise técnica com soluções práticas e inovadoras.</p>
-                    <p class="mb-4">Hoje, somos uma equipe multidisciplinar de mais de 50 profissionais apaixonados por criar um futuro melhor para as próximas gerações.</p>
-                </div>
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Equipe EcoVida" class="img-fluid rounded-section">
-                </div>
-            </div>
-            
-            <div class="text-center mb-5">
-                <h2 class="fw-bold mb-4">Nossa Jornada</h2>
-                <p class="text-muted">Uma linha do tempo com os principais momentos da nossa história</p>
-            </div>
-            
-            <div class="timeline-container">
-                <!-- Item 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4 class="fw-bold">2010</h4>
-                        <h5>Fundação da EcoVida</h5>
-                        <p>Três amigos fundam a empresa em uma pequena sala com uma visão clara: promover sustentabilidade no mundo corporativo.</p>
-                    </div>
-                </div>
-                
-                <!-- Item 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4 class="fw-bold">2012</h4>
-                        <h5>Primeiro Grande Projeto</h5>
-                        <p>Implementamos nosso primeiro sistema de gestão de resíduos em larga escala para uma indústria de médio porte.</p>
-                    </div>
-                </div>
-                
-                <!-- Item 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4 class="fw-bold">2015</h4>
-                        <h5>Expansão Nacional</h5>
-                        <p>Abrimos escritórios em São Paulo, Rio de Janeiro e Belo Horizonte, expandindo nosso alcance para todo o país.</p>
-                    </div>
-                </div>
-                
-                <!-- Item 4 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4 class="fw-bold">2018</h4>
-                        <h5>Prêmio de Sustentabilidade</h5>
-                        <p>Recebemos o Prêmio Nacional de Sustentabilidade pelo projeto "Floresta Corporativa", que reflorestou mais de 100 hectares.</p>
-                    </div>
-                </div>
-                
-                <!-- Item 5 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4 class="fw-bold">2021</h4>
-                        <h5>Tecnologia e Inovação</h5>
-                        <p>Lançamos nossa plataforma digital de monitoramento ambiental, integrando IoT e análise de dados para nossos clientes.</p>
-                    </div>
-                </div>
-                
-                <!-- Item 6 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4 class="fw-bold">2023</h4>
-                        <h5>500+ Projetos Concluídos</h5>
-                        <p>Alcançamos a marca de mais de 500 projetos de sustentabilidade implementados em empresas de diversos setores.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Valores -->
-    <section class="py-5 bg-white">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold mb-3">Nossos Valores</h2>
-                <p class="text-muted">Os princípios que guiam todas as nossas ações e decisões</p>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="bi bi-heart-fill fs-3"></i>
-                        </div>
-                        <h4 class="mb-3">Paixão pelo Planeta</h4>
-                        <p>Acreditamos que cada ação conta. Nosso amor pela natureza é o que nos motiva a buscar soluções cada vez mais eficientes.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="bi bi-lightbulb-fill fs-3"></i>
-                        </div>
-                        <h4 class="mb-3">Inovação Constante</h4>
-                        <p>Buscamos sempre novas tecnologias e metodologias para oferecer as melhores soluções sustentáveis para nossos clientes.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="bi bi-people-fill fs-3"></i>
-                        </div>
-                        <h4 class="mb-3">Colaboração</h4>
-                        <p>Trabalhamos em parceria com nossos clientes, entendendo suas necessidades e cocriando soluções personalizadas.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="bi bi-award-fill fs-3"></i>
-                        </div>
-                        <h4 class="mb-3">Excelência</h4>
-                        <p>Comprometemo-nos com os mais altos padrões de qualidade em todos os nossos projetos e serviços.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="bi bi-shield-check fs-3"></i>
-                        </div>
-                        <h4 class="mb-3">Transparência</h4>
-                        <p>Mantemos comunicação aberta e honesta com todos os nossos stakeholders, relatando impactos e resultados.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="bi bi-arrow-repeat fs-3"></i>
-                        </div>
-                        <h4 class="mb-3">Responsabilidade</h4>
-                        <p>Assumimos a responsabilidade por nossos atos e impactos, sempre buscando melhorar e evoluir.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Equipe -->
-    <section class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold mb-3">Conheça Nossa Liderança</h2>
-                <p class="text-muted">Os profissionais que guiam a EcoVida rumo a um futuro mais sustentável</p>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="team-card">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Fundador" class="team-img">
-                        <h4 class="fw-bold mb-2">Carlos Mendes</h4>
-                        <p class="text-success fw-bold mb-2">CEO e Fundador</p>
-                        <p class="mb-3">Engenheiro ambiental com mais de 15 anos de experiência em sustentabilidade corporativa.</p>
-                        <a href="#" class="text-success text-decoration-none">
-                            <i class="bi bi-linkedin me-1"></i> LinkedIn
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="team-card">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Diretora" class="team-img">
-                        <h4 class="fw-bold mb-2">Ana Santos</h4>
-                        <p class="text-success fw-bold mb-2">Diretora de Operações</p>
-                        <p class="mb-3">Especialista em gestão de projetos sustentáveis e eficiência energética.</p>
-                        <a href="#" class="text-success text-decoration-none">
-                            <i class="bi bi-linkedin me-1"></i> LinkedIn
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="team-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Diretor" class="team-img">
-                        <h4 class="fw-bold mb-2">Roberto Almeida</h4>
-                        <p class="text-success fw-bold mb-2">Diretor de Inovação</p>
-                        <p class="mb-3">Pioneiro na aplicação de tecnologias emergentes para soluções ambientais.</p>
-                        <a href="#" class="text-success text-decoration-none">
-                            <i class="bi bi-linkedin me-1"></i> LinkedIn
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Estatísticas -->
-    <section class="py-5 bg-white">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold mb-3">Nossos Números</h2>
-                <p class="text-muted">O impacto positivo que geramos ao longo dos anos</p>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="stats-box">
-                        <h2 class="fw-bold text-success display-4">500+</h2>
-                        <p class="fw-bold">Projetos Concluídos</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-3">
-                    <div class="stats-box">
-                        <h2 class="fw-bold text-success display-4">120</h2>
-                        <p class="fw-bold">Clientes Satisfeitos</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-3">
-                    <div class="stats-box">
-                        <h2 class="fw-bold text-success display-4">15.000+</h2>
-                        <p class="fw-bold">Árvores Plantadas</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-3">
-                    <div class="stats-box">
-                        <h2 class="fw-bold text-success display-4">50</h2>
-                        <p class="fw-bold">Profissionais Especializados</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <div class="stats-box">
-                        <h2 class="fw-bold text-success display-4">40%</h2>
-                        <p class="fw-bold">Redução Média no Consumo Energético dos Nossos Clientes</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="stats-box">
-                        <h2 class="fw-bold text-success display-4">85%</h2>
-                        <p class="fw-bold">Taxa de Reciclagem nos Projetos Implementados</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <h4 class="fw-bold mb-3">
-                        <i class="bi bi-tree-fill me-2"></i>EcoVida
-                    </h4>
-                    <p>Transformando empresas em agentes de mudança para um futuro mais sustentável.</p>
-                    <div class="d-flex mt-3">
-                        <a href="#" class="social-icon">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-2 mb-4">
-                    <h5 class="fw-bold mb-3">Navegação</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="index.html" class="text-decoration-none text-light">Início</a></li>
-                        <li class="mb-2"><a href="sobre.html" class="text-decoration-none text-light">Sobre Nós</a></li>
-                        <li class="mb-2"><a href="servicos.html" class="text-decoration-none text-light">Serviços</a></li>
-                        <li class="mb-2"><a href="contato.html" class="text-decoration-none text-light">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 mb-4">
-                    <h5 class="fw-bold mb-3">Contato</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> Rua das Flores, 123 - SP</li>
-                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> (11) 3456-7890</li>
-                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> contato@ecovida.com.br</li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 mb-4">
-                    <h5 class="fw-bold mb-3">Newsletter</h5>
-                    <p class="mb-3">Inscreva-se para receber nossas novidades.</p>
-                    <div class="input-group">
-                        <input type="email" class="form-control" placeholder="Seu e-mail">
-                        <button class="btn btn-success" type="button">Inscrever</button>
-                    </div>
-                </div>
-            </div>
-            <hr class="my-4">
+        <div class="sidebar-footer p-3 mt-auto">
             <div class="text-center">
-                <p class="mb-0">&copy; 2023 EcoVida. Todos os direitos reservados.</p>
+                <button class="btn btn-outline-light w-100" id="logoutBtn">
+                    <i class="bi bi-box-arrow-right me-2"></i> Sair
+                </button>
             </div>
         </div>
-    </footer>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <div class="header">
+            <div class="d-flex align-items-center">
+                <button class="sidebar-toggle me-3" id="sidebarToggle">
+                    <i class="bi bi-list"></i>
+                </button>
+                <div class="user-info">
+                    <div class="user-avatar">CA</div>
+                    <div class="user-details">
+                        <h5>Carlos Almeida</h5>
+                        <p>Administrador</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button class="logout-btn" id="logoutTopBtn">
+                    <i class="bi bi-box-arrow-right me-2"></i> Sair
+                </button>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div id="dashboardContent">
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-card text-center">
+                        <h3 class="text-success">42</h3>
+                        <p class="mb-0">Usuários Online</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-card text-center">
+                        <h3 class="text-success">156</h3>
+                        <p class="mb-0">Total de Usuários</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-card text-center">
+                        <h3 class="text-success">4</h3>
+                        <p class="mb-0">Páginas Ativas</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-card text-center">
+                        <h3 class="text-success">1.2k</h3>
+                        <p class="mb-0">Visitas Hoje</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h5>Visão Geral do Sistema</h5>
+                </div>
+                <p>Bem-vindo ao painel de administração da EcoVida. Aqui você pode gerenciar todos os aspectos do site.
+                </p>
+                <p>Use o menu lateral para acessar as diferentes seções de administração.</p>
+                <div class="alert alert-success mt-3">
+                    <i class="bi bi-info-circle me-2"></i> <strong>Status do Sistema:</strong> Todos os serviços estão
+                    funcionando normalmente.
+                </div>
+            </div>
+        </div>
+
+        <!-- Usuários Online Content (hidden by default) -->
+        <div id="usersContent" style="display: none;">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h5>Usuários Online Agora</h5>
+                    <span class="badge bg-success">42 online</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                                <th>Última Atividade</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Maria Silva</td>
+                                <td>maria@exemplo.com</td>
+                                <td>2 minutos atrás</td>
+                                <td><span class="user-status status-online">Online</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">Ver</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>João Santos</td>
+                                <td>joao@exemplo.com</td>
+                                <td>5 minutos atrás</td>
+                                <td><span class="user-status status-online">Online</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">Ver</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ana Costa</td>
+                                <td>ana@exemplo.com</td>
+                                <td>10 minutos atrás</td>
+                                <td><span class="user-status status-online">Online</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">Ver</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pedro Alves</td>
+                                <td>pedro@exemplo.com</td>
+                                <td>15 minutos atrás</td>
+                                <td><span class="user-status status-online">Online</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">Ver</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Carla Mendes</td>
+                                <td>carla@exemplo.com</td>
+                                <td>1 hora atrás</td>
+                                <td><span class="user-status status-offline">Offline</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">Ver</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-3">
+                    <button class="btn btn-primary">
+                        <i class="bi bi-download me-2"></i> Exportar Lista
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gerenciar Páginas Content (hidden by default) -->
+        <div id="pagesContent" style="display: none;">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h5>Gerenciamento de Páginas</h5>
+                    <button class="btn btn-primary btn-sm">
+                        <i class="bi bi-plus-circle me-1"></i> Nova Página
+                    </button>
+                </div>
+
+                <div class="page-list">
+                    <div class="page-item">
+                        <div>
+                            <h6 class="mb-1">Página Inicial</h6>
+                            <p class="mb-0 small text-muted">/index.html - Página principal do site</p>
+                        </div>
+                        <div class="page-actions">
+                            <button class="btn btn-sm btn-outline-primary">Editar</button>
+                            <button class="btn btn-sm btn-outline-success">Visualizar</button>
+                        </div>
+                    </div>
+
+                    <div class="page-item">
+                        <div>
+                            <h6 class="mb-1">Sobre Nós</h6>
+                            <p class="mb-0 small text-muted">/sobre.html - Informações sobre a empresa</p>
+                        </div>
+                        <div class="page-actions">
+                            <button class="btn btn-sm btn-outline-primary">Editar</button>
+                            <button class="btn btn-sm btn-outline-success">Visualizar</button>
+                        </div>
+                    </div>
+
+                    <div class="page-item">
+                        <div>
+                            <h6 class="mb-1">Serviços</h6>
+                            <p class="mb-0 small text-muted">/servicos.html - Lista de serviços oferecidos</p>
+                        </div>
+                        <div class="page-actions">
+                            <button class="btn btn-sm btn-outline-primary">Editar</button>
+                            <button class="btn btn-sm btn-outline-success">Visualizar</button>
+                        </div>
+                    </div>
+
+                    <div class="page-item">
+                        <div>
+                            <h6 class="mb-1">Contato</h6>
+                            <p class="mb-0 small text-muted">/contato.html - Formulário de contato</p>
+                        </div>
+                        <div class="page-actions">
+                            <button class="btn btn-sm btn-outline-primary">Editar</button>
+                            <button class="btn btn-sm btn-outline-success">Visualizar</button>
+                        </div>
+                    </div>
+
+                    <div class="page-item">
+                        <div>
+                            <h6 class="mb-1">Blog</h6>
+                            <p class="mb-0 small text-muted">/blog.html - Artigos e notícias</p>
+                        </div>
+                        <div class="page-actions">
+                            <button class="btn btn-sm btn-outline-primary">Editar</button>
+                            <button class="btn btn-sm btn-outline-success">Visualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design do Site Content (hidden by default) -->
+        <div id="designContent" style="display: none;">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h5>Configuração de Design</h5>
+                    <button class="btn btn-primary btn-sm" id="saveColorsBtn">
+                        <i class="bi bi-save me-1"></i> Salvar Alterações
+                    </button>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="mb-3">Paleta de Cores Atual</h6>
+                        <div class="d-flex mb-4">
+                            <div class="me-3">
+                                <div class="color-option active" style="background-color: #2E8B57;"
+                                    data-color="#2E8B57"></div>
+                                <p class="small text-center mt-1">Verde Principal</p>
+                            </div>
+                            <div class="me-3">
+                                <div class="color-option" style="background-color: #3CB371;" data-color="#3CB371"></div>
+                                <p class="small text-center mt-1">Verde Secundário</p>
+                            </div>
+                            <div class="me-3">
+                                <div class="color-option" style="background-color: #F5F5DC;" data-color="#F5F5DC"></div>
+                                <p class="small text-center mt-1">Bege</p>
+                            </div>
+                        </div>
+
+                        <h6 class="mb-3">Selecionar Nova Paleta</h6>
+                        <div class="color-palette mb-4">
+                            <div class="color-option" style="background-color: #228B22;" data-color="#228B22"
+                                title="Verde Floresta"></div>
+                            <div class="color-option" style="background-color: #32CD32;" data-color="#32CD32"
+                                title="Verde Lima"></div>
+                            <div class="color-option" style="background-color: #006400;" data-color="#006400"
+                                title="Verde Escuro"></div>
+                            <div class="color-option" style="background-color: #8FBC8F;" data-color="#8FBC8F"
+                                title="Verde Água-marinha"></div>
+                            <div class="color-option" style="background-color: #556B2F;" data-color="#556B2F"
+                                title="Verde Oliva"></div>
+                            <div class="color-option" style="background-color: #F0E68C;" data-color="#F0E68C"
+                                title="Bege Claro"></div>
+                            <div class="color-option" style="background-color: #DEB887;" data-color="#DEB887"
+                                title="Bege Madeira"></div>
+                            <div class="color-option" style="background-color: #D2B48C;" data-color="#D2B48C"
+                                title="Bege Tan"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h6 class="mb-3">Pré-visualização</h6>
+                        <div class="rounded-section p-3 mb-3" style="background-color: #2E8B57; color: white;">
+                            <p class="mb-0">Cabeçalho / Botões</p>
+                        </div>
+                        <div class="rounded-section p-3 mb-3" style="background-color: #3CB371; color: white;">
+                            <p class="mb-0">Elementos Secundários</p>
+                        </div>
+                        <div class="rounded-section p-3 mb-3" style="background-color: #F5F5DC;">
+                            <p class="mb-0">Fundo / Background</p>
+                        </div>
+
+                        <div class="alert alert-info mt-4">
+                            <i class="bi bi-lightbulb me-2"></i> As alterações de cores serão aplicadas em todo o site.
+                            Recomendamos testar antes de publicar.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Configurações Content (hidden by default) -->
+        <div id="settingsContent" style="display: none;">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h5>Configurações do Sistema</h5>
+                </div>
+
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Nome do Site</label>
+                        <input type="text" class="form-control" value="EcoVida - Soluções Sustentáveis">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">E-mail de Contato</label>
+                        <input type="email" class="form-control" value="contato@ecovida.com.br">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Manutenção do Site</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="maintenanceMode">
+                            <label class="form-check-label" for="maintenanceMode">
+                                Ativar modo de manutenção
+                            </label>
+                        </div>
+                        <div class="form-text">Quando ativado, apenas administradores poderão acessar o site.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Notificações por E-mail</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                            <label class="form-check-label" for="emailNotifications">
+                                Receber notificações de novos usuários
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="errorNotifications" checked>
+                            <label class="form-check-label" for="errorNotifications">
+                                Receber notificações de erros do sistema
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="button" class="btn btn-primary">Salvar Configurações</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sidebar toggle
+        document.getElementById('sidebarToggle').addEventListener('click', function () {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+
+        // Navigation between sections
+        const navLinks = document.querySelectorAll('.sidebar-menu a');
+        const sections = {
+            'dashboardLink': 'dashboardContent',
+            'usersLink': 'usersContent',
+            'pagesLink': 'pagesContent',
+            'designLink': 'designContent',
+            'settingsLink': 'settingsContent'
+        };
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Remove active class from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+
+                // Add active class to clicked link
+                this.classList.add('active');
+
+                // Hide all sections
+                Object.values(sections).forEach(sectionId => {
+                    document.getElementById(sectionId).style.display = 'none';
+                });
+
+                // Show selected section
+                const targetId = sections[this.id];
+                if (targetId) {
+                    document.getElementById(targetId).style.display = 'block';
+                }
+            });
+        });
+
+        // Color selection
+        const colorOptions = document.querySelectorAll('.color-option');
+        colorOptions.forEach(option => {
+            option.addEventListener('click', function () {
+                // Remove active class from all color options
+                colorOptions.forEach(o => o.classList.remove('active'));
+
+                // Add active class to clicked option
+                this.classList.add('active');
+
+                // Update preview
+                const color = this.getAttribute('data-color');
+                if (color === '#2E8B57') {
+                    updatePreview(color, '#3CB371', '#F5F5DC');
+                } else if (color === '#228B22') {
+                    updatePreview(color, '#32CD32', '#F0E68C');
+                } else if (color === '#006400') {
+                    updatePreview(color, '#228B22', '#D2B48C');
+                } else if (color === '#8FBC8F') {
+                    updatePreview(color, '#98FB98', '#FAFAD2');
+                } else if (color === '#556B2F') {
+                    updatePreview(color, '#6B8E23', '#F5DEB3');
+                }
+            });
+        });
+
+        function updatePreview(primary, secondary, bege) {
+            // Update preview elements
+            const previewElements = document.querySelectorAll('.rounded-section.p-3');
+            if (previewElements.length >= 3) {
+                previewElements[0].style.backgroundColor = primary;
+                previewElements[1].style.backgroundColor = secondary;
+                previewElements[2].style.backgroundColor = bege;
+            }
+        }
+
+        // Save colors button
+        document.getElementById('saveColorsBtn').addEventListener('click', function () {
+            const activeColor = document.querySelector('.color-option.active');
+            const color = activeColor.getAttribute('data-color');
+
+            // In a real application, this would send an AJAX request to save the color
+            alert(`Paleta de cores salva com sucesso! Cor principal: ${color}`);
+        });
+
+        // Logout functionality
+        const logoutButtons = document.querySelectorAll('#logoutBtn, #logoutTopBtn');
+        logoutButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                if (confirm('Tem certeza que deseja sair do painel administrativo?')) {
+                    alert('Logout realizado com sucesso! Redirecionando para a página inicial...');
+                    // In a real application, this would redirect to logout endpoint
+                    // window.location.href = 'index.html';
+                }
+            });
+        });
+
+        // Page actions
+        const pageActions = document.querySelectorAll('.page-actions button');
+        pageActions.forEach(button => {
+            if (button.textContent.includes('Editar')) {
+                button.addEventListener('click', function () {
+                    alert('Abrindo editor de página...');
+                });
+            } else if (button.textContent.includes('Visualizar')) {
+                button.addEventListener('click', function () {
+                    alert('Abrindo página para visualização...');
+                });
+            }
+        });
+
+        // User actions
+        const userActions = document.querySelectorAll('.users-table .btn-outline-primary');
+        userActions.forEach(button => {
+            button.addEventListener('click', function () {
+                const row = this.closest('tr');
+                const userName = row.cells[0].textContent;
+                alert(`Visualizando detalhes do usuário: ${userName}`);
+            });
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function (event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggleButton = document.getElementById('sidebarToggle');
+
+            if (window.innerWidth <= 992) {
+                if (!sidebar.contains(event.target) && !toggleButton.contains(event.target)) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>
