@@ -1,0 +1,68 @@
+{% extends 'userbase.html' %}
+{% block content %}
+  <div id="pagesContent">
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h5>Gerenciamento de Páginas</h5>
+        <button class="btn btn-primary btn-sm"><i class="bi bi-plus-circle me-1"></i> Nova Página</button>
+      </div>
+
+      <div class="page-list">
+        <div class="page-item">
+          <div>
+            <h6 class="mb-1">Página Inicial</h6>
+            <p class="mb-0 small text-muted">/index.html - Página principal do site</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-sm btn-outline-primary">Editar</button>
+            <button class="btn btn-sm btn-outline-success">Visualizar</button>
+          </div>
+        </div>
+
+        <div class="page-item">
+          <div>
+            <h6 class="mb-1">Sobre Nós</h6>
+            <p class="mb-0 small text-muted">/sobre.html - Informações sobre a empresa</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-sm btn-outline-primary">Editar</button>
+            <button class="btn btn-sm btn-outline-success">Visualizar</button>
+          </div>
+        </div>
+
+        <div class="page-item">
+          <div>
+            <h6 class="mb-1">Serviços</h6>
+            <p class="mb-0 small text-muted">/servicos.html - Lista de serviços oferecidos</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-sm btn-outline-primary">Editar</button>
+            <button class="btn btn-sm btn-outline-success">Visualizar</button>
+          </div>
+        </div>
+
+        <div class="page-item">
+          <div>
+            <h6 class="mb-1">Contato</h6>
+            <p class="mb-0 small text-muted">/contato.html - Formulário de contato</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-sm btn-outline-primary">Editar</button>
+            <button class="btn btn-sm btn-outline-success">Visualizar</button>
+          </div>
+        </div>
+
+        <div class="page-item">
+          <div>
+            <h6 class="mb-1">Blog</h6>
+            <p class="mb-0 small text-muted">/blog.html - Artigos e notícias</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-sm btn-outline-primary">Editar</button>
+            <button class="btn btn-sm btn-outline-success">Visualizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

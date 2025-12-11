@@ -1,88 +1,17 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-BR">
+{% extends 'userbase.html' %}
+{% block content %}
+  <!-- Header -->
+  <div class="header mb-4" style="padding: 2rem; border-radius: 12x; box-shadow: 0 2x 10px rgb;">
+    <button class="sidebar-toggle me-3" id="sidebarToggle"><i class="bi bi-list"></i></button>
+    <h3 class="mb-1 text-dark">Olá, usuario!</h3>
+    <p class="text-muted">Gerencie e personalise seu sistema e usuários!</p>
+  </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administração - Projeto Sustentabilidade</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-
-<body>
-    <!-- Navbar -->
-    <nav class="navbar d-none d-md-flex align-items-center gap-3">
-        <h1 class="site-title">PROJETO SUSTENTABILIDADE</h1>
-        <ul class="navbar-nav flex-row gap-2">
-            <li class="nav-item">
-                <a href="{% url 'index' %}"
-                    class="nav-link text-white px-3 py-2 rounded-4 {% if request.resolver_match.url_name == 'index' %}bg-white text-verde-principal fw-semibold{% else %}opacity-85{% endif %}">
-                    <i class="bi bi-house"></i> Início
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'livro' %}"
-                    class="nav-link text-white px-3 py-2 rounded-4 {% if request.resolver_match.url_name == 'livro' %}bg-white text-verde-principal fw-semibold{% else %}opacity-85{% endif %}">
-                    <i class="bi bi-book"></i> Livro
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'sobre' %}"
-                    class="nav-link text-white px-3 py-2 rounded-4 {% if request.resolver_match.url_name == 'livro' %}bg-white text-verde-principal fw-semibold{% else %}opacity-85{% endif %}">
-                    <i class="bi bi-info-circle"></i> Sobre
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-    <div class="main-container">
-        <aside class="sidebar">
-            <div class="profile-pic">
-                <i class="bi bi-person-fill"></i>
-            </div>
-            <h2 class="user-name">Maria Silva</h2>
-            <p class="user-pronoun">Ela/Dela</p>
-            <span class="user-affiliation">Administradora</span>
-            <a href="editar-perfil.html" class="btn-edit-profile">Editar perfil</a>
-            <a href="#" class="logout-btn">
-                <i class="bi bi-box-arrow-right"></i> Log out
-            </a>
-        </aside>
-
-        <main class="content">
-            <h1 class="page-title">Administração do site</h1>
-
-            <div class="admin-grid">
-                <div class="admin-card">
-                    <h3 class="card-title">Textos do site</h3>
-                    <div class="card-preview">
-                        Conteúdo da página inicial
-                    </div>
-                    <a href="{% url 'editar_textos' %}" class="btn-edit-profile">Gerenciar</a>
-                </div>
-
-                <div class="admin-card">
-                    <h3 class="card-title">Livro</h3>
-                    <div class="card-preview">
-                        Conteúdo do livro digital
-                    </div>
-                    <a href="{% url 'gerenciar_livro' %}" class="btn-edit-profile">Gerenciar</a>
-                </div>
-
-                <div class="admin-card">
-                    <h3 class="card-title">Alterar identidade visual</h3>
-                    <div class="card-preview">
-                        Cores, fontes e estilo
-                    </div>
-                    <a href="#" class="btn-edit-profile">Gerenciar</a>
-                </div>
-            </div>
-        </main>
+  <div class="dashboard-card">
+    <div class="card-header">
+      <h5>Visão Geral do Sistema</h5>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+    <p>Bem-vindo ao painel de administração da EcoVida. Aqui você pode gerenciar todos os aspectos do site.</p>
+    <p>Use o menu lateral para acessar as diferentes seções de administração.</p>
+  </div>
+{% endblock %}

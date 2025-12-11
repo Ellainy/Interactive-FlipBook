@@ -1,0 +1,60 @@
+{% extends 'userbase.html' %}
+{% block content %}
+  <div id="designContent">
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h5>Configuração de Design</h5>
+        <button class="btn btn-primary btn-sm" id="saveColorsBtn"><i class="bi bi-save me-1"></i> Salvar Alterações</button>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h6 class="mb-3">Paleta de Cores Atual</h6>
+          <div class="d-flex mb-4">
+            <div class="me-3">
+              <div class="color-option active" style="background-color: #2E8B57;" data-color="#2E8B57"></div>
+              <p class="small text-center mt-1">Verde Principal</p>
+            </div>
+            <div class="me-3">
+              <div class="color-option" style="background-color: #3CB371;" data-color="#3CB371"></div>
+              <p class="small text-center mt-1">Verde Secundário</p>
+            </div>
+            <div class="me-3">
+              <div class="color-option" style="background-color: #F5F5DC;" data-color="#F5F5DC"></div>
+              <p class="small text-center mt-1">Bege</p>
+            </div>
+          </div>
+
+          <h6 class="mb-3">Selecionar Nova Paleta</h6>
+          <div class="color-palette mb-4">
+            <div class="color-option" style="background-color: #228B22;" data-color="#228B22" title="Verde Floresta"></div>
+            <div class="color-option" style="background-color: #32CD32;" data-color="#32CD32" title="Verde Lima"></div>
+            <div class="color-option" style="background-color: #006400;" data-color="#006400" title="Verde Escuro"></div>
+            <div class="color-option" style="background-color: #8FBC8F;" data-color="#8FBC8F" title="Verde Água-marinha"></div>
+            <div class="color-option" style="background-color: #556B2F;" data-color="#556B2F" title="Verde Oliva"></div>
+            <div class="color-option" style="background-color: #F0E68C;" data-color="#F0E68C" title="Bege Claro"></div>
+            <div class="color-option" style="background-color: #DEB887;" data-color="#DEB887" title="Bege Madeira"></div>
+            <div class="color-option" style="background-color: #D2B48C;" data-color="#D2B48C" title="Bege Tan"></div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h6 class="mb-3">Pré-visualização</h6>
+          <div class="rounded-section p-3 mb-3" style="background-color: #2E8B57; color: white;">
+            <p class="mb-0">Cabeçalho / Botões</p>
+          </div>
+          <div class="rounded-section p-3 mb-3" style="background-color: #3CB371; color: white;">
+            <p class="mb-0">Elementos Secundários</p>
+          </div>
+          <div class="rounded-section p-3 mb-3" style="background-color: #F5F5DC;">
+            <p class="mb-0">Fundo / Background</p>
+          </div>
+
+          <div class="alert alert-info mt-4">
+            <i class="bi bi-lightbulb me-2"></i> As alterações de cores serão aplicadas em todo o site. Recomendamos testar antes de publicar.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

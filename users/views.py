@@ -23,3 +23,17 @@ def editar(request):
 
 def administracao(request):
     return render(request, 'paineladmin.html')
+
+def users(request):
+    return render(request, 'users.html')
+
+def paginas(resquest):
+    return render(resquest, 'paginas.html')
+
+def layout(resquest):
+    return render(resquest, 'layout.html')
+
+def configuracoes(resquest):
+    return render(resquest, 'configuracoes.html')
+
+

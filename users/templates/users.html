@@ -1,0 +1,86 @@
+{% extends 'userbase.html' %}
+{% block content %}
+  <div id="usersContent">
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h5>Usuários Online Agora</h5>
+        <span class="badge bg-success">42 online</span>
+      </div>
+
+      <div class="table-responsive">
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Última Atividade</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Maria Silva</td>
+              <td>maria@exemplo.com</td>
+              <td>2 minutos atrás</td>
+              <td>
+                <span class="user-status status-online">Online</span>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-outline-primary">Ver</button>
+              </td>
+            </tr>
+            <tr>
+              <td>João Santos</td>
+              <td>joao@exemplo.com</td>
+              <td>5 minutos atrás</td>
+              <td>
+                <span class="user-status status-online">Online</span>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-outline-primary">Ver</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Ana Costa</td>
+              <td>ana@exemplo.com</td>
+              <td>10 minutos atrás</td>
+              <td>
+                <span class="user-status status-online">Online</span>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-outline-primary">Ver</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Pedro Alves</td>
+              <td>pedro@exemplo.com</td>
+              <td>15 minutos atrás</td>
+              <td>
+                <span class="user-status status-online">Online</span>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-outline-primary">Ver</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Carla Mendes</td>
+              <td>carla@exemplo.com</td>
+              <td>1 hora atrás</td>
+              <td>
+                <span class="user-status status-offline">Offline</span>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-outline-primary">Ver</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-3">
+        <button class="btn btn-primary"><i class="bi bi-download me-2"></i> Exportar Lista</button>
+      </div>
+    </div>
+  </div>
+{% endblock %}
