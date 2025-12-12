@@ -1,0 +1,23 @@
+{% extends 'userbase.html' %}
+{% block content %}
+  <div class="container my-5">
+    <h2 class="fw-bold">Adicionar Página ao Livro</h2>
+    <form method="post" enctype="multipart/form-data" class="p-4 border rounded bg-light shadow-sm">
+      {% csrf_token %}
+      {{ pagina_form.as_p }}
+      <button type="submit" name="salvar_pagina" class="btn btn-success">Adicionar Página</button>
+    </form>
+
+    <h3 class="mt-5">Páginas já cadastradas</h3>
+    <ul class="list-group mt-3">
+      {% for p in paginas %}
+        <div class="list-group-item">
+          <strong>Página {{ p.numero_pagina }}</strong>
+          <img src="{{ p.pagina.url }}" alt="Página {{ p.numero_pagina }}" class="img-fluid border rounded shadow-sm" style="height:100px;" />
+        </div>
+      {% empty %}
+        <li class="list-group-item">Nenhuma página cadastrada ainda.</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

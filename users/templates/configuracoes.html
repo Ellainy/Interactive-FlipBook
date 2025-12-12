@@ -6,41 +6,10 @@
         <h5>Configurações do Sistema</h5>
       </div>
 
-      <form>
-        <div class="mb-3">
-          <label class="form-label">Nome do Site</label>
-          <input type="text" class="form-control" value="EcoVida - Soluções Sustentáveis" />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">E-mail de Contato</label>
-          <input type="email" class="form-control" value="contato@ecovida.com.br" />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Manutenção do Site</label>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="maintenanceMode" />
-            <label class="form-check-label" for="maintenanceMode">Ativar modo de manutenção</label>
-          </div>
-          <div class="form-text">Quando ativado, apenas administradores poderão acessar o site.</div>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Notificações por E-mail</label>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="emailNotifications" checked />
-            <label class="form-check-label" for="emailNotifications">Receber notificações de novos usuários</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="errorNotifications" checked />
-            <label class="form-check-label" for="errorNotifications">Receber notificações de erros do sistema</label>
-          </div>
-        </div>
-
-        <div class="mt-4">
-          <button type="button" class="btn btn-primary">Salvar Configurações</button>
-        </div>
+      <form method="post">
+        {% csrf_token %}
+        {{ siteForm.as_p }}
+        <button type="submit" class="btn btn-success mt-3">Salvar</button>
       </form>
     </div>
   </div>

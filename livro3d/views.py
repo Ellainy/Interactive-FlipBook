@@ -38,44 +38,6 @@ def sobre(request):
         'livro': livro
     })
 
-def gerenciar_livro(request):
-    livro = Livro.objects.first()
-
-    if request.method == "POST":
-        livro_form = LivroForm(request.POST, request.FILES, instance=livro)
-        pagina_form = PaginaForm(request.POST, request.FILES)
-
-        if livro_form.is_valid():
-            livro_form.save()
-
-        if pagina_form.is_valid():
-            pagina_form.save()
-
-        return redirect('gerenciar_livro')
-
-    else:
-        livro_form = LivroForm(instance=livro)
-        pagina_form = PaginaForm()
-
-    paginas = Pagina.objects.all()
-
-    return render(request, "livroform.html", {
-    'livro_form': livro_form,
-    'pagina_form': pagina_form,
-    'paginas': paginas,
-    'livro': livro,
-})
-
-
-
-def deletar_livro(request, livro_id):
-    livro = get_object_or_404(Livro, id=livro_id)
-
-    if request.method == "POST":
-        livro.delete()
-        return redirect('gerenciar_livro')
-
-
 def editar_textos(request):
     home = HomePage.objects.first()
     sobre = Sobre.objects.first()

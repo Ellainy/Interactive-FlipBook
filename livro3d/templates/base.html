@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     {% block title %}
-    Projeto de Extensão
+    {{ site.titulo }}
     {% endblock %}
   </title>
 
@@ -25,7 +25,7 @@
       <div class="d-flex justify-content-between align-items-center">
         <!-- Logo -->
         <h1 class="mb-0">
-          <a class="text-white text-decoration-none logo fw-bold fs-3" href="{% url 'index' %}">{% if home_page.titulo%} {{ home_page.titulo }} {% else %}Projeto titulo{% endif %}
+          <a class="text-white text-decoration-none logo fw-bold fs-3" href="{% url 'index' %}">{% if home_page.titulo%} {{ home_page.titulo }} {% else %}{{ site.titulo }}{% endif %}
           </a>
         </h1>
 

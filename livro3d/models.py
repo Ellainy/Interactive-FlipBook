@@ -29,6 +29,12 @@ class Membro(models.Model):
     def __str__(self):
         return self.nome
 
+class Site(models.Model):
+    titulo = models.CharField(max_length=50)
+    contato = models.EmailField(max_length=254, null=True, blank=True)
+    logo =models.ImageField(upload_to='logo/', null=True, blank=True)
+    
+
 class Image(models.Model):
     imagem = models.ImageField(upload_to='galeria_sobre/')
 

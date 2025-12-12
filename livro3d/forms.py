@@ -1,5 +1,5 @@
 from django import forms
-from .models import Livro, HomePage, Sobre, Pagina
+from .models import Livro, HomePage, Sobre, Pagina, Site
 
 class LivroForm(forms.ModelForm):
     class Meta:
@@ -7,7 +7,7 @@ class LivroForm(forms.ModelForm):
         fields = ['capa', 'titulo', 'pdf', 'descricao']  
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite o título do livro'}),
-            'tipo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite o tipo do livro'}),
+            'capa': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'descricao': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Escreva a descrição'}),
             'pdf': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
@@ -44,4 +44,15 @@ class SobreForm(forms.ModelForm):
             'sobre_nos': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
             'secaoTitulo': forms.TextInput(attrs={'class': 'form-control'}),
             'sobre_o_livro': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+        }
+
+class SiteForm(forms.ModelForm):
+    
+    class Meta:
+        model = Site
+        fields = ['titulo', 'contato', 'logo']
+        widgets = {
+            'titulo': forms.TextInput(attrs={'class': 'form-control'}),
+            'contato': forms.EmailInput(attrs={'class': 'form-control'}),
+            'logo': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
