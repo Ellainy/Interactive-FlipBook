@@ -3,7 +3,8 @@
   <!-- Header -->
   <div class="header mb-4" style="padding: 2rem; border-radius: 12x; box-shadow: 0 2x 10px rgb;">
     <button class="sidebar-toggle me-3" id="sidebarToggle"><i class="bi bi-list"></i></button>
-    <h3 class="mb-1 text-dark">Olá, usuario!</h3>
+    <h3 class="mb-1 text-dark">Olá, {{ user.username }}!</h3>
+    <p><strong>Email:</strong> {{ user.email }}</p>
     <p class="text-muted">Gerencie e personalise seu sistema e usuários!</p>
   </div>
 

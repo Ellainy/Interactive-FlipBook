@@ -257,7 +257,7 @@
           <div class="user-info">
             <div class="user-avatar">CA</div>
             <div class="user-details">
-              <h5>Carlos Almeida</h5>
+              <h5>{{ user.username }}</h5>
               <p class="opacity-75 m-0" style="font-size: 0.85rem;">Administrador</p>
             </div>
           </div>
@@ -267,25 +267,25 @@
       <div class="sidebar-menu">
         <ul>
           <li>
-            <a href="{% url 'administracao' %}" id="dashboardLink"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            <a href="{% url 'administracao' %}" id="dashboardLink"><i class="bi bi-speedometer2"></i>Dashboard</a>
           </li>
-          <a href="{% url 'users' %}" id="usersLink"><i class="bi bi-people"></i> Usuários Online</a>
+          <a href="{% url 'users' %}" id="usersLink"><i class="bi bi-people"></i>Gerenciamento de Usuários</a>
 
           <li>
-            <a href="{% url 'paginas' %}" id="pagesLink"><i class="bi bi-files"></i> Gerenciar Páginas</a>
+            <a href="{% url 'paginas' %}" id="pagesLink"><i class="bi bi-files"></i>Gerenciar Páginas</a>
           </li>
           <li>
-            <a href="{% url 'layout' %}" id="designLink"><i class="bi bi-palette"></i> Design do Site</a>
+            <a href="{% url 'layout' %}" id="designLink"><i class="bi bi-palette"></i>Design do Site</a>
           </li>
           <li>
-            <a href="{% url 'configuracoes' %}" id="settingsLink"><i class="bi bi-gear"></i> Configurações</a>
+            <a href="{% url 'configuracoes' %}" id="settingsLink"><i class="bi bi-gear"></i>Configurações</a>
           </li>
         </ul>
       </div>
 
       <div class="sidebar-footer p-3 mt-auto">
         <div class="text-center">
-          <button class="btn btn-outline-light w-100" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i> Sair</button>
+          <a href="{% url 'logout' %}" class="btn btn-outline-light w-100" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i> Sair</a>
         </div>
       </div>
     </div>

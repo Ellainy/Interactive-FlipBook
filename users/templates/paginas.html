@@ -4,7 +4,6 @@
     <div class="dashboard-card">
       <div class="card-header">
         <h5>Gerenciamento de Páginas</h5>
-        <button class="btn btn-primary btn-sm"><i class="bi bi-plus-circle me-1"></i> Nova Página</button>
       </div>
 
       <div class="page-list">
@@ -15,7 +14,7 @@
           </div>
           <div class="page-actions">
             <button class="btn btn-sm btn-outline-primary">Editar</button>
-            <button class="btn btn-sm btn-outline-success">Visualizar</button>
+            <a href="{% url 'index' %}" class="btn btn-sm btn-outline-success">Visualizar</a>
           </div>
         </div>
 
@@ -25,44 +24,29 @@
             <p class="mb-0 small text-muted">/sobre.html - Informações sobre a empresa</p>
           </div>
           <div class="page-actions">
-            <button class="btn btn-sm btn-outline-primary">Editar</button>
-            <button class="btn btn-sm btn-outline-success">Visualizar</button>
+            <a class="btn btn-sm btn-outline-primary">Editar</a>
+            <a href="{% url 'sobre' %}" class="btn btn-sm btn-outline-success">Visualizar</a>
           </div>
         </div>
 
         <div class="page-item">
           <div>
-            <h6 class="mb-1">Serviços</h6>
-            <p class="mb-0 small text-muted">/servicos.html - Lista de serviços oferecidos</p>
+            <h6 class="mb-1">Pagina livro</h6>
+            <p class="mb-0 small text-muted">/livro.html - Lista de serviços oferecidos</p>
           </div>
           <div class="page-actions">
-            <button class="btn btn-sm btn-outline-primary">Editar</button>
-            <button class="btn btn-sm btn-outline-success">Visualizar</button>
-          </div>
-        </div>
-
-        <div class="page-item">
-          <div>
-            <h6 class="mb-1">Contato</h6>
-            <p class="mb-0 small text-muted">/contato.html - Formulário de contato</p>
-          </div>
-          <div class="page-actions">
-            <button class="btn btn-sm btn-outline-primary">Editar</button>
-            <button class="btn btn-sm btn-outline-success">Visualizar</button>
-          </div>
-        </div>
-
-        <div class="page-item">
-          <div>
-            <h6 class="mb-1">Blog</h6>
-            <p class="mb-0 small text-muted">/blog.html - Artigos e notícias</p>
-          </div>
-          <div class="page-actions">
-            <button class="btn btn-sm btn-outline-primary">Editar</button>
-            <button class="btn btn-sm btn-outline-success">Visualizar</button>
+            <a class="btn btn-sm btn-outline-primary">Editar</a>
+            <a href="{% url 'livro' %}" class="btn btn-sm btn-outline-success">Visualizar</a>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div id="pagesContent">
+    <div class="dashboard-card">
+      <div class="card-header"></div>
+      <h5>Gerenciamento do Livro</h5>
     </div>
   </div>
 {% endblock %}
