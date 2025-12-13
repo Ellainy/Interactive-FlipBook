@@ -1,15 +1,21 @@
 from django.urls import path
-from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
+    # Rotas Públicas
     path('', views.index, name='index'),
     path('livro/', views.livro, name='livro'),
     path('sobre/', views.sobre, name='sobre'),
     path('lerlivro/', views.lerlivro, name='lerlivro'),
-    path('cadastre-se/', views.cadastro, name='cadastro'),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('logout/', views.sair, name='logout'),
+    path('layout/', views.layout, name='layout'),
+
+    # Rotas Administrativas
     path('administracao/', views.administracao, name='administracao'),
     path('editar-textos/', views.editar_textos, name='editar_textos'),
+    path('configuracoes/', views.configuracoes, name='configuracoes'),
+    path('gerenciar_livro/', views.gerenciar_livro, name='gerenciar_livro'),
+    path('livro_paginas/', views.livro_paginas, name='livro_paginas'),
+    path('paginas/', views.paginas, name='paginas'),
+    path('users/', views.users, name='users'), # Visualização de users
+    path('deletar_livro/<int:livro_id>/', views.deletar_livro, name='deletar_livro'),
 ]

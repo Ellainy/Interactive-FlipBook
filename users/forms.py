@@ -1,7 +1,15 @@
-from .models import User
-from django.contrib.auth.forms import BaseUserCreationForm
+from django import forms
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
 
-class CadastroForm(BaseUserCreationForm):
+# Pega o modelo de usuário correto (seja o padrão ou personalizado)
+User = get_user_model()
+
+class CadastroForm(UserCreationForm):
+    # Tornando o email obrigatório
+    email = forms.EmailField(required=True, help_text='Obrigatório.')
+
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        # IMPORTANTE: Nunca coloque 'password' aqui. O UserCreationForm já cuida disso.
+        fields = ['username', 'email']

@@ -1,20 +1,5 @@
 from django import forms
-from django.contrib.auth import get_user_model # <--- Importação necessária
-from django.contrib.auth.forms import UserCreationForm
 from .models import Livro, HomePage, Sobre, Pagina, Site
-
-# Isso pega o seu modelo 'users.User' automaticamente
-User = get_user_model()
-
-# --- FORMULÁRIO DE CADASTRO ---
-class CadastroForm(UserCreationForm):
-    email = forms.EmailField(required=True, help_text='Obrigatório.')
-
-    class Meta:
-        model = User # Agora aponta para o modelo correto
-        fields = ['username', 'email']
-
-# --- DEMAIS FORMULÁRIOS ---
 
 class LivroForm(forms.ModelForm):
     class Meta:
