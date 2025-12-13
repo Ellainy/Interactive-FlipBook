@@ -12,6 +12,7 @@
 
   <link rel="icon" href="{% static 'imgs/favicon.svg' %}" type="image/png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   {% block extra_css %}
@@ -23,15 +24,12 @@
   <header class="py-3 bg-verde-principal ">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
-        <!-- Logo -->
         <h1 class="mb-0">
           <a class="text-white text-decoration-none logo fw-bold fs-3" href="{% url 'index' %}">{% if home_page.titulo%} {{ home_page.titulo }} {% else %}{{ site.titulo }}{% endif %}
           </a>
         </h1>
 
-        <!-- Menu de Navegação -->
-         <nav>
-           <!-- Desktop -->
+        <nav>
            <div class="d-none d-md-flex align-items-center gap-3">
              <ul class="navbar-nav flex-row gap-2">
                <li class="nav-item">
@@ -54,19 +52,17 @@
                </li>
              </ul>
  
-             <!-- Mobile -->
              <div class="d-md-none">
                <button class="btn btn-light rounded-3" type="button" data-bs-toggle="offcanvas"
                  data-bs-target="#mobileMenu">
                  <i class="bi bi-list"></i>
                </button>
              </div>
-         </nav>
+        </nav>
       </div>
     </div>
   </header>
 
-  <!-- Menu Offcanvas para Mobile -->
   <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
     <div class="offcanvas-header bg-verde-principal text-white">
       <h5 class="offcanvas-title">Menu</h5>
@@ -89,17 +85,31 @@
 
         <hr class="my-2">
 
-        <button class="btn btn-verde-principal text-white w-100 py-3 rounded-3">
-          <i class="fas fa-user-plus me-2"></i>Cadastrar
-        </button>
-        <a href="{% url 'login' %}" class="btn btn-outline-verde-principal w-100 py-3 rounded-3">
-          <i class="fas fa-sign-in-alt me-2"></i>Entrar
-        </a>
-      </div>
+        {% if user.is_authenticated %}
+            <div class="text-center mb-2 fw-bold text-success">Olá, {{ user.username }}</div>
+            
+            <a href="{% url 'administracao' %}" class="btn btn-verde-principal text-white w-100 py-3 rounded-3">
+              <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+            </a>
+            
+            <form action="{% url 'logout' %}" method="post" class="w-100">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-danger w-100 py-3 rounded-3">
+                  <i class="fas fa-sign-out-alt me-2"></i>Sair
+                </button>
+            </form>
+        {% else %}
+            <a href="{% url 'cadastro' %}" class="btn btn-verde-principal text-white w-100 py-3 rounded-3">
+              <i class="fas fa-user-plus me-2"></i>Cadastrar
+            </a>
+            <a href="{% url 'login' %}" class="btn btn-outline-verde-principal w-100 py-3 rounded-3">
+              <i class="fas fa-sign-in-alt me-2"></i>Entrar
+            </a>
+        {% endif %}
+        </div>
     </div>
   </div>
 
-  <!-- Conteúdo principal -->
   {% block content %}
 
   {% endblock %}
@@ -121,17 +131,31 @@
         <div class="col-md-3 col-sm-6 footer-col mb-4">
           <h3>Links Rápidos</h3>
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="{% url 'login' %}"> Login</a>
-            </li>
-            <li class="mb-2"><a href="{% url 'cadastro' %}">Cadastre-se</a>
-            </li>
-            <li class="mb-2"><a href="{% url 'administracao' %}">DashBoard</a>
-            </li>
-          </ul>
+            
+            {% if user.is_authenticated %}
+                <li class="mb-2">
+                    <span class="text-white-50 small">Logado como {{ user.username }}</span>
+                </li>
+                <li class="mb-2">
+                    <a href="{% url 'administracao' %}">DashBoard</a>
+                </li>
+                <li class="mb-2">
+                    <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="background:none; border:none; padding:0; color: inherit; text-decoration: underline; cursor: pointer;">
+                           Sair
+                        </button>
+                    </form>
+                </li>
+            {% else %}
+                <li class="mb-2"><a href="{% url 'login' %}"> Login</a></li>
+                <li class="mb-2"><a href="{% url 'cadastro' %}">Cadastre-se</a></li>
+            {% endif %}
+            </ul>
         </div>
 
         <div class="col-md-3 col-sm-6 footer-col mb-4">
-           {% if instituicao %}
+            {% if instituicao %}
           <div class="col-md-3">
             {% if instituicao.logo %}
             <a href="{{ instituicao.site }}" class="text-white"><img src="{{ instituicao.logo.url }}"
@@ -186,7 +210,6 @@
       </div>
   </footer>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
@@ -194,14 +217,18 @@
     document.addEventListener('DOMContentLoaded', function () {
       const carousel = document.getElementById('projectCarousel')
 
-      // Pausar carousel quando o mouse estiver sobre ele
-      carousel.addEventListener('mouseenter', function () {
-        this.querySelector('.carousel').carousel('pause')
-      })
+      if (carousel) { 
+          // Pausar carousel quando o mouse estiver sobre ele
+          carousel.addEventListener('mouseenter', function () {
+            var bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel);
+            bsCarousel.pause();
+          })
 
-      carousel.addEventListener('mouseleave', function () {
-        this.querySelector('.carousel').carousel('cycle')
-      })
+          carousel.addEventListener('mouseleave', function () {
+             var bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel);
+             bsCarousel.cycle();
+          })
+      }
     })
   </script>
 </body>
