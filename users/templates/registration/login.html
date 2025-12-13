@@ -1,5 +1,6 @@
 {% extends 'registration/registration_base.html' %}
 {% load static crispy_forms_tags %}
+
 {% block content %}
 <div class="form-container col-md-3 m-auto">
   <h1 class="text-center fw-bold" style=" font-size: 2.8rem; margin-bottom: 0.5rem; font-weight: 600;">LOG IN</h1>
@@ -40,4 +41,58 @@
     </p>
   </div>
 </div>
+
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+
+<script>
+  // Função de alternar a senha
+  function togglePassword(fieldId) {
+    const field = document.getElementById(fieldId);
+    // Procura o ícone dentro do botão que clicamos
+    const icon = document.querySelector(`[data-toggle="${fieldId}"] i`);
+    
+    if (field.type === 'password') {
+      field.type = 'text';
+      icon.classList.remove('fa-eye');
+      icon.classList.add('fa-eye-slash');
+    } else {
+      field.type = 'password';
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+    }
+  }
+
+  // Adiciona o botão automaticamente
+  document.addEventListener('DOMContentLoaded', function() {
+    const passwordFields = document.querySelectorAll('input[type="password"]');
+    
+    passwordFields.forEach(field => {
+      // Garante que o pai tenha posição relativa para o botão ficar no lugar certo
+      const parent = field.parentElement;
+      parent.classList.add('position-relative');
+      
+      const toggleBtn = document.createElement('button');
+      toggleBtn.type = 'button';
+      
+      // Posicionamento Absoluto (Igual ao cadastro)
+      toggleBtn.className = 'position-absolute end-0'; 
+      
+      // Estilos manuais: Preto, centralizado verticalmente no input
+      toggleBtn.style.zIndex = '5';
+      toggleBtn.style.border = 'none';
+      toggleBtn.style.background = 'transparent';
+      toggleBtn.style.color = 'black'; // COR PRETA
+      toggleBtn.style.top = '38px';    // Empurra para baixo (dentro do input)
+      toggleBtn.style.right = '15px';  // Distância da direita
+      
+      toggleBtn.innerHTML = '<i class="fas fa-eye"></i>';
+      
+      // Associa o botão ao campo de senha correto
+      toggleBtn.setAttribute('data-toggle', field.id);
+      toggleBtn.addEventListener('click', () => togglePassword(field.id));
+      
+      parent.appendChild(toggleBtn);
+    });
+  });
+</script>
 {% endblock %}
