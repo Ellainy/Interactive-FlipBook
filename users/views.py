@@ -15,5 +15,5 @@ def cadastro(request):
     return render(request, 'registration/cadastro.html', context)
 
 def sair(request):
-    logout(request) # Desloga o usuário
-    return redirect('index') # Redireciona para a Home (ou troque por 'login')
+    logout(request)
+    return redirect('index')
