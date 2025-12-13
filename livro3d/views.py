@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from .models import HomePage, Livro, Sobre, Pagina
-from .forms import LivroForm, HomePageForm, SobreForm, PaginaForm
+from .forms import LivroForm, HomePageForm, SobreForm, PaginaForm, CadastroForm
 
 def index(request):
     home_page = HomePage.objects.first() 
@@ -12,7 +14,7 @@ def index(request):
         'home_page': home_page,
         'sobre': sobre,
         'imagens_galeria': imagens_galeria,
-        'livro': livro                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+        'livro': livro
     })
 
 def livro(request):
@@ -29,7 +31,6 @@ def lerlivro(request):
         'livro': livro  
         })
 
-
 def sobre(request):
     sobre_info = Sobre.objects.prefetch_related('galeria', 'membros').first()
     livro = Livro.objects.first()
@@ -38,6 +39,27 @@ def sobre(request):
         'livro': livro
     })
 
+def cadastro(request):
+    if request.method == 'POST':
+        form = CadastroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = CadastroForm()
+    
+    context = {'form': form}
+    return render(request, 'registration/cadastro.html', context)
+
+def sair(request):
+    logout(request)
+    return redirect('index')
+
+@login_required
+def administracao(request):
+    return render(request, 'paineladmin.html')
+
+@login_required
 def editar_textos(request):
     home = HomePage.objects.first()
     sobre = Sobre.objects.first()
