@@ -50,6 +50,7 @@ Funcionalidades principais:
 
 - Leitura em PDF ou **formato flipbook 3D**
 - Experiência responsiva (desktop e mobile)
+- Personalização do site pelo administrador (cores, textos e livro)
 - Página de internacionalização com **notícias e relatos de intercâmbio**
 
 ---
@@ -96,5 +97,120 @@ Funcionalidades principais:
 | RNF06 | A interface deve ser responsiva e acessível. | Produto |
 
 ---
+##  DIAGRAMAS DE CASO DE USO
+
+O diagrama de casos de uso descreve o escopo do sistema projetado, além de especificar textualmente este escopo, a técnica de casos de uso é uma excelente ferramenta para abstrair os requisitos funcionais e atores do sistema, mostrando quem eles são e como interagem entre si. 
+	Dessa forma, levando em consideração os atores e os requisitos funcionais deste trabalho, foram definidos 15 (quinze) casos de uso, conforme ilustrado na Figura 1. 
+
+
+Figura 1 - Diagrama de caso do projeto 
+
+#a imagem vai aqui 
+Fonte: Elaboração própria (2025)
+
+## 2.5 EXPANSÃO DO CASO DE USO – GERENCIAR SISTEMA
+
+O caso de uso **Gerenciar Sistema** é um dos casos de maior risco da aplicação, pois envolve operações críticas de administração e manutenção das informações do sistema. Nesta seção são especificadas as ações que o usuário **Administrador** pode executar no sistema com o objetivo de **cadastrar, editar e excluir livros**, além de **editar informações gerais do sistema**.  
+Somente usuários com permissão de administrador poderão acessar e executar este caso de uso.
+
+### 2.5.1 Atores
+- Administrador
+
+### 2.5.2 Pré-condição
+O usuário deve estar autenticado no sistema e possuir permissão de administrador, concedida pelo administrador principal do sistema.
+
+### 2.5.3 Pós-condição
+O sistema exibe o **dashboard administrativo**, refletindo as alterações realizadas pelo administrador.
+
+### 2.5.4 Requisitos Funcionais
+- **RF015** – Cadastrar Livro  
+- **RF016** – Editar Livro  
+- **RF017** – Excluir Livro  
+- **RF002** – Editar Sistema  
+
+### 2.5.5 Requisitos Não Funcionais
+- **RNF003** – Acesso restrito a usuários com perfil de administrador.
+
+---
+
+### 2.5.6 Fluxo Principal 01 – Cadastrar Livro
+
+1. **[EV]** Na tela do dashboard administrativo, o administrador clica na opção **“Cadastrar Livro”**.
+2. **[RS]** O sistema exibe o formulário de cadastro do livro.
+3. **[EV]** O administrador informa os dados do livro, como título, descrição, capa, imagens, páginas do livro e demais informações necessárias.
+4. **[RS]** O sistema valida os dados informados.
+5. **[RS]** O sistema salva as informações no banco de dados.
+6. **[RS]** O sistema exibe uma mensagem de sucesso e apresenta o livro cadastrado no painel administrativo.
+
+---
+
+### 2.5.7 Fluxo Principal 02 – Excluir Livro
+
+1. **[EV]** Na tela do dashboard administrativo, o administrador seleciona o livro desejado e clica na opção **“Excluir”**.
+2. **[RS]** O sistema solicita a confirmação da exclusão.
+3. **[EV]** O administrador confirma a exclusão.
+4. **[RS]** O sistema remove os dados do livro do banco de dados.
+5. **[RS]** O sistema exibe uma mensagem confirmando a exclusão do livro.
+
+---
+
+### 2.5.8 Fluxo Principal 03 – Editar Livro
+
+1. **[EV]** Na tela do dashboard administrativo, o administrador seleciona o livro e clica na opção **“Editar”**.
+2. **[RS]** O sistema apresenta o formulário de edição com os dados previamente cadastrados do livro.
+3. **[EV]** O administrador modifica os campos desejados (título, descrição, imagens, páginas do livro, idioma ou outras informações).
+4. **[RS]** O sistema valida as alterações realizadas.
+5. **[RS]** O sistema salva as alterações no banco de dados.
+6. **[RS]** O sistema exibe o livro atualizado no painel administrativo.
+
+---
+
+### 2.5.9 Fluxos Alternativos
+
+**1a. Administrador deseja editar um livro existente**
+
+1. O administrador seleciona o livro desejado.
+2. O sistema carrega os dados do livro.
+3. O administrador realiza as alterações necessárias.
+4. O administrador confirma as alterações.
+5. O sistema salva os dados atualizados.
+6. O fluxo retorna ao passo final do **Fluxo Principal 03**.
+
+---
+
+### 2.5.10 Fluxos de Exceção
+
+**3a. Campo obrigatório não preenchido**  
+- O sistema informa que os campos obrigatórios devem ser preenchidos para concluir a operação.
+
+**4a. Duplicidade de livro**  
+- O sistema informa que já existe um livro cadastrado com o mesmo título.
+
+**4b. Formato de arquivo inválido**  
+- O sistema informa que o formato do arquivo enviado não é permitido, indicando o formato correto aceito pelo sistema.
+
+## DIAGRAMA DE CLASSES
+	O diagrama de classes representa a estrutura de um sistema mostrando suas classes, atributos, métodos e os relacionamentos entre elas. É usado para modelar a arquitetura de um sistema orientado a objetos.
+
+#a imagen irá aqui
+
+Fonte: Elaboração própria (2025)
+
+
+## RESULTADOS
+
+
+## REFERÊNCIAS BIBLIOGRÁFICAS CONSULTADAS:
+
+
+
+
+
+
+
+
+
+
+
 
 > Projeto em *desenvolvimento* - IFRN-SPP |  2025 
