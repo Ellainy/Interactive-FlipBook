@@ -92,12 +92,10 @@
               <i class="fas fa-tachometer-alt me-2"></i>Dashboard
             </a>
             
-            <form action="{% url 'logout' %}" method="post" class="w-100">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-outline-danger w-100 py-3 rounded-3">
-                  <i class="fas fa-sign-out-alt me-2"></i>Sair
-                </button>
-            </form>
+            <a href="{% url 'sair' %}" class="btn btn-outline-danger w-100 py-3 rounded-3">
+              <i class="fas fa-sign-out-alt me-2"></i>Sair
+            </a>
+
         {% else %}
             <a href="{% url 'cadastro' %}" class="btn btn-verde-principal text-white w-100 py-3 rounded-3">
               <i class="fas fa-user-plus me-2"></i>Cadastrar
@@ -140,12 +138,9 @@
                     <a href="{% url 'administracao' %}">DashBoard</a>
                 </li>
                 <li class="mb-2">
-                    <form action="{% url 'logout' %}" method="post" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" style="background:none; border:none; padding:0; color: inherit; text-decoration: underline; cursor: pointer;">
-                           Sair
-                        </button>
-                    </form>
+                    <a href="{% url 'sair' %}" style="text-decoration: underline; color: inherit; cursor: pointer;">
+                       Sair
+                    </a>
                 </li>
             {% else %}
                 <li class="mb-2"><a href="{% url 'login' %}"> Login</a></li>
@@ -213,12 +208,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // Adicionar interatividade ao carousel
     document.addEventListener('DOMContentLoaded', function () {
       const carousel = document.getElementById('projectCarousel')
 
       if (carousel) { 
-          // Pausar carousel quando o mouse estiver sobre ele
           carousel.addEventListener('mouseenter', function () {
             var bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel);
             bsCarousel.pause();

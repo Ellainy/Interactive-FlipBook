@@ -14,6 +14,7 @@ def cadastro(request):
     context = {'form': form}
     return render(request, 'registration/cadastro.html', context)
 
+#pra resolver erro 405
 def sair(request):
     logout(request)
     return redirect('index')
