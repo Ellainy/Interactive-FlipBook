@@ -6,9 +6,11 @@ No IFRN – Campus São Paulo do Potengi, alunos de diferentes cursos desenvolve
 
 Apesar da relevância do conteúdo, o acesso ao livro ainda estava limitado ao formato físico e a apresentações pontuais. Pensando nisso, surgiu a proposta de transformar essa produção em uma **plataforma digital interativa**, que permitisse maior alcance e acessibilidade.
 
-Nesse contexto, o projeto **Livro Interativo 3D** surge como uma proposta inovadora para transformar o livro “Um Festival de Mudanças” em uma plataforma digital interativa, acessível e visualmente atraente. A ideia é proporcionar uma nova forma de leitura e interação, tornando o conteúdo do livro mais dinâmico, envolvente e acessível a diferentes públicos.
+Nesse contexto, o projeto **Interactive FlipBook** surge como uma proposta inovadora para transformar o livro “Um Festival de Mudanças” em uma plataforma digital interativa, acessível e visualmente atraente. A ideia é proporcionar uma nova forma de leitura e interação, tornando o conteúdo do livro mais dinâmico, envolvente e acessível a diferentes públicos.
 
 O projeto também integra conhecimentos adquiridos ao longo da formação técnica, unindo design, UI/UX, programação, usabilidade e compromisso social em uma solução inovadora. Dessa forma, busca-se **ampliar o alcance da mensagem ambiental do livro**, incentivando a reflexão e a conscientização sobre as mudanças climáticas e a importância das ações locais para o impacto global.
+
+Além disso, o sistema também conta com uma aparência personalizável e administração por uma dashboard com layout simples e atraente proporcionando conforto, controle e facilidade para um usuários sem conhecimento técnico na área de tecnologia possa administrar o site livremente.
 
 ---
 
@@ -57,12 +59,12 @@ Funcionalidades principais:
 
 ###  ATORES DO SISTEMA
 
-| Ator | Descrição |
-|------|-----------|
-| **Externos** | Usuários não cadastrados com acesso ao conteúdo público do site. |
-| **Alunos** | Usuários com registro no sistema e acesso ao próprio perfil. |
+| Ator                | Descrição                                                          |
+| ------------------- | ------------------------------------------------------------------ |
+| **Externos**        | Usuários não cadastrados com acesso ao conteúdo público do site.   |
+| **Alunos**          | Usuários com registro no sistema e acesso ao próprio perfil.       |
 | **Administradores** | Gerenciam conteúdo, visual do site e seção de internacionalização. |
-| **SUAP** | Sistema mediador de login por credenciais IFRN. |
+| **Google**          | Sistema mediador de login.                                         |
 
 ---
 
@@ -70,16 +72,17 @@ Funcionalidades principais:
 
 ###  Requisitos Funcionais
 
-| Código | Nome | Descrição | Prioridade |
-|--------|------|-----------|------------|
-| RF01 | Cadastrar usuário | Permitir que alunos de fora do IFRN se cadastrem com email. | Alta |
-| RF02 | Login | Usuários cadastrados poderão fazer login. | Alta |
-| RF03 | Gerenciar conteúdo do livro | Administradores poderão adicionar, editar e excluir páginas. | Alta |
-| RF04 | Visualizar livro | Usuários poderão acessar o livro em flipbook ou PDF. | Alta |
-| RF05 | Gerenciar internacionalização | Adição/edição de relatos e notícias por administradores. | Alta |
-| RF06 | Personalizar tema | Administradores poderão selecionar paletas de cores. | Média |
-| RF07 | Perfil do usuário | Visualizar e editar informações pessoais. | Média |
-| RF08 | Baixar PDF | Permitir o download do livro em PDF. | Baixa |
+| Código | Nome                        | Descrição                                                                    | Prioridade |
+| ------ | --------------------------- | ---------------------------------------------------------------------------- | ---------- |
+| RF01   | Cadastrar usuário           | Permitir que alunos de fora do IFRN se cadastrem com email.                  | Alta       |
+| RF02   | Login                       | Usuários cadastrados poderão fazer login.                                    | Alta       |
+| RF03   | Gerenciar conteúdo do livro | Administradores poderão adicionar, editar e excluir páginas.                 | Alta       |
+| RF04   | Visualizar livro            | Usuários poderão acessar o livro em flipbook ou PDF.                         | Alta       |
+| RF05   | Personalizar textos         | Administradores poderão adicionar e editar os textos das paginas do sistema. | Alta       |
+| RF06   | Personalizar Sistema        | Administradores poderão adicionar e editar informações do site               | Alta       |
+| RF07   | Personalizar tema           | Administradores poderão selecionar paletas de cores.                         | Média      |
+| RF08   | Perfil do usuário           | Visualizar e editar informações pessoais.                                    | Média      |
+| RF09   | Baixar PDF                  | Permitir o download do livro em PDF.                                         | Baixa      |
 
 > Fonte: Elaboração própria (2025)
 
@@ -87,14 +90,14 @@ Funcionalidades principais:
 
 ### Requisitos Não Funcionais
 
-| Código | Descrição | Categoria |
-|--------|-----------|-----------|
-| RNF01 | O sistema deve funcionar em ambiente web, compatível com navegadores modernos. | Organizacional |
-| RNF02 | Deve utilizar HTML, CSS, Python e JavaScript. | Organizacional |
-| RNF03 | Áreas administrativas devem ser restritas a usuários autenticados (incluindo SUAP). | Produto |
-| RNF04 | Senhas devem ser criptografadas com MD5. | Produto |
-| RNF05 | O banco de dados utilizado será o SQLite. | Organizacional |
-| RNF06 | A interface deve ser responsiva e acessível. | Produto |
+| Código | Descrição                                                                           | Categoria      |
+| ------ | ----------------------------------------------------------------------------------- | -------------- |
+| RNF01  | O sistema deve funcionar em ambiente web, compatível com navegadores modernos.      | Organizacional |
+| RNF02  | Deve utilizar HTML, CSS, Python e JavaScript.                                       | Organizacional |
+| RNF03  | Áreas administrativas devem ser restritas a usuários autenticados (incluindo SUAP). | Produto        |
+| RNF04  | Senhas devem ser criptografadas com MD5.                                            | Produto        |
+| RNF05  | O banco de dados utilizado será o SQLite.                                           | Organizacional |
+| RNF06  | A interface deve ser responsiva e acessível.                                        | Produto        |
 
 ---
 ##  DIAGRAMAS DE CASO DE USO
@@ -105,12 +108,13 @@ O diagrama de casos de uso descreve o escopo do sistema projetado, além de espe
 
 Figura 1 - Diagrama de caso do projeto 
 
-#a imagem vai aqui 
+![Diagrama de casos de uso](imgs/DCU%20projeto%20livro.svg)
+
 Fonte: Elaboração própria (2025)
 
 ## 2.5 EXPANSÃO DO CASO DE USO – GERENCIAR SISTEMA
 
-O caso de uso **Gerenciar Sistema** é um dos casos de maior risco da aplicação, pois envolve operações críticas de administração e manutenção das informações do sistema. Nesta seção são especificadas as ações que o usuário **Administrador** pode executar no sistema com o objetivo de **cadastrar, editar e excluir livros**, além de **editar informações gerais do sistema**.  
+O caso de uso **Gerenciar Sistema** é um dos casos de maior risco da aplicação, pois envolve operações críticas de administração e manutenção das informações do sistema. Nesta seção são especificadas as ações que o usuário **Administrador** pode executar no sistema com o objetivo de **cadastrar, editar e excluir os textos e cores padrão**, além de **editar informações gerais do sistema** com do site como nome do sistema, logo e contato.  
 Somente usuários com permissão de administrador poderão acessar e executar este caso de uso.
 
 ### 2.5.1 Atores
@@ -123,19 +127,19 @@ O usuário deve estar autenticado no sistema e possuir permissão de administrad
 O sistema exibe o **dashboard administrativo**, refletindo as alterações realizadas pelo administrador.
 
 ### 2.5.4 Requisitos Funcionais
-- **RF015** – Cadastrar Livro  
-- **RF016** – Editar Livro  
-- **RF017** – Excluir Livro  
-- **RF002** – Editar Sistema  
+- **RF03** – Gerenciar conteúdo do livro   
+- **RF05** – Personalizar textos 
+- **RF06** – Personalizar Sistema  
+- **RF07** – Personalizar tema  
 
 ### 2.5.5 Requisitos Não Funcionais
 - **RNF003** – Acesso restrito a usuários com perfil de administrador.
 
 ---
 
-### 2.5.6 Fluxo Principal 01 – Cadastrar Livro
+### 2.5.6 Fluxo Principal 01 – Gerenciar conteúdo do livro   
 
-1. **[EV]** Na tela do dashboard administrativo, o administrador clica na opção **“Cadastrar Livro”**.
+1. **[EV]** Na tela do dashboard administrativo, o administrador clica na opção **“Gerenciar paginas”** logo após em Gerenciamneto do livro.
 2. **[RS]** O sistema exibe o formulário de cadastro do livro.
 3. **[EV]** O administrador informa os dados do livro, como título, descrição, capa, imagens, páginas do livro e demais informações necessárias.
 4. **[RS]** O sistema valida os dados informados.
@@ -197,7 +201,10 @@ O sistema exibe o **dashboard administrativo**, refletindo as alterações reali
 Fonte: Elaboração própria (2025)
 
 
-## RESULTADOS
+## Prototipos de tela
+Protótipos de tela desenvolvidos no Figma, com foco em um layout simples, intuitivo e confortável para o usuário, utilizando bordas arredondadas e elementos visuais de maior destaque para facilitar a navegação e a usabilidade.
+
+#aqui vou colocar as imagens
 
 
 ## REFERÊNCIAS BIBLIOGRÁFICAS CONSULTADAS:
