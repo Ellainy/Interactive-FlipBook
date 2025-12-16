@@ -107,6 +107,7 @@ a técnica de casos de uso é uma excelente ferramenta para abstrair os requisit
 eles são e como interagem entre si. Dessa forma, levando em consideração os atores e os requisitos funcionais deste trabalho, 
 foram definidos 15 (quinze) casos de uso, conforme ilustrado na Figura 1. 
 
+--
 
 Figura 1 - Diagrama de caso do projeto 
 
