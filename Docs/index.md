@@ -209,7 +209,15 @@ Fonte: Elaboração própria (2025)
 ## Prototipos de tela
 Protótipos de tela desenvolvidos no Figma, com foco em um layout simples, intuitivo e confortável para o usuário, utilizando bordas arredondadas e elementos visuais de maior destaque para facilitar a navegação e a usabilidade.
 
-#aqui vou colocar as imagens
+![Pagina inicial](imgs/Pagina%20inicial.png)
+![Pagina inicial](imgs/Livro.png)
+![Pagina inicial](imgs/Ler%20Livro%203d.png)
+![Pagina inicial](imgs/Tela%20cheia.png)
+![Pagina inicial](imgs/Sobre.png)
+![Pagina inicial](imgs/Adm%20perfil.png)
+![Pagina inicial](imgs/Editar%20Pagina.png)
+![Pagina inicial](imgs/Cadastro.png)
+![Pagina inicial](imgs/log%20in.png)
 
 
 ## REFERÊNCIAS BIBLIOGRÁFICAS CONSULTADAS:

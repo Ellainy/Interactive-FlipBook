@@ -25,40 +25,40 @@
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
         <h1 class="mb-0">
-          <a class="text-white text-decoration-none logo fw-bold fs-3" href="{% url 'index' %}">{% if home_page.titulo%} {{ home_page.titulo }} {% else %}{{ site.titulo }}{% endif %}
+          <a class="text-white text-decoration-none logo fw-bold fs-3" href="{% url 'index' %}">{% if home_page.titulo%}
+            {{ home_page.titulo }} {% else %}{{ site.titulo }}{% endif %}
           </a>
         </h1>
 
         <nav>
-           <div class="d-none d-md-flex align-items-center gap-3">
-             <ul class="navbar-nav flex-row gap-2">
-               <li class="nav-item">
-                 <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'index' %}underline fw-semibold{% else %}opacity-75{% endif %}"
-                   href="{% url 'index' %}">
-                   Início
-                 </a>
-               </li>
-               <li class="nav-item">
-                 <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'livro' %}underline fw-semibold{% else %}opacity-75{% endif %}"
-                   href="{% url 'livro' %}">
-                   Livro
-                 </a>
-               </li>
-               <li class="nav-item">
-                 <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'sobre' %}underline fw-semibold{% else %}opacity-75{% endif %}"
-                   href="{% url 'sobre' %}">
-                   Sobre
-                 </a>
-               </li>
-             </ul>
- 
-             <div class="d-md-none">
-               <button class="btn btn-light rounded-3" type="button" data-bs-toggle="offcanvas"
-                 data-bs-target="#mobileMenu">
-                 <i class="bi bi-list"></i>
-               </button>
-             </div>
+          <div class="d-none d-md-flex align-items-center gap-3">
+            <ul class="navbar-nav flex-row gap-2">
+              <li class="nav-item">
+                <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'index' %}underline fw-semibold{% else %}opacity-75{% endif %}"
+                  href="{% url 'index' %}">
+                  Início
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'livro' %}underline fw-semibold{% else %}opacity-75{% endif %}"
+                  href="{% url 'livro' %}">
+                  Livro
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white px-3 py-2 {% if request.resolver_match.url_name == 'sobre' %}underline fw-semibold{% else %}opacity-75{% endif %}"
+                  href="{% url 'sobre' %}">
+                  Sobre
+                </a>
+              </li>
+            </ul>
         </nav>
+
+        <div class="d-md-none">
+          <button class="btn btn-light rounded-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -86,25 +86,25 @@
         <hr class="my-2">
 
         {% if user.is_authenticated %}
-            <div class="text-center mb-2 fw-bold text-success">Olá, {{ user.username }}</div>
-            
-            <a href="{% url 'administracao' %}" class="btn btn-verde-principal text-white w-100 py-3 rounded-3">
-              <i class="fas fa-tachometer-alt me-2"></i>Dashboard
-            </a>
-            
-            <a href="{% url 'sair' %}" class="btn btn-outline-danger w-100 py-3 rounded-3">
-              <i class="fas fa-sign-out-alt me-2"></i>Sair
-            </a>
+        <div class="text-center mb-2 fw-bold text-success">Olá, {{ user.username }}</div>
+
+        <a href="{% url 'administracao' %}" class="btn btn-verde-principal text-white w-100 py-3 rounded-3">
+          <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+        </a>
+
+        <a href="{% url 'sair' %}" class="btn btn-outline-danger w-100 py-3 rounded-3">
+          <i class="fas fa-sign-out-alt me-2"></i>Sair
+        </a>
 
         {% else %}
-            <a href="{% url 'cadastro' %}" class="btn btn-verde-principal text-white w-100 py-3 rounded-3">
-              <i class="fas fa-user-plus me-2"></i>Cadastrar
-            </a>
-            <a href="{% url 'login' %}" class="btn btn-outline-verde-principal w-100 py-3 rounded-3">
-              <i class="fas fa-sign-in-alt me-2"></i>Entrar
-            </a>
+        <a href="{% url 'cadastro' %}" class="btn btn-verde-principal text-white w-100 py-3 rounded-3">
+          <i class="fas fa-user-plus me-2"></i>Cadastrar
+        </a>
+        <a href="{% url 'login' %}" class="btn btn-outline-verde-principal w-100 py-3 rounded-3">
+          <i class="fas fa-sign-in-alt me-2"></i>Entrar
+        </a>
         {% endif %}
-        </div>
+      </div>
     </div>
   </div>
 
@@ -129,28 +129,28 @@
         <div class="col-md-3 col-sm-6 footer-col mb-4">
           <h3>Links Rápidos</h3>
           <ul class="list-unstyled">
-            
+
             {% if user.is_authenticated %}
-                <li class="mb-2">
-                    <span class="text-white-50 small">Logado como {{ user.username }}</span>
-                </li>
-                <li class="mb-2">
-                    <a href="{% url 'administracao' %}">DashBoard</a>
-                </li>
-                <li class="mb-2">
-                    <a href="{% url 'sair' %}" style="text-decoration: underline; color: inherit; cursor: pointer;">
-                       Sair
-                    </a>
-                </li>
+            <li class="mb-2">
+              <span class="text-white-50 small">Logado como {{ user.username }}</span>
+            </li>
+            <li class="mb-2">
+              <a href="{% url 'administracao' %}">DashBoard</a>
+            </li>
+            <li class="mb-2">
+              <a href="{% url 'sair' %}" style="text-decoration: underline; color: inherit; cursor: pointer;">
+                Sair
+              </a>
+            </li>
             {% else %}
-                <li class="mb-2"><a href="{% url 'login' %}"> Login</a></li>
-                <li class="mb-2"><a href="{% url 'cadastro' %}">Cadastre-se</a></li>
+            <li class="mb-2"><a href="{% url 'login' %}"> Login</a></li>
+            <li class="mb-2"><a href="{% url 'cadastro' %}">Cadastre-se</a></li>
             {% endif %}
-            </ul>
+          </ul>
         </div>
 
         <div class="col-md-3 col-sm-6 footer-col mb-4">
-            {% if instituicao %}
+          {% if instituicao %}
           <div class="col-md-3">
             {% if instituicao.logo %}
             <a href="{{ instituicao.site }}" class="text-white"><img src="{{ instituicao.logo.url }}"
@@ -159,10 +159,10 @@
           </div>
           {% else %}
           <div class="col-md-6 text-center py-2">
-              <img src="{% static 'imgs/iflogo.png' %}" height="100" alt="IFRN-logo">
+            <img src="{% static 'imgs/iflogo.png' %}" height="100" alt="IFRN-logo">
           </div>
           {% endif %}
-           <div class="contact-info">
+          <div class="contact-info">
             <i class="bi bi-github"></i>
             <a href="https://github.com/Ellainy/projeto_livroDjango">GitHub</a>
           </div>
@@ -211,16 +211,16 @@
     document.addEventListener('DOMContentLoaded', function () {
       const carousel = document.getElementById('projectCarousel')
 
-      if (carousel) { 
-          carousel.addEventListener('mouseenter', function () {
-            var bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel);
-            bsCarousel.pause();
-          })
+      if (carousel) {
+        carousel.addEventListener('mouseenter', function () {
+          var bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel);
+          bsCarousel.pause();
+        })
 
-          carousel.addEventListener('mouseleave', function () {
-             var bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel);
-             bsCarousel.cycle();
-          })
+        carousel.addEventListener('mouseleave', function () {
+          var bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel);
+          bsCarousel.cycle();
+        })
       }
     })
   </script>
