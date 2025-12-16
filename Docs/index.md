@@ -197,7 +197,9 @@ O sistema exibe o **dashboard administrativo**, refletindo as alterações reali
 - O sistema informa que o formato do arquivo enviado não é permitido, indicando o formato correto aceito pelo sistema.
 
 ## DIAGRAMA DE CLASSES
-	O diagrama de classes representa a estrutura de um sistema mostrando suas classes, atributos, métodos e os relacionamentos entre elas. É usado para modelar a arquitetura de um sistema orientado a objetos.
+O diagrama de classes representa a estrutura de um sistema mostrando suas classes, atributos, métodos e os relacionamentos entre elas. É usado para modelar a arquitetura de um sistema orientado a objetos.
+
+---
 
 #a imagen irá aqui
 
