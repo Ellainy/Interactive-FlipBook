@@ -228,7 +228,7 @@
   /* =========================================
      CORREÇÕES DE CORES (FORMULÁRIOS ESCUROS)
      ========================================= */
-  /* Garante que labels, textos de ajuda e listas sejam visíveis no fundo escuro */
+  /* labels, textos de ajuda e listas visíveis no fundo escuro */
   
   /* 1. Labels e Títulos */
   .form-container label,
@@ -245,7 +245,7 @@
       color: rgba(255, 255, 255, 0.8) !important;
   }
   
-  /* 3. Lista de regras de senha (bullet points) */
+  /* 3. Lista de regras de senha */
   .form-container ul {
       color: rgba(255, 255, 255, 0.8) !important;
       padding-left: 1.2rem;
@@ -257,7 +257,6 @@
   }
   
   /* 4. Mensagens de Erro (Validação) */
-  /* Muda o vermelho escuro padrão para um tom claro legível */
   .form-container .invalid-feedback {
       color: #ff9999 !important; 
       font-weight: 500;
