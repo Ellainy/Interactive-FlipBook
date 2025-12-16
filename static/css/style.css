@@ -1,225 +1,275 @@
-/* Cores */
-:root {
-  --verde-principal: #0f2a1d;
-  --verde-secundario: #375534;
-  --verde-claro: #6B9071;
-  --verde-hover: #7fbd7f;
-  --cinza-claro: #f8f9fa;
-  --cinza-borda: #e9ecef;
-}
-
-.bg-verde-principal {
-  background-color: var(--verde-principal) !important;
-}
-
-.text-verde-principal {
-  color: var(--verde-principal) !important;
-}
-
-.bg-verde-secundario {
-  background-color: var(--verde-secundario) !important;
-}
-
-.text-verde-claro {
-  color: var(--verde-claro) !important;
-}
-
-.bg-verde-claro {
-  background-color: var(--verde-claro) !important;
-}
-
-.btn-verde-principal {
-  background-color: var(--verde-principal);
-  border-color: var(--verde-principal);
-  color: white;
-}
-
-.btn-verde-principal:hover {
-  background-color: var(--verde-secundario);
-  border-color: var(--verde-secundario);
-  color: white;
-}
-
-.btn-outline-verde-principal {
-  border-color: var(--verde-principal);
-  color: var(--verde-principal);
-}
-
-.btn-outline-verde-principal:hover {
-  background-color: var(--verde-principal);
-  border-color: var(--verde-principal);
-  color: white;
-}
-
-::-webkit-scrollbar {
-  display: none;
-}
-
-/* Base */
-/* Nav */
-.nav-link {
-  font-weight: 600;
-  margin: 0 8px;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -2;
-  left: 0;
-  background-color: white;
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-.underline {
-  border-bottom: 2px solid white;
-}
-
-/* Footer */
-.footer-col a {
-  color: white;
-  padding: 2px;
-  text-decoration: none;
-}
-
-.footer-col a:hover {
-  color: var(--verde-hover);
-  padding-left: 5px
-}
-
-.footer-col h3 {
-  color: white;
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  position: relative;
-  padding-bottom: 10px;
-}
-
-.footer-col h3::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 50px;
-  height: 2px;
-  background-color: white;
-}
-
-/* login e cadastro */
-.form-button {
-  background: linear-gradient(135deg, #48634c 0%, #375534 100%);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 15px;
-  width: 100%;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  margin-top: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.form-button:hover {
-  background: none;
-  background-color: #1b4626;
-  transition: 0.7s;
-  transform: translateY(-3px);
-}
-
-.divider::before,
-.divider::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid #ddd;
-}
-
-.divider span {
-  padding: 0 15px;
-  font-size: 14px;
-}
-
-.form-link {
-  color: #3b9251;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
-}
-
-.form-link:hover {
-  color: var(--verde-hover);
-}
-
-.form-control,
-.form-select {
-  border-radius: 10px;
-  padding: 12px 15px;
-  border: 2px solid #e9ecef;
-  transition: all 0.3s;
-}
-
-.form-control:focus,
-.form-select:focus {
-  border-color: var(--verde-claro);
-  box-shadow: 0 0 0 0.2rem rgba(107, 144, 113, 0.25);
-}
-
-.div-wave {
-  background-image: url('https://capsule-render.vercel.app/api?type=waving&color=ffffff&height=100&section=footer');
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  padding-bottom: 100px;
-  position: relative;
-}
-
-.form-label {
-  color: white !important;
-}
-
-
-
-/* carrousel */
-
-.carousel-item {
-  padding: 1rem;
-}
-
-.news-card {
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  height: 250px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.news-card:hover {
-  transform: scale(1.03);
-}
-
-.news-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7));
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-  width: 5%;
-}
+/* =========================================
+   VARIAVEIS E UTILITARIOS
+   ========================================= */
+   :root {
+    --verde-principal: #0f2a1d;
+    --verde-secundario: #375534;
+    --verde-claro: #6B9071;
+    --verde-hover: #7fbd7f;
+    --cinza-claro: #f8f9fa;
+    --cinza-borda: #e9ecef;
+  }
+  
+  .bg-verde-principal {
+    background-color: var(--verde-principal) !important;
+  }
+  
+  .text-verde-principal {
+    color: var(--verde-principal) !important;
+  }
+  
+  .bg-verde-secundario {
+    background-color: var(--verde-secundario) !important;
+  }
+  
+  .text-verde-claro {
+    color: var(--verde-claro) !important;
+  }
+  
+  .bg-verde-claro {
+    background-color: var(--verde-claro) !important;
+  }
+  
+  .btn-verde-principal {
+    background-color: var(--verde-principal);
+    border-color: var(--verde-principal);
+    color: white;
+  }
+  
+  .btn-verde-principal:hover {
+    background-color: var(--verde-secundario);
+    border-color: var(--verde-secundario);
+    color: white;
+  }
+  
+  .btn-outline-verde-principal {
+    border-color: var(--verde-principal);
+    color: var(--verde-principal);
+  }
+  
+  .btn-outline-verde-principal:hover {
+    background-color: var(--verde-principal);
+    border-color: var(--verde-principal);
+    color: white;
+  }
+  
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* =========================================
+     BASE / NAV / FOOTER
+     ========================================= */
+  /* Nav */
+  .nav-link {
+    font-weight: 600;
+    margin: 0 8px;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px; /* Ajustado levemente */
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  .underline {
+    border-bottom: 2px solid white;
+  }
+  
+  /* Footer */
+  .footer-col a {
+    color: white;
+    padding: 2px;
+    text-decoration: none;
+  }
+  
+  .footer-col a:hover {
+    color: var(--verde-hover);
+    padding-left: 5px
+  }
+  
+  .footer-col h3 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .footer-col h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: white;
+  }
+  
+  /* =========================================
+     LOGIN E CADASTRO (ESTILOS GERAIS)
+     ========================================= */
+  .form-button {
+    background: linear-gradient(135deg, #48634c 0%, #375534 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-button:hover {
+    background: none;
+    background-color: #1b4626;
+    transition: 0.7s;
+    transform: translateY(-3px);
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .divider span {
+    padding: 0 15px;
+    font-size: 14px;
+  }
+  
+  .form-link {
+    color: #3b9251;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  
+  .form-link:hover {
+    color: var(--verde-hover);
+  }
+  
+  .form-control,
+  .form-select {
+    border-radius: 10px;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s;
+  }
+  
+  .form-control:focus,
+  .form-select:focus {
+    border-color: var(--verde-claro);
+    box-shadow: 0 0 0 0.2rem rgba(107, 144, 113, 0.25);
+  }
+  
+  .div-wave {
+    background-image: url('https://capsule-render.vercel.app/api?type=waving&color=ffffff&height=100&section=footer');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    padding-bottom: 100px;
+    position: relative;
+  }
+  
+  /* =========================================
+     CARROUSEL / NOTÍCIAS
+     ========================================= */
+  .carousel-item {
+    padding: 1rem;
+  }
+  
+  .news-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .news-card:hover {
+    transform: scale(1.03);
+  }
+  
+  .news-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7));
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 5%;
+  }
+  
+  /* =========================================
+     CORREÇÕES DE CORES (FORMULÁRIOS ESCUROS)
+     ========================================= */
+  /* Garante que labels, textos de ajuda e listas sejam visíveis no fundo escuro */
+  
+  /* 1. Labels e Títulos */
+  .form-container label,
+  .form-container .form-label,
+  .form-label {
+      color: #ffffff !important;
+      font-weight: 500;
+  }
+  
+  /* 2. Textos de ajuda (pequenos embaixo do input) */
+  .form-container .form-text,
+  .form-container .help-block,
+  .form-container small {
+      color: rgba(255, 255, 255, 0.8) !important;
+  }
+  
+  /* 3. Lista de regras de senha (bullet points) */
+  .form-container ul {
+      color: rgba(255, 255, 255, 0.8) !important;
+      padding-left: 1.2rem;
+      margin-top: 0.5rem;
+  }
+  
+  .form-container li {
+      color: rgba(255, 255, 255, 0.8) !important;
+  }
+  
+  /* 4. Mensagens de Erro (Validação) */
+  /* Muda o vermelho escuro padrão para um tom claro legível */
+  .form-container .invalid-feedback {
+      color: #ff9999 !important; 
+      font-weight: 500;
+      font-size: 0.9rem;
+  }
+  
+  /* Borda do input quando dá erro */
+  .form-container .form-control.is-invalid {
+      border-color: #ff9999 !important;
+  }
+  
+  /* 5. Ajuste de Espaçamento do Crispy Forms */
+  #signupForm .mb-3 {
+      margin-bottom: 0.5rem !important;
+  }
