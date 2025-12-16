@@ -102,8 +102,10 @@ Funcionalidades principais:
 ---
 ##  DIAGRAMAS DE CASO DE USO
 
-O diagrama de casos de uso descreve o escopo do sistema projetado, além de especificar textualmente este escopo, a técnica de casos de uso é uma excelente ferramenta para abstrair os requisitos funcionais e atores do sistema, mostrando quem eles são e como interagem entre si. 
-	Dessa forma, levando em consideração os atores e os requisitos funcionais deste trabalho, foram definidos 15 (quinze) casos de uso, conforme ilustrado na Figura 1. 
+O diagrama de casos de uso descreve o escopo do sistema projetado, além de especificar textualmente este escopo,
+a técnica de casos de uso é uma excelente ferramenta para abstrair os requisitos funcionais e atores do sistema, mostrando quem
+eles são e como interagem entre si. Dessa forma, levando em consideração os atores e os requisitos funcionais deste trabalho, 
+foram definidos 15 (quinze) casos de uso, conforme ilustrado na Figura 1. 
 
 
 Figura 1 - Diagrama de caso do projeto 
