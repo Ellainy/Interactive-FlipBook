@@ -1,5 +1,5 @@
 from django import forms
-from .models import Livro, HomePage, Sobre, Pagina, Site
+from .models import Livro, HomePage, Sobre, Pagina, Site, IdentidadeVisual
 
 class LivroForm(forms.ModelForm):
     class Meta:
@@ -54,3 +54,13 @@ class SiteForm(forms.ModelForm):
             'contato': forms.EmailInput(attrs={'class': 'form-control'}),
             'logo': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
+
+
+class IdentidadeVisualForm(forms.ModelForm):
+    class Meta:
+        model = IdentidadeVisual
+        fields = "__all__"
+
+        cor_principal = forms.CharField(widget=forms.TextInput(attrs={"type": "color", "class":"form-control form-control-color"}))
+        cor_secundaria = forms.CharField(widget=forms.TextInput(attrs={"type": "color", "class":"form-control form-control-color"}))
+        cor_hover = forms.CharField(widget=forms.TextInput(attrs={"type": "color", "class":"form-control form-control-color"}))
