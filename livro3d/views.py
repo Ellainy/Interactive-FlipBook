@@ -43,8 +43,6 @@ def sobre(request):
 def layout(request):
     return render(request, 'layout.html')
 
-def users(request): # Se isso for uma lista de usuarios, pode ficar aqui ou em users, mantive aqui pois estava no seu layout
-    return render(request, 'users.html')
 
 # --- VIEWS ADMINISTRATIVAS (PROTEGIDAS) ---
 

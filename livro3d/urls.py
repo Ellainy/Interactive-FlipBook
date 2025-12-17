@@ -16,6 +16,5 @@ urlpatterns = [
     path('gerenciar_livro/', views.gerenciar_livro, name='gerenciar_livro'),
     path('livro_paginas/', views.livro_paginas, name='livro_paginas'),
     path('paginas/', views.paginas, name='paginas'),
-    path('users/', views.users, name='users'), # Visualização de users
     path('deletar_livro/<int:livro_id>/', views.deletar_livro, name='deletar_livro'),
 ]
