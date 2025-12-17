@@ -73,23 +73,46 @@ Acesse: http://localhost:8000
 ## Estrutura do Projeto
 
 ```
-(tem que ajeitar essa parte)
-
-livro3d/
+projeto_livroDjango/
 │
+├── config/                      # Arquivos de configuração para aplicação do Django
+│
+├── docs/                        # Documentação
+│   ├── imgs/                    # Imagens da engenharia de software
+│   ├── index.md                 # Detalhes da engenharia de software
+|
+├── livro3d/                     # App principal do sistema
+│   ├── templates/               # Páginas HTML
+│   ├── __init__.py              # Arquivo de execução do django
+│   ├── admin.py                 # Arquivo de execução do django admin
+│   ├── apps.py                  # Arquivo de execução de app do django
+│   ├── context_processors.py    # Funções que renderizam dados em todas as páginas do sistema
+│   ├── forms.py                 # Configuração de formulários
+│   ├── models.py                # Estrutura do banco de dados
+│   ├── urls.py                  # Caminhos das páginas e funções
+│   ├── views.py                 # Lógica, execução e renderização de dados das páginas e funções
+|
+├── static/                      # Arquivos estáticos do sistema (imagens, CSS e JS)
+|
+├── users/                       # App relativo aos usuários do sistema
+│   ├── templates/               # Páginas HTML
+│   ├── __init__.py              # Arquivo de execução do django
+│   ├── admin.py                 # Arquivo de execução do django admin
+│   ├── apps.py                  # Arquivo de execução de app do django
+│   ├── forms.py                 # Configuração de formulários
+│   ├── models.py                # Estrutura do banco de dados
+│   ├── urls.py                  # Caminhos das páginas e funções
+│   ├── views.py                 # Lógica, execução e renderização de dados das páginas e funções
+|
+├── .gitignore                   # Arquivos ignorados pelo Git
+|
+├── LICENSE                      # Licença do projeto
+|
+├── README.md                    # Este arquivo
+|
 ├── manage.py                    # Script principal do Django
 ├── requirements.txt             # Dependências do projeto
-├── .env.example                 # Modelo de variáveis de ambiente
-├── .env                         # Variáveis de ambiente (NÃO vai pro Git)
-├── .gitignore                   # Arquivos ignorados pelo Git
-├── README.md                    # Este arquivo
 │
-├── ...                          # Pastas e arquivos do projeto
-|
-├── docs/                        # Documentação
-│   ├── manual/                  # Manual do usuário
-│      ├── index.html
-│      ├── ...  
 
 ```
 
