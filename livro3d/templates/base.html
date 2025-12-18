@@ -21,7 +21,10 @@
 </head>
 
 <body>
-  <header class="py-3 bg-verde-principal ">
+  <header class="py-3 {% if not identidade_visual.cor_sistema %}bg-dark{% endif %}" style="{% if identidade_visual.cor_suplente %}background: linear-gradient(to right, {{ identidade_visual.cor_sistema }}, {{ identidade_visual.cor_suplente }});
+  {% else %}
+    background-color: {{ identidade_visual.cor_sistema }};
+  {% endif %}">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
         <h1 class="mb-0">
@@ -112,7 +115,10 @@
 
   {% endblock %}
 
-  <footer class="py-5 about-section footer-columns mt-auto rounded-top-5 d-flex text-white bg-verde-principal">
+  <footer class="py-5 footer-columns mt-auto rounded-top-5 d-flex text-white {% if not identidade_visual.cor_sistema %}bg-dark{% endif %}" style="{% if identidade_visual.cor_suplente %}background: linear-gradient(to right, {{ identidade_visual.cor_sistema }}, {{ identidade_visual.cor_suplente }});
+  {% else %}
+    background-color: {{ identidade_visual.cor_sistema }};
+  {% endif %}">
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-sm-6 footer-col mb-4">
@@ -138,7 +144,7 @@
               <a href="{% url 'administracao' %}">DashBoard</a>
             </li>
             <li class="mb-2">
-              <a href="{% url 'sair' %}" style="text-decoration: underline; color: inherit; cursor: pointer;">
+              <a href="{% url 'sair' %}">
                 Sair
               </a>
             </li>

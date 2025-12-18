@@ -1,0 +1,12 @@
+{% extends "userbase.html" %}
+{% block content %}
+<div class="container my-5">
+    <h1>{% if editar %}Editar Página Inicial{% else %}Adicionar Textos da página Inicial{% endif %}</h1>
+    <form method="post" class="mt-4 p-4 border rounded bg-light shadow-sm">
+        {% csrf_token %}
+        {{ home_form.as_p }}
+        <button type="submit" name="salvar_home" class="btn btn-success">Salvar Alterações</button>
+        <a href="{% url 'index' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

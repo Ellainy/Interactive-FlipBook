@@ -114,6 +114,24 @@ def editar_textos(request):
     })
 
 @login_required
+def indexform(request):
+    home = HomePage.objects.first()
+    home_form = HomePageForm
+
+    if request.method == "POST":
+        if home_form.is_valid(request):
+            home_form.save()
+            return redirect('indexform')
+
+    else:
+        home_form = HomePageForm(instance=home)
+
+    return render(request, "indexform.html", {
+        "home_form": home_form
+    })
+
+
+@login_required
 def livro_paginas(request):
     pagina_form = PaginaForm(request.POST, request.FILES) if request.method == "POST" else PaginaForm()
     
@@ -146,8 +164,7 @@ def gerenciar_livro(request):
         if livro_form.is_valid():
             livro_form.save()
         
-        # Nota: Normalmente não salvamos pagina aqui se for apenas editar o livro, 
-        # mas mantive sua lógica original se o form vier preenchido
+    
         if pagina_form.is_valid(): 
             pagina_form.save()
 
@@ -172,4 +189,5 @@ def deletar_livro(request, livro_id):
     if request.method == "POST":
         livro.delete()
         return redirect('gerenciar_livro')
-    return redirect('gerenciar_livro') # Caso não seja POST
+    return redirect('gerenciar_livro') 
+    

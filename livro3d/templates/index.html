@@ -2,163 +2,164 @@
 {% load static %}
 
 {% block title %}
-Página Inicial
+  Página Inicial
 {% endblock %}
 
 {% block content %}
-<!-- Conteúdo Principal -->
-<section class="fade-in rounded-bottom-5 d-flex bg-verde-principal text-white"
-  style="padding: 100px 0;">
-  {% if livro.capa %}
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6">
-        <h1 class="display-4 fw-bold mb-4">Soluções Sustentáveis para um Futuro Melhor</h1>
-        <p class="lead mb-4">Transformamos ideias em ações ecológicas que beneficiam o planeta e sua empresa. Junte-se a
-          nós nessa jornada verde.</p>
-        <div class="d-flex flex-wrap gap-3">
-          <a href="#servicos" class="btn btn-light btn-lg">Nossos Serviços</a>
-          <a href="#contato" class="btn btn-outline-light btn-lg">Fale Conosco</a>
+  <!-- Conteúdo Principal -->
+  <section class="fade-in rounded-bottom-5 d-flex text-white {% if not identidade_visual.cor_sistema %}bg-dark{% endif %}"
+    style="{% if identidade_visual.cor_suplente %}
+      background: linear-gradient(to right, {{ identidade_visual.cor_sistema }}, {{ identidade_visual.cor_suplente }});
+
+    {% else %}
+      
+    background-color: {{ identidade_visual.cor_sistema }};
+
+    {% endif %}"
+    style="padding: 100px 0;">
+    {% if livro.capa %}
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1 class="display-4 fw-bold mb-4">Soluções Sustentáveis para um Futuro Melhor</h1>
+            <p class="lead mb-4">Transformamos ideias em ações ecológicas que beneficiam o planeta e sua empresa. Junte-se a nós nessa jornada verde.</p>
+            <div class="d-flex flex-wrap gap-3">
+              <a href="#servicos" class="btn btn-light btn-lg">Nossos Serviços</a>
+              <a href="#contato" class="btn btn-outline-light btn-lg">Fale Conosco</a>
+            </div>
+          </div>
+          <div class="col-lg-6 text-center">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sustentabilidade" class="rounded shadow" />
+          </div>
         </div>
       </div>
-      <div class="col-lg-6 text-center">
-        <img
-          src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-          alt="Sustentabilidade" class="rounded shadow">
+    {% else %}
+      <div class="container">
+        <div class="mx-auto justify-content-center my-5">
+          <div class="col-md-8 py-5">
+            <h1 class="display-4 fw-bold mb-3">Soluções Sustentáveis para um Futuro Melhor</h1>
+            <p class="lead text-white">Transformamos ideias em ações ecológicas que beneficiam o planeta e sua empresa. Junte-se a nós nessa jornada verde.</p>
+            <div class="d-flex flex-wrap gap-3">
+              <a href="{% url 'lerlivro' %}" class="btn btn-light btn-lg">Nossos Serviços</a>
+              <a href="#contato" class="btn btn-outline-light btn-lg">Fale Conosco</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre" class="py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <img src="https://images.unsplash.com/photo-1569163139394-de44cb54d521?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sobre nós" class="img-fluid rounded-section" />
+        </div>
+        <div class="col-lg-6">
+          <h2 class="fw-bold mb-4">Compromisso com o Meio Ambiente</h2>
+          <p class="mb-4">A EcoVida nasceu da necessidade de unir desenvolvimento econômico e preservação ambiental. Acreditamos que é possível crescer sem agredir o planeta.</p>
+          <p class="mb-4">Nossa equipe multidisciplinar combina expertise técnica com paixão pela natureza para oferecer soluções inovadoras e eficazes.</p>
+          <div class="d-flex">
+            <div class="me-4">
+              <h3 class="fw-bold text-success">500+</h3>
+              <p class="text-muted">Projetos Concluídos</p>
+            </div>
+            <div class="me-4">
+              <h3 class="fw-bold text-success">120</h3>
+              <p class="text-muted">Clientes Satisfeitos</p>
+            </div>
+            <div>
+              <h3 class="fw-bold text-success">15</h3>
+              <p class="text-muted">Prêmios Recebidos</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <div class="text-white py-5 rounded-5 my-5 {% if not identidade_visual.cor_sistema %}bg-dark{% endif %}" style="{% if identidade_visual.cor_suplente %}background: linear-gradient(to right, {{ identidade_visual.cor_sistema }}, {{ identidade_visual.cor_suplente }});
   {% else %}
-  <div class="container">
-    <div class="mx-auto justify-content-center my-5">
-      <div class="col-md-8 py-5">
-        <h1 class="display-4 fw-bold mb-3">Soluções Sustentáveis para um Futuro Melhor</h1>
-        <p class="lead text-white">Transformamos ideias em ações ecológicas que beneficiam o planeta e sua empresa.
-          Junte-se a
-          nós nessa jornada verde.</p>
-        <div class="d-flex flex-wrap gap-3">
-          <a href="{% url 'lerlivro' %}" class="btn btn-light btn-lg">Nossos Serviços</a>
-          <a href="#contato" class="btn btn-outline-light btn-lg">Fale Conosco</a>
+    background-color: {{ identidade_visual.cor_sistema }};
+  {% endif %}">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-4">Pronto para Transformar sua Empresa?</h2>
+      <p class="lead mb-4">Entre em contato conosco e descubra como podemos ajudar sua empresa a se tornar mais sustentável.</p>
+      <a href="#contato" class="btn btn-light btn-lg">Solicitar Orçamento</a>
+    </div>
+  </div>
+
+  <!-- Galeria -->
+  <div class="container my-5 fade-in">
+    <h2 class="fw-bold verdeTexto text-center mb-4">Galeria do Projeto</h2>
+
+    <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- Página 1 -->
+        <div class="carousel-item active">
+          <div class="row g-4 justify-content-center">
+            <div class="col-md-4 col-sm-6">
+              <div class="news-card" style="background-image: url('static/imgs/imgcarrosel1.jpeg');"></div>
+            </div>
+            <div class="col-md-4 col-sm-6 d-none d-sm-block">
+              <div class="news-card" style="background-image: url('static/imgs/imgcarrosel2.jpeg');"></div>
+            </div>
+            <div class="col-md-4 d-none d-md-block">
+              <div class="news-card" style="background-image: url('static/imgs/imgcarrosel3.jpeg');"></div>
+            </div>
+          </div>
         </div>
+
+        <!-- Página 2 -->
+        <div class="carousel-item">
+          <div class="row g-4 justify-content-center">
+            <div class="col-md-4 col-sm-6">
+              <div class="news-card" style="background-image: url('static/imgs/imgcarrosel4.jpeg');"></div>
+            </div>
+            <div class="col-md-4 col-sm-6 d-none d-sm-block">
+              <div class="news-card" style="background-image: url('static/imgs/imgcarrosel5.jpeg');"></div>
+            </div>
+            <div class="col-md-4 d-none d-md-block">
+              <div class="news-card" style="background-image: url('static/imgs/imgcarrosel6.jpeg');"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Página 3 -->
+        <div class="carousel-item">
+          <div class="row g-4 justify-content-center">
+            <div class="col-md-4 col-sm-6">
+              <div class="news-card" style="background-image: url('static/imgs/imgcarrosel7.jpeg');"></div>
+            </div>
+            <div class="col-md-4 col-sm-6 d-none d-sm-block">
+              <div class="news-card" style="background-image: url('static/imgs/imgcarrosel8.jpeg');"></div>
+            </div>
+            <div class="col-md-4 d-none d-md-block">
+              <div class="news-card" style="background-image: url('static/imgs/imgcarrosel9.jpeg');"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controles do Carousel -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
+    </div>
+
+    <!-- Indicadores do Carousel -->
+    <div class="text-center mt-4">
+      <div class="carousel-indicators position-static">
+        <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="0" class="active bg-success"></button>
+        <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="1" class="bg-success"></button>
+        <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="2" class="bg-success"></button>
       </div>
     </div>
   </div>
-  {% endif %}
-</section>
-
-<!-- Sobre -->
-<section id="sobre" class="py-5">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6">
-        <img
-          src="https://images.unsplash.com/photo-1569163139394-de44cb54d521?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-          alt="Sobre nós" class="img-fluid rounded-section">
-      </div>
-      <div class="col-lg-6">
-        <h2 class="fw-bold mb-4">Compromisso com o Meio Ambiente</h2>
-        <p class="mb-4">A EcoVida nasceu da necessidade de unir desenvolvimento econômico e preservação ambiental.
-          Acreditamos que é possível crescer sem agredir o planeta.</p>
-        <p class="mb-4">Nossa equipe multidisciplinar combina expertise técnica com paixão pela natureza para oferecer
-          soluções inovadoras e eficazes.</p>
-        <div class="d-flex">
-          <div class="me-4">
-            <h3 class="fw-bold text-success">500+</h3>
-            <p class="text-muted">Projetos Concluídos</p>
-          </div>
-          <div class="me-4">
-            <h3 class="fw-bold text-success">120</h3>
-            <p class="text-muted">Clientes Satisfeitos</p>
-          </div>
-          <div>
-            <h3 class="fw-bold text-success">15</h3>
-            <p class="text-muted">Prêmios Recebidos</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="bg-verde-principal text-white rounded-5 my-5" style="padding: 80px 0;">
-  <div class="container text-center">
-    <h2 class="fw-bold mb-4">Pronto para Transformar sua Empresa?</h2>
-    <p class="lead mb-4">Entre em contato conosco e descubra como podemos ajudar sua empresa a se tornar mais
-      sustentável.</p>
-    <a href="#contato" class="btn btn-light btn-lg">Solicitar Orçamento</a>
-  </div>
-</section>
-
-<!-- Galeria Melhorada -->
-<div class="container my-5 fade-in">
-  <h2 class="fw-bold verdeTexto text-center mb-4">Galeria do Projeto</h2>
-
-  <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <!-- Página 1 -->
-      <div class="carousel-item active">
-        <div class="row g-4 justify-content-center">
-          <div class="col-md-4 col-sm-6">
-            <div class="news-card" style="background-image: url('static/imgs/imgcarrosel1.jpeg');"></div>
-          </div>
-          <div class="col-md-4 col-sm-6 d-none d-sm-block">
-            <div class="news-card" style="background-image: url('static/imgs/imgcarrosel2.jpeg');"></div>
-          </div>
-          <div class="col-md-4 d-none d-md-block">
-            <div class="news-card" style="background-image: url('static/imgs/imgcarrosel3.jpeg');"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Página 2 -->
-      <div class="carousel-item">
-        <div class="row g-4 justify-content-center">
-          <div class="col-md-4 col-sm-6">
-            <div class="news-card" style="background-image: url('static/imgs/imgcarrosel4.jpeg');"></div>
-          </div>
-          <div class="col-md-4 col-sm-6 d-none d-sm-block">
-            <div class="news-card" style="background-image: url('static/imgs/imgcarrosel5.jpeg');"></div>
-          </div>
-          <div class="col-md-4 d-none d-md-block">
-            <div class="news-card" style="background-image: url('static/imgs/imgcarrosel6.jpeg');"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Página 3 -->
-      <div class="carousel-item">
-        <div class="row g-4 justify-content-center">
-          <div class="col-md-4 col-sm-6">
-            <div class="news-card" style="background-image: url('static/imgs/imgcarrosel7.jpeg');"></div>
-          </div>
-          <div class="col-md-4 col-sm-6 d-none d-sm-block">
-            <div class="news-card" style="background-image: url('static/imgs/imgcarrosel8.jpeg');"></div>
-          </div>
-          <div class="col-md-4 d-none d-md-block">
-            <div class="news-card" style="background-image: url('static/imgs/imgcarrosel9.jpeg');"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Controles do Carousel -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Anterior</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Próximo</span>
-    </button>
-  </div>
-
-  <!-- Indicadores do Carousel -->
-  <div class="text-center mt-4">
-    <div class="carousel-indicators position-static">
-      <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="0" class="active bg-success"></button>
-      <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="1" class="bg-success"></button>
-      <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="2" class="bg-success"></button>
-    </div>
-  </div>
-</div>
-{% endblock content %}
+{% endblock %}
