@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import HomePage, Livro, Sobre, Pagina, Site
-from .forms import LivroForm, HomePageForm, SobreForm, PaginaForm, SiteForm
+from .models import HomePage, Livro, Sobre, Pagina, Site, IdentidadeVisual
+from .forms import LivroForm, HomePageForm, SobreForm, PaginaForm, SiteForm, IdentidadeVisualForm
 
 # --- VIEWS PÚBLICAS ---
 
@@ -40,11 +40,28 @@ def sobre(request):
         'livro': livro
     })
 
-def layout(request):
-    return render(request, 'layout.html')
 
 
 # --- VIEWS ADMINISTRATIVAS (PROTEGIDAS) ---
+def layout(request):
+    identidade = IdentidadeVisual.objects.first()
+
+    if request.method == "POST":
+        form = IdentidadeVisualForm(
+            request.POST,
+            request.FILES,
+            instance=identidade
+        )
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = IdentidadeVisualForm(instance=identidade)
+
+    return render(request, 'layout.html', {
+        'form': form,
+    })
+
 
 @login_required
 def administracao(request):
