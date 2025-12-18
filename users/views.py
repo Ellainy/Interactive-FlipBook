@@ -3,7 +3,6 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from .models import User
-from django.utils import timezone
 from .forms import CadastroForm
 
 def first_superuser(request):
