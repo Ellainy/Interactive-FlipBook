@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import get_user_model
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from .models import User
 from .forms import CadastroForm
+from django.http import JsonResponse
 
 def first_superuser(request):
     user = User.objects.get(pk=1)
@@ -54,3 +56,21 @@ def users(request):
     }
     
     return render(request, 'users.html', context)
+
+
+
+@login_required
+@staff_member_required
+def toggle_superuser(request, user_id):
+    User = get_user_model()
+    user = get_object_or_404(User, id=user_id)
+    
+    if user.pk == 1:
+        return redirect('users')
+    
+    if request.method == "POST":
+        user.is_superuser = not user.is_superuser
+        user.is_staff = not user.is_staff
+        user.save()
+    
+    return redirect('users')

@@ -16,6 +16,7 @@
             <th>E-mail</th>
             <th>Cadastrado em</th>
             <th>Tipo</th>
+            <th>Superuser</th>
           </tr>
         </thead>
         <tbody>
@@ -27,26 +28,44 @@
             <td>{{ usuario.data_cadastro }}</td>
             <td>
               {% if usuario.is_superuser %}
-                <span class="badge bg-danger">Super Admin</span>
+              <span class="badge bg-danger">Super Admin</span>
               {% elif usuario.is_staff %}
-                <span class="badge bg-warning">Staff</span>
+              <span class="badge bg-warning">Staff</span>
               {% else %}
-                <span class="badge bg-secondary">Usuário</span>
+              <span class="badge bg-secondary">Usuário</span>
               {% endif %}
+            </td>
+            <td>
+              <form method="POST" action="{% url 'toggle_superuser' usuario.id %}">
+                {% csrf_token %}
+                <div class="form-check form-switch">
+                  {% if usuario.pk != 1 %}
+                    {% if usuario.is_superuser %}
+                      <input class="form-check-input" type="checkbox" checked 
+                             onchange="this.form.submit()" title="Clique para remover superusuário">
+                    {% else %}
+                      <input class="form-check-input" type="checkbox" 
+                             onchange="this.form.submit()" title="Clique para tornar superusuário">
+                    {% endif %}
+                  {% else %}
+                    <input class="form-check-input" type="checkbox" checked disabled
+                           title="Superusuário principal não pode ser alterado">
+                  {% endif %}
+                </div>
+              </form>
             </td>
           </tr>
           {% empty %}
           <tr>
-            <td colspan="8" class="text-center">Nenhum usuário cadastrado</td>
+            <td colspan="6" class="text-center">Nenhum usuário cadastrado</td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
-    
-    <!-- Contador simples -->
+
     <div class="mt-3 text-muted">
-      Total de usuários: {{ total_usuarios }} | 
+      Total de usuários: {{ total_usuarios }}
     </div>
   </div>
 </div>
