@@ -70,7 +70,7 @@ def administracao(request):
 @login_required
 def configuracoes(request):
     site = Site.objects.first()
-    siteForm = SiteForm(request.POST, request.FILES) if request.method == "POST" else SiteForm(instance=site) # Correção aqui para preencher o form se existir
+    siteForm = SiteForm(request.POST, request.FILES) if request.method == "POST" else SiteForm(instance=site) 
     
     if request.method == "POST":
         siteForm = SiteForm(request.POST, request.FILES, instance=site) # Correção: passar a instance para editar, não criar novo
@@ -116,10 +116,11 @@ def editar_textos(request):
 @login_required
 def indexform(request):
     home = HomePage.objects.first()
-    home_form = HomePageForm
+    home_form = HomePageForm(request.POST, request.FILES) if request.method == "POST" else SiteForm(instance=site) 
+    
 
     if request.method == "POST":
-        if home_form.is_valid(request):
+        if home_form.is_valid():
             home_form.save()
             return redirect('indexform')
 
