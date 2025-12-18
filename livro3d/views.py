@@ -116,7 +116,7 @@ def editar_textos(request):
 @login_required
 def indexform(request):
     home = HomePage.objects.first()
-    home_form = HomePageForm(request.POST, request.FILES) if request.method == "POST" else SiteForm(instance=site) 
+    home_form = HomePageForm(request.POST, request.FILES) if request.method == "POST" else HomePageForm(instance=home) 
     
 
     if request.method == "POST":
@@ -129,6 +129,24 @@ def indexform(request):
 
     return render(request, "indexform.html", {
         "home_form": home_form
+    })
+
+@login_required
+def sobreform(request):
+    sobre = Sobre.objects.first()
+    sobre_form = SobreForm(request.POST, request.FILES) if request.method == "POST" else SobreForm(instance=sobre) 
+    
+
+    if request.method == "POST":
+        if sobre_form.is_valid():
+            sobre_form.save()
+            return redirect('sobreform')
+
+    else:
+        sobre_form = SobreForm(instance=sobre)
+
+    return render(request, "sobreform.html", {
+        "sobre_form": sobre_form
     })
 
 

@@ -1,0 +1,12 @@
+{% extends "userbase.html" %}
+{% block content %}
+<div class="container my-5">
+    <h1>{% if editar %}Editar Página Sobre{% else %}Adicionar Página Sobre{% endif %}</h1>
+    <form method="post" class="mt-4 p-4 border rounded bg-light shadow-sm">
+        {% csrf_token %}
+        {{ sobre_form.as_p }}
+        <button type="submit" name="salvar_sobre" class="btn btn-success">Salvar Alterações</button>
+        <a href="{% url 'sobre' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

@@ -7,9 +7,9 @@ Livro
 
 {% block content %}
 <!-- Conteúdo Principal -->
-<div class="fade-in rounded-bottom-5 d-flex py-5 {% if not identidade_visual.cor_sistema %}bg-dark{% endif %}" style="{% if identidade_visual.cor_suplente %}background: linear-gradient(to right, {{ identidade_visual.cor_sistema }}, {{ identidade_visual.cor_suplente }});
+<div class="fade-in rounded-bottom-5 d-flex py-5 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" style="{% if identidade_visual.cor_suplente %}background: linear-gradient(to right, {{ identidade_visual.cor_principal }}, {{ identidade_visual.cor_suplente }});
   {% else %}
-    background-color: {{ identidade_visual.cor_sistema }};
+    background-color: {{ identidade_visual.cor_principal }};
   {% endif %}">
   <div class="container row mx-auto">
     <div class="gradient py-5">

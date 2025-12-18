@@ -21,9 +21,9 @@
 </head>
 
 <body>
-  <header class="py-3 {% if not identidade_visual.cor_sistema %}bg-dark{% endif %}" style="{% if identidade_visual.cor_suplente %}background: linear-gradient(to right, {{ identidade_visual.cor_sistema }}, {{ identidade_visual.cor_suplente }});
+  <header class="py-3 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" style="{% if identidade_visual.cor_suplente %}background: linear-gradient(to right, {{ identidade_visual.cor_principal }}, {{ identidade_visual.cor_suplente }});
   {% else %}
-    background-color: {{ identidade_visual.cor_sistema }};
+    background-color: {{ identidade_visual.cor_principal }};
   {% endif %}">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
@@ -115,9 +115,9 @@
 
   {% endblock %}
 
-  <footer class="py-5 footer-columns mt-auto rounded-top-5 d-flex text-white {% if not identidade_visual.cor_sistema %}bg-dark{% endif %}" style="{% if identidade_visual.cor_suplente %}background: linear-gradient(to right, {{ identidade_visual.cor_sistema }}, {{ identidade_visual.cor_suplente }});
+  <footer class="py-5 footer-columns mt-auto rounded-top-5 d-flex text-white {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" style="{% if identidade_visual.cor_suplente %}background: linear-gradient(to right, {{ identidade_visual.cor_principal }}, {{ identidade_visual.cor_suplente }});
   {% else %}
-    background-color: {{ identidade_visual.cor_sistema }};
+    background-color: {{ identidade_visual.cor_principal }};
   {% endif %}">
     <div class="container">
       <div class="row">

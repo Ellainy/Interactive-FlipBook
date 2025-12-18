@@ -7,13 +7,13 @@
 
 {% block content %}
   <!-- Conteúdo Principal -->
-  <section class="fade-in rounded-bottom-5 d-flex text-white {% if not identidade_visual.cor_sistema %}bg-dark{% endif %}"
+  <section class="fade-in rounded-bottom-5 d-flex text-white {% if not identidade_visual.cor_principal %}bg-dark{% endif %}"
     style="{% if identidade_visual.cor_suplente %}
-      background: linear-gradient(to right, {{ identidade_visual.cor_sistema }}, {{ identidade_visual.cor_suplente }});
+      background: linear-gradient(to right, {{ identidade_visual.cor_principal }}, {{ identidade_visual.cor_suplente }});
 
     {% else %}
       
-    background-color: {{ identidade_visual.cor_sistema }};
+    background-color: {{ identidade_visual.cor_principal }};
 
     {% endif %}"
     style="padding: 100px 0;">
@@ -79,9 +79,9 @@
     </div>
   </section>
 
-  <div class="text-white py-5 rounded-5 my-5 {% if not identidade_visual.cor_sistema %}bg-dark{% endif %}" style="{% if identidade_visual.cor_suplente %}background: linear-gradient(to right, {{ identidade_visual.cor_sistema }}, {{ identidade_visual.cor_suplente }});
+  <div class="text-white py-5 rounded-5 my-5 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" style="{% if identidade_visual.cor_suplente %}background: linear-gradient(to right, {{ identidade_visual.cor_principal }}, {{ identidade_visual.cor_suplente }});
   {% else %}
-    background-color: {{ identidade_visual.cor_sistema }};
+    background-color: {{ identidade_visual.cor_principal }};
   {% endif %}">
     <div class="container text-center">
       <h2 class="fw-bold mb-4">Pronto para Transformar sua Empresa?</h2>
