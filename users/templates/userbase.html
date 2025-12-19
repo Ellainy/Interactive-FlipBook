@@ -19,12 +19,6 @@
         --sidebar-width: 250px;
       }
       
-      body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f8f9fa;
-        overflow-x: hidden;
-      }
-      
       .rounded-section {
         border-radius: 15px;
       }
@@ -53,7 +47,6 @@
       
       .sidebar-header {
         padding: 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
       
       .sidebar-menu {
@@ -135,7 +128,6 @@
         font-weight: 600;
       }
       
-      /* Tabela de Usuários */
       .users-table {
         width: 100%;
         border-collapse: collapse;
@@ -154,24 +146,7 @@
         border-bottom: 1px solid #eee;
       }
       
-      .user-status {
-        display: inline-block;
-        padding: 4px 10px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-      }
-      
-      .status-online {
-        background-color: rgba(46, 139, 87, 0.1);
-        color: var(--verde-primario);
-      }
-      
-      .status-offline {
-        background-color: rgba(108, 117, 125, 0.1);
-        color: #6c757d;
-      }
-      
+    
       /* Gerenciamento de Páginas */
       .page-item {
         display: flex;
@@ -200,13 +175,10 @@
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        background-color: var(--verde-primario);
-        color: white;
         display: flex;
         align-items: center;
         justify-content: center;
         margin-right: 15px;
-        font-weight: bold;
     }
       
       .color-option {
@@ -225,6 +197,8 @@
         transform: scale(1.1);
       }
       
+      
+
       .color-palette {
         display: flex;
         flex-wrap: wrap;
@@ -262,14 +236,12 @@
   </head>
   <body>
     <div class="sidebar {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}" id="sidebar">
-      <div class="sidebar-header d-flex">
-       <a href="{% url 'index' %}" class="m-auto h4 text-decoration-none">{{ config.titulo }}</a>
-      </div>
+
       <div class="sidebar-header">
         <div class="d-flex align-items-center">
           <button class="sidebar-toggle me-3" id="sidebarToggle"><i class="bi bi-list"></i></button>
           <div class="d-flex align-items-center">
-            <div class="user-avatar bg-info">CA</div>
+            <div class="user-avatar"><img class="w-100" src="{% static 'imgs/perfil.png' %}" alt=""></div>
             <div class="user-details">
               <h5 class="m-0">{{ user.username }}</h5>
               <p class="opacity-75 m-0" style="font-size: 0.85rem;"> {% if user.is_superuser %}
@@ -286,18 +258,32 @@
 
       <div class="sidebar-menu">
         <ul>
+          <li class="ms-2 h6 lead">Nevegação</li>
+          <hr>
           <li>
-            <a href="{% url 'administracao' %}" id="dashboardLink"><i class="bi bi-speedometer2"></i>Dashboard</a>
-          </li>
-             <a href="{% url 'layout' %}" id="designLink"><i class="bi bi-palette"></i>Design do Site</a>
-          <li>
-            <a href="{% url 'paginas' %}" id="pagesLink"><i class="bi bi-files"></i>Gerenciar Páginas</a>
+            <a class="{% if request.resolver_match.url_name == 'administracao' %}active{% endif %}" id="dashboardLink" href="{% url 'administracao' %}"><i class="bi bi-speedometer2"></i>Dashboard</a>
           </li>
           <li>
-            <a href="{% url 'users' %}" id="usersLink"><i class="bi bi-people"></i>Gerenciamento de Usuários</a>
+            <a href="{% url "index" %}"><i class="bi bi-house-fill"></i> Incio</a>
           </li>
           <li>
-            <a href="{% url 'configuracoes' %}" id="settingsLink"><i class="bi bi-gear"></i>Configurações</a>
+            <a href="{% url "livro" %}"><i class="bi bi-book-half"></i> Livro</a>
+          </li>
+          <li>
+            <a href="{% url "sobre" %}"><i class="bi bi-info-circle-fill"></i> Sobre</a>
+          </li>
+
+          <li class="ms-2 h6 lead">Administração do sistema</li>
+          <hr>
+             <a class="{% if request.resolver_match.url_name == 'layout' %}active{% endif %}" href="{% url 'layout' %}" id="designLink"><i class="bi bi-palette"></i>Design do Site</a>
+          <li>
+            <a class="{% if request.resolver_match.url_name == 'paginas' %}active{% endif %}" href="{% url 'paginas' %}" id="pagesLink"><i class="bi bi-files"></i>Gerenciar Páginas</a>
+          </li>
+          <li>
+            <a class="{% if request.resolver_match.url_name == 'users' %}active{% endif %}" href="{% url 'users' %}" id="usersLink"><i class="bi bi-people"></i>Gerenciamento de Usuários</a>
+          </li>
+          <li>
+            <a class="{% if request.resolver_match.url_name == 'configuracoes' %}active{% endif %}" href="{% url 'configuracoes' %}" id="settingsLink"><i class="bi bi-gear"></i>Configurações</a>
           </li>
         </ul>
       </div>

@@ -1,18 +1,142 @@
 {% extends 'userbase.html' %}
 {% block content %}
   <!-- Header -->
-  <div class="header mb-4" style="padding: 2rem; border-radius: 12x; box-shadow: 0 2x 10px rgb;">
+  <div class="mb-4" style="padding: 2rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); background: #fff;">
     <button class="sidebar-toggle me-3" id="sidebarToggle"><i class="bi bi-list"></i></button>
-    <h3 class="mb-1 text-dark">Olá, {{ user.username }}!</h3>
-    <p><strong>Email:</strong> {{ user.email }}</p>
-    <p class="text-muted">Gerencie e personalise seu sistema e usuários!</p>
+    <h3 class="mb-1 {% if not identidade_visual.cor_principal %}text-dark{% endif %}" {% if identidade_visual.cor_principal %} style="color: {{ identidade_visual.cor_principal }} {% endif %}">Olá, {{ user.username }}!</h3>
+    <p class="text-muted">Bem-vindo(a) à sua Área Pessoal!</p>
   </div>
 
-  <div class="dashboard-card">
-    <div class="card-header">
-      <h5>Visão Geral do Sistema</h5>
+  <!-- Cards de Boas-vindas -->
+  <div class="row mb-4">
+  {% if user.is_staff or user.is_superuser %}
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="dashboard-card shadow-lg p-0">
+        <div class="card-header text-white p-3 rounded w-100 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}">
+          <h5><i class="bi bi-gear me-2"></i>Visão Geral do Sistema</h5>
+        </div>
+        <div class="card-body p-3 rounded">
+          <p>Bem-vindo ao painel de administração da Interactive FlipBook. Aqui você pode gerenciar todos os aspectos do site.</p>
+          <p>Use o menu lateral para acessar as diferentes seções de administração.</p>
+        </div>
+      </div>
     </div>
-    <p>Bem-vindo ao painel de administração da EcoVida. Aqui você pode gerenciar todos os aspectos do site.</p>
-    <p>Use o menu lateral para acessar as diferentes seções de administração.</p>
   </div>
+  {% endif %}
+    <!-- Card: Status do Acesso -->
+    <div class="col-md-6 mb-4">
+      <div class="card border-primary h-100 shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0"><i class="bi bi-person-badge me-2"></i>Seu Perfil de Acesso</h5>
+        </div>
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-3">
+            <div class="rounded-circle bg-light p-3 me-3">
+              {% if user.is_staff or user.is_superuser %}
+                <i class="bi bi-shield-check text-success" style="font-size: 1.5rem;"></i>
+              {% else %}
+                <i class="bi bi-person text-info" style="font-size: 1.5rem;"></i>
+              {% endif %}
+            </div>
+            <div>
+              <h6 class="mb-0">Tipo de Usuário</h6>
+              <p class="mb-0">
+                {% if user.is_staff or user.is_superuser %}
+                  <span class="badge bg-success">Administrador</span>
+                {% else %}
+                  <span class="badge bg-info">Visitante/Aluno</span>
+                {% endif %}
+              </p>
+            </div>
+          </div>
+          
+          {% if not user.is_staff and not user.is_superuser %}
+            <div class="alert alert-info">
+              <i class="bi bi-info-circle me-2"></i>
+              <strong>Acesso básico:</strong> Você pode navegar pelo site e ver conteúdos públicos.
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Card: Funcionalidades Disponíveis -->
+    <div class="col-md-6 mb-4">
+      <div class="card border-success h-100 shadow-sm">
+        <div class="card-header bg-success text-white">
+          <h5 class="mb-0"><i class="bi bi-check-circle me-2"></i>O que você pode fazer</h5>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item border-0 px-0">
+              <i class="bi bi-check text-success me-2"></i>Navegar pelo site e explorar o projeto
+            </li>
+            <li class="list-group-item border-0 px-0">
+              <i class="bi bi-check text-success me-2"></i>Acessar materiais disponíveis
+            </li>
+            <li class="list-group-item border-0 px-0">
+              <i class="bi bi-check text-success me-2"></i>Conhecer a equipe e os objetivos
+            </li>
+            {% if not user.is_staff and not user.is_superuser %}
+            <li class="list-group-item border-0 px-0 text-muted">
+              <i class="bi bi-dash-circle me-2"></i>Gerenciar conteúdos e configurações <small class="text-warning">(requer permissão)</small>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if not user.is_staff and not user.is_superuser %}
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card border-warning shadow-sm">
+        <div class="card-header bg-warning text-dark">
+          <h5 class="mb-0"><i class="bi bi-shield-lock me-2"></i>Precisa de Acesso Administrativo?</h5>
+        </div>
+        <div class="card-body">
+          <p>Se você é <strong>professor ou aluno responsável</strong> por alguma parte do projeto e precisa acessar ferramentas de gestão:</p>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card bg-light mb-3">
+                <div class="card-body">
+                  <h6><i class="bi bi-1-circle text-primary me-2"></i>Como solicitar:</h6>
+                  <ol class="mb-0">
+                    <li>Solicite ao administrador atual</li>
+                    <li>Aguarde a liberação do acesso</li>
+                    <li>Acesse as novas funcionalidades</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="alert alert-light mt-3">
+            <i class="bi bi-lightbulb text-warning me-2"></i>
+            <small>Os botões de páginas administrativas estão visíveis, mas só funcionarão após a liberação do seu acesso.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+
+  <!-- Aviso sobre Menu -->
+  {% if not user.is_staff and not user.is_superuser %}
+  <div class="alert alert-secondary mt-4">
+    <div class="d-flex">
+      <div class="me-3">
+        <i class="bi bi-menu-button-wide" style="font-size: 1.5rem;"></i>
+      </div>
+      <div>
+        <h6 class="alert-heading">Sobre o Menu Lateral</h6>
+        <p class="mb-0">O menu mostra todas as funcionalidades disponíveis no sistema. As opções administrativas aparecerão quando seu acesso for liberado. Explore o site e conheça todas as possibilidades!</p>
+      </div>
+    </div>
+  </div>
+  {% endif %}
 {% endblock %}
