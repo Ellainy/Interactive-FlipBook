@@ -1,27 +1,22 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Index, Livro, Sobre, Pagina, Site, IdentidadeVisual
-from .forms import LivroForm, IndexForm, SobreForm, PaginaForm, SiteForm, IdentidadeVisualForm
+from .models import Index, Livro, Sobre, Pagina, Site, IdentidadeVisual, ModoLeitura
+from .forms import LivroForm, IndexForm, SobreForm, PaginaForm, SiteForm, IdentidadeVisualForm, ModoLeituraForm
 
-# VIEWS PÚBLICAS 
 
 def index(request):
-    index = Index.objects.first() 
-    sobre = Sobre.objects.prefetch_related('galeria').first()
-    imagens_galeria = sobre.galeria.all() if sobre else []
-    livro = Livro.objects.first() 
+    index = Index.objects.first()  
 
     return render(request, 'index.html', {
         'index': index,
-        'sobre': sobre,
-        'imagens_galeria': imagens_galeria,
-        'livro': livro
     })
 
 def livro(request):
     livro = Livro.objects.first() 
+    modoleitura = ModoLeitura.objects.first() 
     return render(request, 'livro.html', {
         'livro': livro,
+        'modoLeitura' : modoleitura,
     })
 
 def lerlivro(request):
@@ -42,7 +37,6 @@ def sobre(request):
 
 
 
-# VIEWS ADMINISTRATIVAS
 def layout(request):
     identidade = IdentidadeVisual.objects.first()
 

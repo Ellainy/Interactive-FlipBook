@@ -10,13 +10,6 @@
     --cinza-borda: #e9ecef;
   }
   
-  .bg-verde-principal {
-    background-color: var(--verde-principal) !important;
-  }
-  
-  .text-verde-principal {
-    color: var(--verde-principal) !important;
-  }
   
   .bg-verde-secundario {
     background-color: var(--verde-secundario) !important;

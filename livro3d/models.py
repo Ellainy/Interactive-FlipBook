@@ -15,8 +15,6 @@ class Index(models.Model):
 
 class ModoLeitura(models.Model):
     frase_inicio = models.CharField(max_length=255, blank=True, null=True)
-    sessao_titulo = models.CharField(max_length=300, blank=True, null=True)
-    sessao_texto = models.CharField(max_length=2000, blank=True, null=True)
     galeria = models.ManyToManyField('Image', related_name='galeria')
 
     def __str__(self):
@@ -31,6 +29,7 @@ class Sobre(models.Model):
     membros = models.ManyToManyField('Membro')
 
     def __str__(self):
+
         return "Página Sobre"
 
 class Membro(models.Model):
