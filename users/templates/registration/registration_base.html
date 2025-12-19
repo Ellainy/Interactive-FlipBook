@@ -9,7 +9,7 @@
     <title>Livro 3D</title>
   </head>
 
-  <body class="bg-verde-principal">
+  <body class="{% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}">
     <div class="d-flex flex-column justify-content-center min-vh-100 w-100 m-auto fade-in text-white py-5 div-wave" 
          style="background-position: bottom center; background-repeat: no-repeat;">
          
