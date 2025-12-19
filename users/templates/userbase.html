@@ -261,7 +261,7 @@
     </style>
   </head>
   <body>
-    <div class="sidebar {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" id="sidebar">
+    <div class="sidebar {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}" id="sidebar">
       <div class="sidebar-header d-flex">
        <a href="{% url 'index' %}" class="m-auto h4 text-decoration-none">{{ config.titulo }}</a>
       </div>

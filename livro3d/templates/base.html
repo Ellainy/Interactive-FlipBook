@@ -21,7 +21,7 @@
 </head>
 
 <body>
-  <header class="py-3 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}">
+  <header class="py-3 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
         <h1 class="mb-0">
@@ -111,7 +111,7 @@
 
   {% endblock %}
 
-  <footer class="py-5 footer-columns mt-auto rounded-top-5 d-flex text-white {% if not identidade_visual.cor_principal %}bg-dark{% endif %}">
+  <footer class="py-5 footer-columns mt-auto rounded-top-5 d-flex text-white {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}">
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-sm-6 footer-col mb-4">

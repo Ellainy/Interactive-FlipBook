@@ -5,15 +5,28 @@ class Index(models.Model):
     frase_inicio = models.CharField(max_length=255, blank=True, null=True)
     o_que_e_site_titulo = models.CharField(max_length=1000, blank=True, null=True)
     o_que_e_o_site = models.CharField(max_length=1000, blank=True, null=True)
+    sessao_titulo = models.CharField(max_length=300, blank=True, null=True)
+    sessao_texto = models.CharField(max_length=2000, blank=True, null=True)
+    divosoria = models.CharField(max_length=200, blank=True, null=True)
+    divosoria_texto = models.CharField(max_length=2000, blank=True, null=True)
 
     def __str__(self):
         return self.titulo
 
+class ModoLeitura(models.Model):
+    frase_inicio = models.CharField(max_length=255, blank=True, null=True)
+    sessao_titulo = models.CharField(max_length=300, blank=True, null=True)
+    sessao_texto = models.CharField(max_length=2000, blank=True, null=True)
+    galeria = models.ManyToManyField('Image', related_name='galerias')
+
+    def __str__(self):
+        return "Página Sobre"
+
 class Sobre(models.Model):
-    paginaTitulo = models.TextField(max_length=200)
-    sobre_nos = models.TextField()
-    secaoTitulo = models.TextField(max_length=200)
-    sobre_o_livro = models.TextField()
+    frase_inicio  = models.TextField(max_length=200)
+    sessao_titulo = models.CharField(max_length=300, blank=True, null=True)
+    sessao_texto = models.CharField(max_length=2000, blank=True, null=True)
+    sessao_foto = models.ImageField(upload_to='sobre_imgs/',null=True, blank=True)
     galeria = models.ManyToManyField('Image', related_name='galerias')
     membros = models.ManyToManyField('Membro')
 
@@ -23,6 +36,7 @@ class Sobre(models.Model):
 class Membro(models.Model):
     nome = models.CharField(max_length=100)
     cargo = models.CharField(max_length=100)
+    foto =  models.ImageField(upload_to='membros_imgs/',null=True, blank=True)
 
     def __str__(self):
         return self.nome
