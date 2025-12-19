@@ -86,34 +86,6 @@ def configuracoes(request):
     })
 
 @login_required
-def editar_textos(request):
-    home = Index.objects.first()
-    sobre = Sobre.objects.first()
-
-    if request.method == "POST":
-        if "salvar_home" in request.POST:  
-            home_form = IndexForm(request.POST, instance=home)
-            sobre_form = SobreForm(instance=sobre) 
-            if home_form.is_valid():
-                home_form.save()
-                return redirect('editar_textos')
-
-        elif "salvar_sobre" in request.POST:  
-            sobre_form = SobreForm(request.POST, instance=sobre)
-            home_form = IndexForm(instance=home)
-            if sobre_form.is_valid():
-                sobre_form.save()
-                return redirect('editar_textos')
-    else:
-        home_form = IndexForm(instance=home)
-        sobre_form = SobreForm(instance=sobre)
-
-    return render(request, "site.html", {
-        "home_form": home_form,
-        "sobre_form": sobre_form,
-    })
-
-@login_required
 def indexform(request):
     home = Index.objects.first()
     home_form = IndexForm(request.POST, request.FILES) if request.method == "POST" else IndexForm(instance=home) 

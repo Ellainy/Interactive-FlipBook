@@ -24,13 +24,12 @@ class PaginaForm(forms.ModelForm):
 class IndexForm(forms.ModelForm):
     class Meta:
         model = Index
-        fields = ['titulo', 'frase_inicio', 'o_que_e_site_titulo', 'o_que_e_o_site', 'saiba_mais']
+        fields = ['titulo', 'frase_inicio', 'o_que_e_site_titulo', 'o_que_e_o_site']
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),
             'frase_inicio': forms.TextInput(attrs={'class': 'form-control'}),
             'o_que_e_site_titulo': forms.TextInput(attrs={'class': 'form-control'}),
             'o_que_e_o_site': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
-            'saiba_mais': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
 
 class SobreForm(forms.ModelForm):
@@ -47,11 +46,12 @@ class SobreForm(forms.ModelForm):
 class SiteForm(forms.ModelForm):
     class Meta:
         model = Site
-        fields = ['titulo', 'contato', 'logo']
+        fields = ['titulo', 'contato', 'logo', 'saiba_mais_footer']
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),
             'contato': forms.EmailInput(attrs={'class': 'form-control'}),
             'logo': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'saiba_mais_footer': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
 
 

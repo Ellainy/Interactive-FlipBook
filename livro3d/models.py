@@ -5,7 +5,6 @@ class Index(models.Model):
     frase_inicio = models.CharField(max_length=255, blank=True, null=True)
     o_que_e_site_titulo = models.CharField(max_length=1000, blank=True, null=True)
     o_que_e_o_site = models.CharField(max_length=1000, blank=True, null=True)
-    saiba_mais =models.CharField(max_length=1000, blank=True, null=True)
 
     def __str__(self):
         return self.titulo
@@ -32,6 +31,7 @@ class Site(models.Model):
     titulo = models.CharField(max_length=50)
     contato = models.EmailField(max_length=254, null=True, blank=True)
     logo =models.ImageField(upload_to='logo/', null=True, blank=True)
+    saiba_mais_footer =models.CharField(max_length=1000, blank=True, null=True)
     
 
 class Image(models.Model):

@@ -21,10 +21,7 @@
 </head>
 
 <body>
-  <header class="py-3 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" style="{% if identidade_visual.cor_suplente %}background: linear-gradient(to right, {{ identidade_visual.cor_principal }}, {{ identidade_visual.cor_suplente }});
-  {% else %}
-    background-color: {{ identidade_visual.cor_principal }};
-  {% endif %}">
+  <header class="py-3 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
         <h1 class="mb-0">
@@ -114,18 +111,15 @@
 
   {% endblock %}
 
-  <footer class="py-5 footer-columns mt-auto rounded-top-5 d-flex text-white {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" style="{% if identidade_visual.cor_suplente %}background: linear-gradient(to right, {{ identidade_visual.cor_principal }}, {{ identidade_visual.cor_suplente }});
-  {% else %}
-    background-color: {{ identidade_visual.cor_principal }};
-  {% endif %}">
+  <footer class="py-5 footer-columns mt-auto rounded-top-5 d-flex text-white {% if not identidade_visual.cor_principal %}bg-dark{% endif %}">
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-sm-6 footer-col mb-4">
           <h3>Saiba mais sobre essa iniciativa!</h3>
-          {%if home_page.saibamais %}
-          <p class="mb-3">{{ home_page.saibamais }}</p>
+          {%if config.saiba_mais_footer %}
+          <p class="mb-3">{{ config.saiba_mais_footer }}</p>
           {% else%}
-          <p class="mb-3 lead">Conheça mais sobre nosso projeto de extensão, nossa missão e impacto. Clique no botão
+          <p class="mb-3 lead">Conheça mais sobre nosso projeto, nossa missão e impacto. Clique no botão
             abaixo para saber mais!</p>
           {% endif %}
           <button href="sobre.html" class="btn btn-light fw-bold">Saiba mais!</button>
@@ -156,7 +150,11 @@
 
         <div class="col-md-3 col-sm-6 footer-col mb-4">
           <div class="col-md-6 text-center py-2">
+            {% if config.logo %}
+             <a class="text-white"><img src="{{ config.logo.url }}" alt="{{ config.tiutlo }}" class="img-fluid w-100" /></a>
+             {% else %}
             <img src="{% static 'imgs/iflogo.png' %}" height="100" alt="IFRN-logo">
+            {% endif %}
           </div>
           
           <div class="contact-info">

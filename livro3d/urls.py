@@ -2,16 +2,12 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # Rotas Públicas
     path('', views.index, name='index'),
     path('livro/', views.livro, name='livro'),
     path('sobre/', views.sobre, name='sobre'),
     path('lerlivro/', views.lerlivro, name='lerlivro'),
     path('layout/', views.layout, name='layout'),
-
-    # Rotas Administrativas
     path('administracao/', views.administracao, name='administracao'),
-    path('editar-textos/', views.editar_textos, name='editar_textos'),
     path('configuracoes/', views.configuracoes, name='configuracoes'),
     path('indexform/', views.indexform, name='indexform'),
     path('sobreform/', views.sobreform, name='sobreform'),

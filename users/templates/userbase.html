@@ -43,7 +43,6 @@
       
       .sidebar {
         width: var(--sidebar-width);
-        background: linear-gradient(180deg, var(--verde-primario) 0%, #1e6b3a 100%);
         color: white;
         position: fixed;
         height: 100vh;
@@ -262,7 +261,7 @@
     </style>
   </head>
   <body>
-    <div class="sidebar" id="sidebar">
+    <div class="sidebar {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" id="sidebar">
       <div class="sidebar-header d-flex">
        <a href="{% url 'index' %}" class="m-auto h4 text-decoration-none">{{ config.titulo }}</a>
       </div>
