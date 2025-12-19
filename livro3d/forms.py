@@ -1,5 +1,5 @@
 from django import forms
-from .models import Livro, Index, Sobre, Pagina, Site, IdentidadeVisual
+from .models import Livro, Index, ModoLeitura, Sobre, Pagina, Site, IdentidadeVisual
 
 class LivroForm(forms.ModelForm):
     class Meta:
@@ -24,23 +24,39 @@ class PaginaForm(forms.ModelForm):
 class IndexForm(forms.ModelForm):
     class Meta:
         model = Index
-        fields = ['titulo', 'frase_inicio', 'o_que_e_site_titulo', 'o_que_e_o_site']
+        fields = ['titulo', 'frase_inicio', 'o_que_e_site_titulo', 'o_que_e_o_site', 'sessao_titulo', 'sessao_texto', 'divisoria_titulo', 'divisoria_texto']
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),
             'frase_inicio': forms.TextInput(attrs={'class': 'form-control'}),
             'o_que_e_site_titulo': forms.TextInput(attrs={'class': 'form-control'}),
             'o_que_e_o_site': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'sessao_titulo': forms.TextInput(attrs={'class': 'form-control'}),
+            'sessao_texto': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'divisoria_titulo': forms.TextInput(attrs={'class': 'form-control'}),
+            'divisoria_texto': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+        }
+
+class ModoLeituraForm(forms.ModelForm):
+    class Meta:
+        model = ModoLeitura
+        fields = [ 'frase_inicio', 'sessao_titulo', 'sessao_texto', 'galeria']
+        widgets = {
+            'frase_inicio': forms.TextInput(attrs={'class': 'form-control'}),
+            'sessao_titulo': forms.TextInput(attrs={'class': 'form-control'}),
+            'sessao_texto': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'galeria': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
 
 class SobreForm(forms.ModelForm):
     class Meta:
         model = Sobre
-        fields = ['paginaTitulo', 'sobre_nos', 'secaoTitulo', 'sobre_o_livro']
+        fields = ['frase_inicio', 'sessao_titulo', 'sessao_texto', 'sessao_foto', 'galeria']
         widgets = {
-            'paginaTitulo': forms.TextInput(attrs={'class': 'form-control'}),
-            'sobre_nos': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
-            'secaoTitulo': forms.TextInput(attrs={'class': 'form-control'}),
-            'sobre_o_livro': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'frase_inicio': forms.TextInput(attrs={'class': 'form-control'}),
+            'sessao_titulo': forms.TextInput(attrs={'class': 'form-control'}),
+            'sessao_texto': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'sessao_foto': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'galeria': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
 
 class SiteForm(forms.ModelForm):

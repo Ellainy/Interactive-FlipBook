@@ -7,8 +7,8 @@ class Index(models.Model):
     o_que_e_o_site = models.CharField(max_length=1000, blank=True, null=True)
     sessao_titulo = models.CharField(max_length=300, blank=True, null=True)
     sessao_texto = models.CharField(max_length=2000, blank=True, null=True)
-    divosoria = models.CharField(max_length=200, blank=True, null=True)
-    divosoria_texto = models.CharField(max_length=2000, blank=True, null=True)
+    divisoria_titulo = models.CharField(max_length=200, blank=True, null=True)
+    divisoria_texto = models.CharField(max_length=2000, blank=True, null=True)
 
     def __str__(self):
         return self.titulo
@@ -17,7 +17,7 @@ class ModoLeitura(models.Model):
     frase_inicio = models.CharField(max_length=255, blank=True, null=True)
     sessao_titulo = models.CharField(max_length=300, blank=True, null=True)
     sessao_texto = models.CharField(max_length=2000, blank=True, null=True)
-    galeria = models.ManyToManyField('Image', related_name='galerias')
+    galeria = models.ManyToManyField('Image', related_name='galeria')
 
     def __str__(self):
         return "Página Sobre"
@@ -27,7 +27,7 @@ class Sobre(models.Model):
     sessao_titulo = models.CharField(max_length=300, blank=True, null=True)
     sessao_texto = models.CharField(max_length=2000, blank=True, null=True)
     sessao_foto = models.ImageField(upload_to='sobre_imgs/',null=True, blank=True)
-    galeria = models.ManyToManyField('Image', related_name='galerias')
+    galeria = models.ManyToManyField('Image', related_name='galeria_sobre')
     membros = models.ManyToManyField('Membro')
 
     def __str__(self):
