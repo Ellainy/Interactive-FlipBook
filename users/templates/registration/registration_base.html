@@ -7,6 +7,46 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Livro 3D</title>
+    <style>
+      .form-button {
+        background: linear-gradient(135deg, #48634c 0%, #375534 100%);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        margin-top: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-button:hover {
+        background: none;
+        background-color: {{ identidade_visual.cor_hover }};
+        transition: 0.7s;
+        transform: translateY(-3px);
+      }
+
+      .form-link {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+      }
+
+      .form-link:hover {
+        color: {{ identidade_visual.cor_hover }};
+      }
+
+      .form-control:focus,
+      .form-select:focus {
+        border-color: {{ identidade_visual.cor_hover }};
+        box-shadow: 0 0 0 0.2rem {{ identidade_visual.cor_hover }};
+      }
+    </style>
   </head>
 
   <body class="{% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}">
