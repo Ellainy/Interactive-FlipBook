@@ -39,11 +39,9 @@ class IndexForm(forms.ModelForm):
 class ModoLeituraForm(forms.ModelForm):
     class Meta:
         model = ModoLeitura
-        fields = [ 'frase_inicio', 'sessao_titulo', 'sessao_texto', 'galeria']
+        fields = [ 'frase_inicio','galeria']
         widgets = {
             'frase_inicio': forms.TextInput(attrs={'class': 'form-control'}),
-            'sessao_titulo': forms.TextInput(attrs={'class': 'form-control'}),
-            'sessao_texto': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
             'galeria': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
 
