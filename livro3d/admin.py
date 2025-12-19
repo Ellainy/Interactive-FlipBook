@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import HomePage, Livro, Sobre, Membro, Image, Pagina
+from .models import Index, Livro, Sobre, Membro, Image, Pagina
 
-admin.site.register(HomePage)
+admin.site.register(Index)
 admin.site.register(Livro)
 admin.site.register(Sobre)
 admin.site.register(Membro)

@@ -1,12 +1,11 @@
 from django.db import models
 
-class HomePage(models.Model):
+class Index(models.Model):
     titulo = models.CharField(max_length=200, blank=True, null=True)
-    fraseInicio = models.CharField(max_length=255, blank=True, null=True)
-    oqueeositeTit = models.CharField(max_length=1000, blank=True, null=True)
-    oqueeosite = models.CharField(max_length=1000, blank=True, null=True)
-    saibamaisTit =models.CharField(max_length=1000, blank=True, null=True)
-    saibamais =models.CharField(max_length=1000, blank=True, null=True)
+    frase_inicio = models.CharField(max_length=255, blank=True, null=True)
+    o_que_e_site_titulo = models.CharField(max_length=1000, blank=True, null=True)
+    o_que_e_o_site = models.CharField(max_length=1000, blank=True, null=True)
+    saiba_mais =models.CharField(max_length=1000, blank=True, null=True)
 
     def __str__(self):
         return self.titulo

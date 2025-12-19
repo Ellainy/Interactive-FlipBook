@@ -41,7 +41,6 @@
         border-color: var(--verde-secundario);
       }
       
-      /* Sidebar */
       .sidebar {
         width: var(--sidebar-width);
         background: linear-gradient(180deg, var(--verde-primario) 0%, #1e6b3a 100%);
@@ -211,7 +210,6 @@
         font-weight: bold;
     }
       
-      /* Configuração de Cores */
       .color-option {
         width: 40px;
         height: 40px;
@@ -266,7 +264,7 @@
   <body>
     <div class="sidebar" id="sidebar">
       <div class="sidebar-header d-flex">
-       <a href="{% url 'index' %}" class="m-auto h4 text-decoration-none">{{ site.titulo }}</a>
+       <a href="{% url 'index' %}" class="m-auto h4 text-decoration-none">{{ config.titulo }}</a>
       </div>
       <div class="sidebar-header">
         <div class="d-flex align-items-center">
@@ -275,9 +273,9 @@
             <div class="user-avatar bg-info">CA</div>
             <div class="user-details">
               <h5 class="m-0">{{ user.username }}</h5>
-              <p class="opacity-75 m-0" style="font-size: 0.85rem;"> {% if usuario.is_superuser %}
+              <p class="opacity-75 m-0" style="font-size: 0.85rem;"> {% if user.is_superuser %}
                 <span>Super Admin</span>
-                {% elif usuario.is_staff %}
+                {% elif user.is_staff %}
                 <span>Staff</span>
                 {% else %}
                 <span>Usuário</span>

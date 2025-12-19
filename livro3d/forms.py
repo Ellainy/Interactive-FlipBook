@@ -1,5 +1,5 @@
 from django import forms
-from .models import Livro, HomePage, Sobre, Pagina, Site, IdentidadeVisual
+from .models import Livro, Index, Sobre, Pagina, Site, IdentidadeVisual
 
 class LivroForm(forms.ModelForm):
     class Meta:
@@ -21,17 +21,16 @@ class PaginaForm(forms.ModelForm):
             'pagina': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
 
-class HomePageForm(forms.ModelForm):
+class IndexForm(forms.ModelForm):
     class Meta:
-        model = HomePage
-        fields = ['titulo', 'fraseInicio', 'oqueeositeTit', 'oqueeosite', 'saibamaisTit', 'saibamais']
+        model = Index
+        fields = ['titulo', 'frase_inicio', 'o_que_e_site_titulo', 'o_que_e_o_site', 'saiba_mais']
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),
-            'fraseInicio': forms.TextInput(attrs={'class': 'form-control'}),
-            'oqueeositeTit': forms.TextInput(attrs={'class': 'form-control'}),
-            'oqueeosite': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
-            'saibamaisTit': forms.TextInput(attrs={'class': 'form-control'}),
-            'saibamais': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'frase_inicio': forms.TextInput(attrs={'class': 'form-control'}),
+            'o_que_e_site_titulo': forms.TextInput(attrs={'class': 'form-control'}),
+            'o_que_e_o_site': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'saiba_mais': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
 
 class SobreForm(forms.ModelForm):

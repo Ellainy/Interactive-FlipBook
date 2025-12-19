@@ -1,18 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import HomePage, Livro, Sobre, Pagina, Site, IdentidadeVisual
-from .forms import LivroForm, HomePageForm, SobreForm, PaginaForm, SiteForm, IdentidadeVisualForm
+from .models import Index, Livro, Sobre, Pagina, Site, IdentidadeVisual
+from .forms import LivroForm, IndexForm, SobreForm, PaginaForm, SiteForm, IdentidadeVisualForm
 
-# --- VIEWS PÚBLICAS ---
+# VIEWS PÚBLICAS 
 
 def index(request):
-    home_page = HomePage.objects.first() 
+    index = Index.objects.first() 
     sobre = Sobre.objects.prefetch_related('galeria').first()
     imagens_galeria = sobre.galeria.all() if sobre else []
     livro = Livro.objects.first() 
 
     return render(request, 'index.html', {
-        'home_page': home_page,
+        'index': index,
         'sobre': sobre,
         'imagens_galeria': imagens_galeria,
         'livro': livro
@@ -42,7 +42,7 @@ def sobre(request):
 
 
 
-# --- VIEWS ADMINISTRATIVAS (PROTEGIDAS) ---
+# VIEWS ADMINISTRATIVAS
 def layout(request):
     identidade = IdentidadeVisual.objects.first()
 
@@ -73,12 +73,12 @@ def configuracoes(request):
     siteForm = SiteForm(request.POST, request.FILES) if request.method == "POST" else SiteForm(instance=site) 
     
     if request.method == "POST":
-        siteForm = SiteForm(request.POST, request.FILES, instance=site) # Correção: passar a instance para editar, não criar novo
+        siteForm = SiteForm(request.POST, request.FILES, instance=site)
         if siteForm.is_valid():
             siteForm.save()
             return redirect('configuracoes')
     else:
-        siteForm = SiteForm(instance=site) # Preenche com dados existentes
+        siteForm = SiteForm(instance=site) 
 
     return render(request, 'configuracoes.html', {
         'siteForm': siteForm,
@@ -87,12 +87,12 @@ def configuracoes(request):
 
 @login_required
 def editar_textos(request):
-    home = HomePage.objects.first()
+    home = Index.objects.first()
     sobre = Sobre.objects.first()
 
     if request.method == "POST":
         if "salvar_home" in request.POST:  
-            home_form = HomePageForm(request.POST, instance=home)
+            home_form = IndexForm(request.POST, instance=home)
             sobre_form = SobreForm(instance=sobre) 
             if home_form.is_valid():
                 home_form.save()
@@ -100,12 +100,12 @@ def editar_textos(request):
 
         elif "salvar_sobre" in request.POST:  
             sobre_form = SobreForm(request.POST, instance=sobre)
-            home_form = HomePageForm(instance=home)
+            home_form = IndexForm(instance=home)
             if sobre_form.is_valid():
                 sobre_form.save()
                 return redirect('editar_textos')
     else:
-        home_form = HomePageForm(instance=home)
+        home_form = IndexForm(instance=home)
         sobre_form = SobreForm(instance=sobre)
 
     return render(request, "site.html", {
@@ -115,8 +115,8 @@ def editar_textos(request):
 
 @login_required
 def indexform(request):
-    home = HomePage.objects.first()
-    home_form = HomePageForm(request.POST, request.FILES) if request.method == "POST" else HomePageForm(instance=home) 
+    home = Index.objects.first()
+    home_form = IndexForm(request.POST, request.FILES) if request.method == "POST" else IndexForm(instance=home) 
     
 
     if request.method == "POST":
@@ -125,7 +125,7 @@ def indexform(request):
             return redirect('indexform')
 
     else:
-        home_form = HomePageForm(instance=home)
+        home_form = IndexForm(instance=home)
 
     return render(request, "indexform.html", {
         "home_form": home_form
