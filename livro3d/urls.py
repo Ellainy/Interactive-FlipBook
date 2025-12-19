@@ -11,6 +11,7 @@ urlpatterns = [
     path('configuracoes/', views.configuracoes, name='configuracoes'),
     path('indexform/', views.indexform, name='indexform'),
     path('sobreform/', views.sobreform, name='sobreform'),
+    path('livroform/', views.livroform, name='livroform'),
     path('gerenciar_livro/', views.gerenciar_livro, name='gerenciar_livro'),
     path('livro_paginas/', views.livro_paginas, name='livro_paginas'),
     path('paginas/', views.paginas, name='paginas'),

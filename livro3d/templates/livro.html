@@ -33,7 +33,7 @@ Livro
         <div class="card-body">
           <h5 class="card-title fw-bold">Leia o Livro em 3D</h5>
           <p class="card-text">Explore o livro interativo em 3D com animações imersivas.</p>
-          <a href="{% url 'lerlivro' %}" class="btn btn-success btn-lg mt-2">Acessar Livro 3D</a>
+          <a href="{% url 'lerlivro' %}" class="btn btn-sistema btn-lg mt-2">Acessar Livro 3D</a>
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@ Livro
         <div class="card-body">
           <h5 class="card-title fw-bold">Ler Livro em PDF</h5>
           <p class="card-text">Leia o livro em PDF ou faça o download para leitura offline.</p>
-          <a href="{{ livro.pdf.url }}" class="btn btn-primary btn-lg mt-2" target="_blank"
+          <a href="{{ livro.pdf.url }}" class="btn btn-sistema btn-lg mt-2" target="_blank"
             rel="noopener noreferrer">Abrir PDF</a>
           <p class="text-muted mt-3 small">
             <i class="fas fa-info-circle me-1"></i>
@@ -146,9 +146,9 @@ Livro
   <!-- Indicadores do Carousel -->
   <div class="text-center mt-4">
     <div class="carousel-indicators position-static">
-      <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="0" class="active bg-success"></button>
-      <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="1" class="bg-success"></button>
-      <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="2" class="bg-success"></button>
+      <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="0" class="bg-dark"></button>
+      <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="1" class="bg-dark"></button>
+      <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="2" class="bg-dark"></button>
     </div>
   </div>
 </div>

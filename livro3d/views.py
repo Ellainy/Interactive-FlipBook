@@ -115,6 +115,24 @@ def sobreform(request):
         "sobre_form": sobre_form
     })
 
+@login_required
+def livroform(request):
+    livro = Livro.objects.first()
+
+    if request.method == "POST":
+        livro_form = LivroForm(request.POST, request.FILES, instance=livro)
+        
+        if livro_form.is_valid():
+            livro_form.save()
+            return redirect('livroform')
+
+    else:
+        livro_form = LivroForm(instance=livro)
+
+    return render(request, "livroform.html", {
+        "livro_form": livro_form
+    })
+
 
 @login_required
 def livro_paginas(request):
