@@ -67,14 +67,12 @@
         text-align: center;
       }
       
-      /* Main Content */
       .main-content {
         margin-left: var(--sidebar-width);
         padding: 20px;
         transition: all 0.3s;
       }
       
-      /* Header */
       .header {
         background-color: white;
         padding: 15px 20px;
@@ -86,7 +84,6 @@
         align-items: center;
       }
       
-      /* Cards */
       .dashboard-card {
         background-color: white;
         border-radius: 15px;
@@ -136,7 +133,6 @@
         font-weight: 600;
       }
       
-      /* Gerenciamento de Páginas */
       .page-item {
         display: flex;
         justify-content: space-between;
@@ -194,7 +190,7 @@
         margin-top: 10px;
       }
       
-      /* Mobile Toggle */
+
       .sidebar-toggle {
         display: none;
         background: none;
@@ -203,7 +199,6 @@
         color: {{ identidade_visual.cor_principal }};
       }
       
-      /* Responsividade */
       @media (max-width: 992px) {
         .sidebar {
           margin-left: calc(-1 * var(--sidebar-width));
@@ -261,7 +256,7 @@
           <li>
             <a href="{% url "sobre" %}"><i class="bi bi-info-circle-fill"></i> Sobre</a>
           </li>
-
+          {% if request.user.is_superuser %}
           <li class="ms-2 h6 lead">Administração do sistema</li>
           <hr>
              <a class="{% if request.resolver_match.url_name == 'layout' %}active{% endif %}" href="{% url 'layout' %}" id="designLink"><i class="bi bi-palette"></i>Design do Site</a>
@@ -274,6 +269,7 @@
           <li>
             <a class="{% if request.resolver_match.url_name == 'configuracoes' %}active{% endif %}" href="{% url 'configuracoes' %}" id="settingsLink"><i class="bi bi-gear"></i>Configurações</a>
           </li>
+          {% endif %}
         </ul>
       </div>
 

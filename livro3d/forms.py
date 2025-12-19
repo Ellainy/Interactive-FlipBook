@@ -1,5 +1,5 @@
 from django import forms
-from .models import Livro, Index, ModoLeitura, Sobre, Pagina, Site, IdentidadeVisual
+from .models import Livro, Index, ModoLeitura, Sobre, Pagina, Site, IdentidadeVisual, Image
 
 class LivroForm(forms.ModelForm):
     class Meta:
@@ -10,6 +10,14 @@ class LivroForm(forms.ModelForm):
             'capa': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'descricao': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Escreva a descrição'}),
             'pdf': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+        }
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['imagem',]  
+        widgets = {
+            'imagem': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
 
 class PaginaForm(forms.ModelForm):

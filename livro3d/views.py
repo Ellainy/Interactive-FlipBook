@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Index, Livro, Sobre, Pagina, Site, IdentidadeVisual, ModoLeitura
-from .forms import LivroForm, IndexForm, SobreForm, PaginaForm, SiteForm, IdentidadeVisualForm, ModoLeituraForm
+from .models import Index, Livro, Sobre, Pagina, Site, IdentidadeVisual, ModoLeitura, Image
+from .forms import LivroForm, IndexForm, SobreForm, PaginaForm, SiteForm, IdentidadeVisualForm, ModoLeituraForm, ImageForm
 
 
 def index(request):
@@ -14,9 +14,12 @@ def index(request):
 def livro(request):
     livro = Livro.objects.first() 
     modoleitura = ModoLeitura.objects.first() 
+    galeria = Image.objects.all()
+
     return render(request, 'livro.html', {
         'livro': livro,
         'modoLeitura' : modoleitura,
+        'galeria' : galeria,
     })
 
 def lerlivro(request):
@@ -184,6 +187,24 @@ def gerenciar_livro(request):
         'pagina_form': pagina_form,
         'paginas': paginas,
         'livro': livro,
+    })
+
+@login_required
+def imageform(request):
+    image = Image.objects.first()
+    image_form = ImageForm(request.POST, request.FILES) if request.method == "POST" else ImageForm(instance=image) 
+    
+
+    if request.method == "POST":
+        if image_form.is_valid():
+            image_form.save()
+            return redirect('imageform')
+
+    else:
+        image_form = ImageForm(instance=image)
+
+    return render(request, "imageform.html", {
+        "image_form": image_form
     })
 
 @login_required

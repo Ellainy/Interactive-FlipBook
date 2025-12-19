@@ -48,7 +48,7 @@ class Site(models.Model):
     
 
 class Image(models.Model):
-    imagem = models.ImageField(upload_to='galeria_sobre/')
+    imagem = models.ImageField(upload_to='galeria/')
 
     def __str__(self):
         return f"Imagem {self.id}"
