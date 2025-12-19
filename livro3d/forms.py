@@ -55,7 +55,7 @@ class SobreForm(forms.ModelForm):
             'frase_inicio': forms.TextInput(attrs={'class': 'form-control'}),
             'sessao_titulo': forms.TextInput(attrs={'class': 'form-control'}),
             'sessao_texto': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
-            'sessao_foto': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'sessao_foto': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'galeria': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
 

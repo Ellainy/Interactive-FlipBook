@@ -33,7 +33,7 @@ def lerlivro(request):
     })
 
 def sobre(request):
-    sobre_info = Sobre.objects.prefetch_related('galeria', 'membros').first()
+    sobre_info = Sobre.objects.first()
     livro = Livro.objects.first()
     return render(request, 'sobre.html', {
         'sobre': sobre_info,
@@ -106,10 +106,10 @@ def indexform(request):
 @login_required
 def sobreform(request):
     sobre = Sobre.objects.first()
-    sobre_form = SobreForm(request.POST, request.FILES) if request.method == "POST" else SobreForm(instance=sobre) 
-    
 
     if request.method == "POST":
+        sobre_form = SobreForm(request.POST, request.FILES, instance=sobre)
+        
         if sobre_form.is_valid():
             sobre_form.save()
             return redirect('sobreform')

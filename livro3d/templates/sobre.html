@@ -11,7 +11,11 @@
             <div class="container text-white">
                 <img src="{% static 'imgs/whitestar.svg' %}" alt="White Star" height="50" />
                 <h1 class="my-4 display-4 fw-bold mb-4">Sobre nós</h1>
-                <p class="lead mb-4">Conheça a jornada da EcoVida e nossa paixão por um planeta mais sustentável</p>
+                {% if sobre.frase_inicio %}
+                <p class="lead mb-4">{{ sobre.frase_inicio }}</p>
+                {% else %}
+                <p class="lead mb-4">Frase início</p>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -20,8 +24,7 @@
 <section id="servicos" class="py-5">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">Nossos Serviços</h2>
-            <p class="text-muted">Oferecemos soluções completas para empresas que buscam sustentabilidade</p>
+            <h2 class="fw-bold mb-3">Objetivos</h2>
         </div>
         <div class="row g-4">
             <div class="col-md-4">
@@ -29,7 +32,7 @@
                     style="height: 100%; transition: transform 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     <div class="bg-verde-principal text-white rounded-circle d-flex align-items-center justify-content-center mb-2 mx-auto"
                         style="width: 70px; height: 70px;">
-                        <i class="bi bi-recycle fs-3"></i>
+                        <h3 class="m-0">1</h3>
                     </div>
                     <h4 class="text-center mb-3">Gestão de Resíduos</h4>
                     <p class="text-center">Implementamos sistemas eficientes de coleta seletiva e reciclagem para
@@ -41,7 +44,7 @@
                     style="height: 100%; transition: transform 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     <div class="bg-verde-principal text-white rounded-circle d-flex align-items-center justify-content-center mb-2 mx-auto"
                         style="width: 70px; height: 70px;">
-                        <i class="bi bi-lightbulb fs-3"></i>
+                        <h3 class="m-0">2</h3>
                     </div>
                     <h4 class="text-center mb-3">Eficiência Energética</h4>
                     <p class="text-center">Consultoria para redução do consumo energético e implementação de fontes
@@ -53,7 +56,7 @@
                     style="height: 100%; transition: transform 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     <div class="bg-verde-principal text-white rounded-circle d-flex align-items-center justify-content-center mb-2 mx-auto"
                         style="width: 70px; height: 70px;">
-                        <i class="bi bi-tree fs-3"></i>
+                        <h3 class="m-0">3</h3>
                     </div>
                     <h4 class="text-center mb-3">Reflorestamento</h4>
                     <p class="text-center">Programas de compensação ambiental através do plantio de árvores nativas.</p>
@@ -65,9 +68,30 @@
 
 <div class="text-white rounded-5 py-5 my-5 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}">
   <div class="container text-center">
-    <h2 class="fw-bold mb-4">Pronto para Transformar sua Empresa?</h2>
-    <p class="lead mb-4">Entre em contato conosco e descubra como podemos ajudar sua empresa a se tornar mais sustentável.</p>
-    <a href="#contato" class="btn btn-light btn-lg">Solicitar Orçamento</a>
+    {% if sobre.sessao_foto %}
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h2 class="display-4 fw-bold mb-4">{{ sobre.sessao_titulo }}</h2>
+            <p class="text-left mb-4">{{ sobre.sessao_texto }}</p>
+          </div>
+          <div class="col-lg-6 text-center d-flex">
+            <img src="{{ sobre.sessao_foto.url }}" alt="Sustentabilidade" class="h-100 rounded shadow ms-auto" />
+          </div>
+        </div>
+      </div>
+    {% else %}
+      {% if sobre.sessao_titulo %}
+          <h2 class="fw-bold mb-4">{{ sobre.sessao_titulo }}</h2>
+        {% else %}
+          <h2 class="fw-bold mb-4">Título da sessão</h2>
+        {% endif %}
+        {% if sobre.sessao_texto %}
+          <p class="lead mb-4">{{ sobre.sessao_texto }}</p>
+        {% else %}
+          <p class="lead mb-4">Conteúdo da sessão</p>
+      {% endif %}
+    {% endif %}
   </div>
 </div>
 
