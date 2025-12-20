@@ -170,7 +170,7 @@ Fonte: Elaboração própria (2025)
 
 ## 2.5 EXPANSÃO DO CASO DE USO – GERENCIAR SISTEMA
 
-O caso de uso **Gerenciar Sistema** é um dos casos de maior risco da aplicação, pois envolve operações críticas de administração e manutenção das informações do sistema. Nesta seção são especificadas as ações que o usuário **Administrador** pode executar no sistema com o objetivo de **cadastrar, editar e excluir os textos e cores padrão**, além de **editar informações gerais do sistema** com do site como nome do sistema, logo e contato.  
+O caso de uso **Gerenciar Sistema** é um dos casos de maior risco da aplicação, pois envolve operações críticas de administração e manutenção das informações do sistema. Nesta seção são especificadas as ações que o usuário **Administrador** pode executar no sistema com o objetivo de **cadastrar, editar e excluir os textos e cores padrão**, além de **editar informações gerais do sistema** como nome do site, logo e contato.  
 Somente usuários com permissão de administrador poderão acessar e executar este caso de uso.
 
 ### 2.5.1 Atores
@@ -189,7 +189,7 @@ O sistema exibe o **dashboard administrativo**, refletindo as alterações reali
 - **RF07** – Personalizar tema  
 
 ### 2.5.5 Requisitos Não Funcionais
-- **RNF003** – Acesso restrito a usuários com perfil de administrador.
+- **RNF03** – Acesso restrito a usuários com perfil de administrador.
 
 ---
 
