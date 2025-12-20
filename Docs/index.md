@@ -1,18 +1,7 @@
-# INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DO RIO GRANDE DO NORTE
-
-<br><br><br>
-
-## ELLAINY NAYARA MOTTA DOS SANTOS  
-## MATEUS COSME
-
-<br><br><br>
-
 # INTERACTIVE FLIPBOOK
 
 <br><br><br><br><br>
 
-### SÃO PAULO DO POTENGI  
-### 2025
 
 ## ELLAINY NAYARA MOTTA DOS SANTOS  
 ## MATEUS COSME
@@ -34,6 +23,11 @@ Trabalho de Conclusão de Curso apresentado como requisito parcial para a obten�
 ### SÃO PAULO DO POTENGI  
 ### 2025
 
+
+
+
+
+
 ## LISTA DE SIGLAS
 
 - **PPI** – Plataforma dos Projetos Integradores  
@@ -44,6 +38,11 @@ Trabalho de Conclusão de Curso apresentado como requisito parcial para a obten�
 - **URL** – Uniform Resource Locator  
 - **RF** – Requisitos Funcionais  
 - **RNF** – Requisitos Não Funcionais
+
+
+
+
+
 
 
 ## SUMÁRIO
