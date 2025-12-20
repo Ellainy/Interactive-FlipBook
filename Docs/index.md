@@ -1,4 +1,71 @@
-# Livro Interativo 3D - TCC
+# INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DO RIO GRANDE DO NORTE
+
+<br><br><br>
+
+## ELLAINY NAYARA MOTTA DOS SANTOS  
+## MATEUS COSME
+
+<br><br><br>
+
+# INTERACTIVE FLIPBOOK
+
+<br><br><br><br><br>
+
+### SÃO PAULO DO POTENGI  
+### 2025
+
+## ELLAINY NAYARA MOTTA DOS SANTOS  
+## MATEUS COSME
+
+<br><br><br>
+
+# INTERACTIVE FLIPBOOK
+
+<br><br>
+
+Trabalho de Conclusão de Curso apresentado como requisito parcial para a obtenção do título de **Técnico Integrado em Informática para Internet** pelo Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte – Campus São Paulo do Potengi.
+
+<br>
+
+**Orientador:** Diego Cirilo
+
+<br><br><br>
+
+### SÃO PAULO DO POTENGI  
+### 2025
+
+## LISTA DE SIGLAS
+
+- **PPI** – Plataforma dos Projetos Integradores  
+- **CSS** – Cascading Style Sheets  
+- **HTML** – Hypertext Markup Language  
+- **IFRN** – Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte  
+- **SQL** – Structured Query Language  
+- **URL** – Uniform Resource Locator  
+- **RF** – Requisitos Funcionais  
+- **RNF** – Requisitos Não Funcionais
+
+
+## SUMÁRIO
+
+- [INTRODUÇÃO](#introdução)
+- [JUSTIFICATIVA](#justificativa)
+- [PÚBLICO-ALVO](#público-alvo)
+- [OBJETIVOS](#objetivos)
+- [ANÁLISE E PROJETO](#análise-e-projeto)
+  - [Visão Geral do Sistema](#visão-geral-do-sistema)
+  - [Atores do Sistema](#atores-do-sistema)
+- [LEVANTAMENTO DE REQUISITOS](#levantamento-de-requisitos)
+  - [Requisitos Funcionais](#requisitos-funcionais)
+  - [Requisitos Não Funcionais](#requisitos-não-funcionais)
+- [DIAGRAMAS DE CASO DE USO](#diagramas-de-caso-de-uso)
+  - [Expansão do Caso de Uso – Gerenciar Sistema](#expansão-do-caso-de-uso--gerenciar-sistema)
+- [DIAGRAMA DE CLASSES](#diagrama-de-classes)
+- [PROTÓTIPOS DE TELA](#protótipos-de-tela)
+- [CONCLUSÃO](#conclusão)
+- [REFERÊNCIAS](#referências)
+
+
 
 ##  INTRODUÇÃO
 
@@ -10,7 +77,7 @@ Nesse contexto, o projeto **Interactive FlipBook** surge como uma proposta inova
 
 O projeto também integra conhecimentos adquiridos ao longo da formação técnica, unindo design, UI/UX, programação, usabilidade e compromisso social em uma solução inovadora. Dessa forma, busca-se **ampliar o alcance da mensagem ambiental do livro**, incentivando a reflexão e a conscientização sobre as mudanças climáticas e a importância das ações locais para o impacto global.
 
-Além disso, o sistema também conta com uma aparência personalizável e administração por uma dashboard com layout simples e atraente proporcionando conforto, controle e facilidade para um usuários sem conhecimento técnico na área de tecnologia possa administrar o site livremente.
+Além disso, o sistema também conta com uma aparência personalizável e administração por uma dashboard com layout simples e atraente proporcionando conforto, controle e facilidade para que um usuário sem conhecimento técnico na área de tecnologia possa administrar o site livremente.
 
 ---
 
@@ -23,11 +90,7 @@ Ao unir design, funcionalidade e tecnologia, o projeto promove a integração en
 
 ##  PÚBLICO-ALVO
 
-Nosso principal público-alvo são os **estudantes do IFRN - Campus São Paulo do Potengi**, interessados em projetos acadêmicos e extracurriculares. Também contempla:
-
-- Professores
-- Alunos
-- Usuários externos 
+O público-alvo principal são os **estudantes** do IFRN – Campus São Paulo do Potengi, especialmente aqueles envolvidos em projetos acadêmicos e de extensão. O sistema também contempla **professores**, **pesquisadores** e **usuários externos** interessados em educação ambiental, internacionalização e produções acadêmicas.
 
 ---
 
@@ -78,7 +141,7 @@ Funcionalidades principais:
 | RF02   | Login                       | Usuários cadastrados poderão fazer login.                                    | Alta       |
 | RF03   | Gerenciar conteúdo do livro | Administradores poderão adicionar, editar e excluir páginas.                 | Alta       |
 | RF04   | Visualizar livro            | Usuários poderão acessar o livro em flipbook ou PDF.                         | Alta       |
-| RF05   | Personalizar textos         | Administradores poderão adicionar e editar os textos das paginas do sistema. | Alta       |
+| RF05   | Personalizar textos         | Administradores poderão adicionar e editar os textos das páginas do sistema. | Alta       |
 | RF06   | Personalizar Sistema        | Administradores poderão adicionar e editar informações do site               | Alta       |
 | RF07   | Personalizar tema           | Administradores poderão selecionar paletas de cores.                         | Média      |
 | RF08   | Perfil do usuário           | Visualizar e editar informações pessoais.                                    | Média      |
@@ -95,7 +158,7 @@ Funcionalidades principais:
 | RNF01  | O sistema deve funcionar em ambiente web, compatível com navegadores modernos.      | Organizacional |
 | RNF02  | Deve utilizar HTML, CSS, Python e JavaScript.                                       | Organizacional |
 | RNF03  | Áreas administrativas devem ser restritas a usuários autenticados (incluindo SUAP). | Produto        |
-| RNF04  | Senhas devem ser criptografadas com MD5.                                            | Produto        |
+| RNF04  | As senhas devem ser armazenadas de forma criptografada utilizando os mecanismos de segurança nativos do framework Django.                                           | Produto        |
 | RNF05  | O banco de dados utilizado será o SQLite.                                           | Organizacional |
 | RNF06  | A interface deve ser responsiva e acessível.                                        | Produto        |
 
@@ -142,7 +205,7 @@ O sistema exibe o **dashboard administrativo**, refletindo as alterações reali
 
 ### 2.5.6 Fluxo Principal 01 – Gerenciar conteúdo do livro   
 
-1. **[EV]** Na tela do dashboard administrativo, o administrador clica na opção **“Gerenciar paginas”** logo após em Gerenciamneto do livro.
+1. **[EV]** Na tela do dashboard administrativo, o administrador clica na opção **“Gerenciar páginas”** logo após em Gerenciamento do livro.
 2. **[RS]** O sistema exibe o formulário de cadastro do livro.
 3. **[EV]** O administrador informa os dados do livro, como título, descrição, capa, imagens, páginas do livro e demais informações necessárias.
 4. **[RS]** O sistema valida os dados informados.
@@ -190,10 +253,7 @@ O sistema exibe o **dashboard administrativo**, refletindo as alterações reali
 **3a. Campo obrigatório não preenchido**  
 - O sistema informa que os campos obrigatórios devem ser preenchidos para concluir a operação.
 
-**4a. Duplicidade de livro**  
-- O sistema informa que já existe um livro cadastrado com o mesmo título.
-
-**4b. Formato de arquivo inválido**  
+**3b. Formato de arquivo inválido**  
 - O sistema informa que o formato do arquivo enviado não é permitido, indicando o formato correto aceito pelo sistema.
 
 ## DIAGRAMA DE CLASSES
@@ -210,25 +270,41 @@ Fonte: Elaboração própria (2025)
 Protótipos de tela desenvolvidos no Figma, com foco em um layout simples, intuitivo e confortável para o usuário, utilizando bordas arredondadas e elementos visuais de maior destaque para facilitar a navegação e a usabilidade.
 
 ![Pagina inicial](imgs/Pagina%20inicial.png)
-![Pagina inicial](imgs/Livro.png)
-![Pagina inicial](imgs/Ler%20Livro%203d.png)
-![Pagina inicial](imgs/Tela%20cheia.png)
-![Pagina inicial](imgs/Sobre.png)
-![Pagina inicial](imgs/Adm%20perfil.png)
-![Pagina inicial](imgs/Editar%20Pagina.png)
-![Pagina inicial](imgs/Cadastro.png)
-![Pagina inicial](imgs/log%20in.png)
+![Pagina livro](imgs/Livro.png)
+![Pagina de visualização do livro](imgs/Ler%20Livro%203d.png)
+![Pagina ver livro em tela cheia](imgs/Tela%20cheia.png)
+![Pagina Sobre](imgs/Sobre.png)
+![Pagina do admin](imgs/Adm%20perfil.png)
+![Pagina gerenciar páginas](imgs/Editar%20Pagina.png)
+![Pagina de cadastro](imgs/Cadastro.png)
+![login](imgs/log%20in.png)
 
 
-## REFERÊNCIAS BIBLIOGRÁFICAS CONSULTADAS:
+## CONCLUSÃO
 
+O desenvolvimento do projeto Interactive FlipBook possibilitou a aplicação prática dos conhecimentos adquiridos ao longo do curso técnico integrado em Informática para Internet, integrando áreas como desenvolvimento web, design de interfaces, usabilidade e engenharia de software. A proposta atendeu ao objetivo de transformar o livro “Um Festival de Mudanças” em uma plataforma digital interativa, ampliando seu alcance e tornando o conteúdo mais acessível e atrativo.
 
+A plataforma contribui para a divulgação de um projeto de extensão, reforçando a importância da educação ambiental e do uso de tecnologias digitais no contexto educacional. Recursos como o efeito de livro 3D, a responsividade e a personalização visual proporcionam uma experiência de leitura inovadora e alinhada às práticas atuais de interação digital.
 
+Além disso, o sistema conta com um painel administrativo intuitivo, permitindo a gestão autônoma do conteúdo e garantindo facilidade de manutenção e atualização da obra digital. Dessa forma, o Interactive FlipBook evidencia o potencial da tecnologia como ferramenta de apoio à educação e à extensão acadêmica, fortalecendo a integração entre instituição, estudantes e comunidade.
 
+## REFERÊNCIAS BIBLIOGRÁFICAS:
 
+BRASIL. Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte. Projeto Pedagógico do Curso Técnico Integrado em Informática para Internet. IFRN, 2025.
 
+DJANGO SOFTWARE FOUNDATION. Django Documentation. Disponível em: https://docs.djangoproject.com/. Acesso em: 2025.
 
+BOOTSTRAP. Bootstrap Documentation. Disponível em: https://getbootstrap.com/. Acesso em: 2025.
 
+TURN.JS. Turn.js – HTML5 Flipbook Plugin. Disponível em: https://www.turnjs.com/. Acesso em: 2025.
+
+FIGMA. Figma: Interface Design Tool. Disponível em: https://www.figma.com/. Acesso em: 2025.
+
+NIELSEN, Jakob. Usability Engineering. San Francisco: Morgan Kaufmann, 1994.
+
+PRESSMAN, Roger S. Engenharia de Software: uma abordagem profissional. 8. ed. Porto Alegre: AMGH, 2016.
+
+SOMMERVILLE, Ian. Engenharia de Software. 10. ed. São Paulo: Pearson, 2019.
 
 
 
