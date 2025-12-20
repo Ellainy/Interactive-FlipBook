@@ -10,13 +10,8 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <style>
-      :root {
-        --sidebar-width: 250px;
-      }
-      
-      .rounded-section {
-        border-radius: 15px;
-      }
+      :root { --sidebar-width: 250px; }
+      .rounded-section { border-radius: 15px; }
       .sidebar {
         width: var(--sidebar-width);
         color: white;
@@ -26,25 +21,10 @@
         transition: all 0.3s;
         z-index: 1000;
       }
-      
-      .sidebar-header {
-        padding: 20px;
-      }
-      
-      .sidebar-menu {
-        padding: 20px 0;
-      }
-      
-      .sidebar-menu ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      
-      .sidebar-menu li {
-        margin-bottom: 5px;
-      }
-      
+      .sidebar-header { padding: 20px; }
+      .sidebar-menu { padding: 20px 0; }
+      .sidebar-menu ul { list-style: none; padding: 0; margin: 0; }
+      .sidebar-menu li { margin-bottom: 5px; }
       .sidebar-menu a {
         color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
@@ -53,37 +33,25 @@
         align-items: center;
         transition: all 0.3s;
       }
-      
-      .sidebar-menu a:hover,
-      .sidebar-menu a.active {
+      .sidebar-menu a:hover, .sidebar-menu a.active {
         color: white;
         background-color: rgba(255, 255, 255, 0.1);
         border-left: 4px solid {{ identidade_visual.cor_hover }};
       }
-      
-      .sidebar-menu i {
-        margin-right: 10px;
-        width: 20px;
-        text-align: center;
-      }
-      
+      .sidebar-menu i { margin-right: 10px; width: 20px; text-align: center; }
       .main-content {
         margin-left: var(--sidebar-width);
         padding: 20px;
         transition: all 0.3s;
       }
-      
       .header {
         background-color: white;
         padding: 15px 20px;
         border-radius: 15px;
         margin-bottom: 20px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display: flex; justify-content: space-between; align-items: center;
       }
-      
       .dashboard-card {
         background-color: white;
         border-radius: 15px;
@@ -92,129 +60,25 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         height: 100%;
       }
-      
       .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #eee;
+        display: flex; justify-content: space-between; align-items: center;
+        margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee;
       }
-      
-      .card-header h5 {
-        margin: 0;
-        font-weight: 600;
-      }
-      
-      .users-table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      
-      .users-table th {
-        text-align: left;
-        padding: 10px;
-        border-bottom: 2px solid #eee;
-        color: #666;
-        font-weight: 600;
-      }
-      
-      .users-table td {
-        padding: 10px;
-        border-bottom: 1px solid #eee;
-      }
-      
-      .user-status {
-        display: inline-block;
-        padding: 4px 10px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-      }
-      
-      .page-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 15px;
-        border-bottom: 1px solid #eee;
-        transition: background-color 0.3s;
-      }
-      
-      .page-item:hover {
-        background-color: #f8f9fa;
-      }
-      
-      .page-item:last-child {
-        border-bottom: none;
-      }
-      
-      .page-actions button {
-        margin-left: 5px;
-        padding: 5px 10px;
-        font-size: 0.8rem;
-      }
-
+      .card-header h5 { margin: 0; font-weight: 600; }
       .user-avatar {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 15px;
-    }
-      
-      .color-option {
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
-        margin: 5px;
-        cursor: pointer;
-        border: 3px solid transparent;
-        transition: all 0.3s;
+        width: 40px; height: 40px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center; margin-right: 15px;
       }
-      
-      .color-option:hover,
-      .color-option.active {
-        border-color: #333;
-        transform: scale(1.1);
-      }
-      
-      
-
-      .color-palette {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 10px;
-      }
-      
-
       .sidebar-toggle {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        color: {{ identidade_visual.cor_principal }};
+        display: none; background: none; border: none;
+        font-size: 1.5rem; color: {{ identidade_visual.cor_principal }};
       }
       
       @media (max-width: 992px) {
-        .sidebar {
-          margin-left: calc(-1 * var(--sidebar-width));
-        }
-      
-        .sidebar.active {
-          margin-left: 0;
-        }
-      
-        .main-content {
-          margin-left: 0;
-        }
-      
-        .sidebar-toggle {
-          display: block;
-        }
+        .sidebar { margin-left: calc(-1 * var(--sidebar-width)); }
+        .sidebar.active { margin-left: 0; }
+        .main-content { margin-left: 0; }
+        .sidebar-toggle { display: block; }
       }
     </style>
   </head>
@@ -223,18 +87,14 @@
 
       <div class="sidebar-header">
         <div class="d-flex align-items-center">
-          <button class="sidebar-toggle me-3" id="sidebarToggle"><i class="bi bi-list"></i></button>
+          <button class="sidebar-toggle me-3 text-white" id="sidebarCloseBtn"><i class="bi bi-x-lg"></i></button>
           <div class="d-flex align-items-center">
             <div class="user-avatar"><img class="w-100" src="{% static 'imgs/perfil.png' %}" alt=""></div>
             <div class="user-details">
               <h5 class="m-0">{{ user.username }}</h5>
-              <p class="opacity-75 m-0" style="font-size: 0.85rem;"> {% if user.is_superuser %}
-                <span>Super Admin</span>
-                {% elif user.is_staff %}
-                <span>Staff</span>
-                {% else %}
-                <span>Usuário</span>
-                {% endif %}</p>
+              <p class="opacity-75 m-0" style="font-size: 0.85rem;"> 
+                {% if user.is_superuser %}Super Admin{% elif user.is_staff %}Staff{% else %}Usuário{% endif %}
+              </p>
             </div>
           </div>
         </div>
@@ -242,47 +102,60 @@
 
       <div class="sidebar-menu">
         <ul>
-          <li class="ms-2 h6 lead">Nevegação</li>
+          <li class="ms-2 h6 lead">Navegação</li>
           <hr>
-          <li>
-            <a class="{% if request.resolver_match.url_name == 'administracao' %}active{% endif %}" id="dashboardLink" href="{% url 'administracao' %}"><i class="bi bi-speedometer2"></i>Dashboard</a>
-          </li>
-          <li>
-            <a href="{% url "index" %}"><i class="bi bi-house-fill"></i> Incio</a>
-          </li>
-          <li>
-            <a href="{% url "livro" %}"><i class="bi bi-book-half"></i> Livro</a>
-          </li>
-          <li>
-            <a href="{% url "sobre" %}"><i class="bi bi-info-circle-fill"></i> Sobre</a>
-          </li>
+          <li><a class="{% if request.resolver_match.url_name == 'administracao' %}active{% endif %}" href="{% url 'administracao' %}"><i class="bi bi-speedometer2"></i>Dashboard</a></li>
+          <li><a href="{% url 'index' %}"><i class="bi bi-house-fill"></i> Início</a></li>
+          <li><a href="{% url 'livro' %}"><i class="bi bi-book-half"></i> Livro</a></li>
+          <li><a href="{% url 'sobre' %}"><i class="bi bi-info-circle-fill"></i> Sobre</a></li>
+          
           {% if request.user.is_superuser %}
           <li class="ms-2 h6 lead">Administração do sistema</li>
           <hr>
-             <a class="{% if request.resolver_match.url_name == 'layout' %}active{% endif %}" href="{% url 'layout' %}" id="designLink"><i class="bi bi-palette"></i>Design do Site</a>
-          <li>
-            <a class="{% if request.resolver_match.url_name == 'paginas' %}active{% endif %}" href="{% url 'paginas' %}" id="pagesLink"><i class="bi bi-files"></i>Gerenciar Páginas</a>
-          </li>
-          <li>
-            <a class="{% if request.resolver_match.url_name == 'users' %}active{% endif %}" href="{% url 'users' %}" id="usersLink"><i class="bi bi-people"></i>Gerenciamento de Usuários</a>
-          </li>
-          <li>
-            <a class="{% if request.resolver_match.url_name == 'configuracoes' %}active{% endif %}" href="{% url 'configuracoes' %}" id="settingsLink"><i class="bi bi-gear"></i>Configurações</a>
-          </li>
+          <li><a class="{% if request.resolver_match.url_name == 'layout' %}active{% endif %}" href="{% url 'layout' %}"><i class="bi bi-palette"></i>Design do Site</a></li>
+          <li><a class="{% if request.resolver_match.url_name == 'paginas' %}active{% endif %}" href="{% url 'paginas' %}"><i class="bi bi-files"></i>Gerenciar Páginas</a></li>
+          <li><a class="{% if request.resolver_match.url_name == 'users' %}active{% endif %}" href="{% url 'users' %}"><i class="bi bi-people"></i>Usuários</a></li>
+          <li><a class="{% if request.resolver_match.url_name == 'configuracoes' %}active{% endif %}" href="{% url 'configuracoes' %}"><i class="bi bi-gear"></i>Configurações</a></li>
           {% endif %}
         </ul>
       </div>
 
       <div class="sidebar-footer p-3 mt-auto">
         <div class="text-center">
-          <a href="{% url 'sair' %}" class="btn btn-outline-light w-100" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i> Sair</a>
+          <a href="{% url 'sair' %}" class="btn btn-outline-light w-100"><i class="bi bi-box-arrow-right me-2"></i> Sair</a>
         </div>
       </div>
     </div>
+
     <div class="main-content" id="mainContent">
       {% block content %}
-
       {% endblock %}
     </div>
+
+    <script>
+      $(document).ready(function() {
+        // Abrir/Fechar ao clicar no botão hamburger (que fica nos outros templates)
+        $(document).on('click', '#sidebarToggle', function() {
+            $('#sidebar').toggleClass('active');
+        });
+        
+        // Botão X para fechar dentro do menu (adicionado acima)
+        $('#sidebarCloseBtn').click(function() {
+            $('#sidebar').removeClass('active');
+        });
+
+        // Fechar ao clicar fora no mobile
+        $(document).click(function(event) {
+            var $target = $(event.target);
+            if(window.innerWidth <= 992) {
+                if(!$target.closest('#sidebar').length && 
+                   !$target.closest('#sidebarToggle').length && 
+                   $('#sidebar').hasClass('active')) {
+                    $('#sidebar').removeClass('active');
+                }
+            }
+        });
+      });
+    </script>
   </body>
 </html>

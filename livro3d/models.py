@@ -76,7 +76,3 @@ class IdentidadeVisual(models.Model):
     cor_principal = models.CharField(max_length = 7, default ="#005EFF")
     cor_secundaria = models.CharField(max_length = 7, default ="#005EFF")
     cor_hover = models.CharField(max_length = 7, default ="#005EFF")
-    
-
-
-

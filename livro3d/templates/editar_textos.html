@@ -1,0 +1,66 @@
+{% extends 'userbase.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-1">Editar Textos do Site</h2>
+            <p class="text-muted">Escolha qual seção do site você deseja alterar.</p>
+        </div>
+        <a href="{% url 'administracao' %}" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Voltar ao Painel
+        </a>
+    </div>
+
+    <div class="row g-4">
+        
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-primary">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3 text-primary">
+                        <i class="bi bi-house-door-fill display-4"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">Página Inicial</h5>
+                    <p class="card-text text-muted small">Altere o título principal, o subtítulo e o texto de boas-vindas da home.</p>
+                    <a href="{% url 'indexform' %}" class="btn btn-primary w-100 mt-2">
+                        Editar Home
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-info">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3 text-info">
+                        <i class="bi bi-info-circle-fill display-4"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">Sobre Nós</h5>
+                    <p class="card-text text-muted small">Edite o texto que explica o projeto, a equipe e a história.</p>
+                    <a href="{% url 'sobreform' %}" class="btn btn-info text-white w-100 mt-2">
+                        Editar Sobre
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-success">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3 text-success">
+                        <i class="bi bi-book-half display-4"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">Descrição do Livro</h5>
+                    <p class="card-text text-muted small">Altere o texto de apresentação que aparece ao lado da capa do livro.</p>
+                    <a href="{% url 'livroform' %}" class="btn btn-success w-100 mt-2">
+                        Editar Livro
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

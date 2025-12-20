@@ -2,7 +2,7 @@
 {% load static crispy_forms_tags %}
 
 {% block content %}
-<div class="form-container col-md-4 m-auto">
+<div class="form-container col-md-8 col-lg-6 m-auto">
   
   <h1 class="text-center fw-bold" style="font-size: 2.8rem; margin-bottom: 0.5rem; font-weight: 600;">CRIAR CONTA</h1>
   <p class="text-center" style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem;">
@@ -12,7 +12,13 @@
   <form method="post" id="signupForm">
     {% csrf_token %}
     
-    {{ form|crispy }}
+    <div class="row">
+        {% for field in form %}
+            <div class="col-12 col-md-6 mb-2"> 
+                {{ field|as_crispy_field }}
+            </div>
+        {% endfor %}
+    </div>
     
     <button type="submit" class="form-button w-100 mt-3">Criar Conta</button>
   </form>

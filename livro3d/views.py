@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from .models import Index, Livro, Sobre, Pagina, Site, IdentidadeVisual, ModoLeitura, Image
 from .forms import LivroForm, IndexForm, SobreForm, PaginaForm, SiteForm, IdentidadeVisualForm, ModoLeituraForm, ImageForm
 
-
 def index(request):
-    index = Index.objects.first()  
-
+    index = Index.objects.first()   
     return render(request, 'index.html', {
         'index': index,
     })
@@ -14,7 +13,7 @@ def index(request):
 def livro(request):
     livro = Livro.objects.first() 
     modoleitura = ModoLeitura.objects.first() 
-    galeria = Image.objects.all()
+    galeria = Image.objects.all() # Pega todas as fotos para o carrossel
 
     return render(request, 'livro.html', {
         'livro': livro,
@@ -38,8 +37,6 @@ def sobre(request):
         'livro': livro
     })
 
-
-
 def layout(request):
     identidade = IdentidadeVisual.objects.first()
 
@@ -59,15 +56,18 @@ def layout(request):
         'form': form,
     })
 
+# --- PÁGINAS ADMINISTRATIVAS ---
 
 @login_required
 def administracao(request):
-    return render(request, 'paineladmin.html')
+    # Envia o ID do livro para o botão de deletar funcionar no painel
+    livro = Livro.objects.first()
+    livro_id = livro.id if livro else None
+    return render(request, 'paineladmin.html', {'livro_id': livro_id})
 
 @login_required
 def configuracoes(request):
     site = Site.objects.first()
-    siteForm = SiteForm(request.POST, request.FILES) if request.method == "POST" else SiteForm(instance=site) 
     
     if request.method == "POST":
         siteForm = SiteForm(request.POST, request.FILES, instance=site)
@@ -85,14 +85,12 @@ def configuracoes(request):
 @login_required
 def indexform(request):
     home = Index.objects.first()
-    home_form = IndexForm(request.POST, request.FILES) if request.method == "POST" else IndexForm(instance=home) 
     
-
     if request.method == "POST":
+        home_form = IndexForm(request.POST, request.FILES, instance=home)
         if home_form.is_valid():
             home_form.save()
             return redirect('indexform')
-
     else:
         home_form = IndexForm(instance=home)
 
@@ -106,11 +104,9 @@ def sobreform(request):
 
     if request.method == "POST":
         sobre_form = SobreForm(request.POST, request.FILES, instance=sobre)
-        
         if sobre_form.is_valid():
             sobre_form.save()
             return redirect('sobreform')
-
     else:
         sobre_form = SobreForm(instance=sobre)
 
@@ -124,11 +120,9 @@ def livroform(request):
 
     if request.method == "POST":
         livro_form = LivroForm(request.POST, request.FILES, instance=livro)
-        
         if livro_form.is_valid():
             livro_form.save()
             return redirect('livroform')
-
     else:
         livro_form = LivroForm(instance=livro)
 
@@ -139,12 +133,13 @@ def livroform(request):
 
 @login_required
 def livro_paginas(request):
-    pagina_form = PaginaForm(request.POST, request.FILES) if request.method == "POST" else PaginaForm()
-    
     if request.method == "POST":
+        pagina_form = PaginaForm(request.POST, request.FILES)
         if pagina_form.is_valid():
             pagina_form.save()
             return redirect('livro_paginas')
+    else:
+        pagina_form = PaginaForm()
 
     paginas = Pagina.objects.all()
     return render(request, "livro_paginas.html", {
@@ -170,7 +165,6 @@ def gerenciar_livro(request):
         if livro_form.is_valid():
             livro_form.save()
         
-    
         if pagina_form.is_valid(): 
             pagina_form.save()
 
@@ -189,29 +183,47 @@ def gerenciar_livro(request):
         'livro': livro,
     })
 
+# --- GESTÃO DA GALERIA (CARROSSEL) ---
+
 @login_required
 def imageform(request):
-    image = Image.objects.first()
-    image_form = ImageForm(request.POST, request.FILES) if request.method == "POST" else ImageForm(instance=image) 
-    
-
+    # Alterado: Não usamos 'instance=image' porque queremos ADICIONAR novas fotos, não substituir a mesma
     if request.method == "POST":
+        image_form = ImageForm(request.POST, request.FILES)
         if image_form.is_valid():
             image_form.save()
             return redirect('imageform')
-
     else:
-        image_form = ImageForm(instance=image)
+        image_form = ImageForm()
 
-    return render(request, "imageform.html", {
-        "image_form": image_form
+    # Busca todas as imagens para exibir na lista lateral
+    imagens = Image.objects.all()
+
+    # Nota: Renderiza galeriaform.html (o template que criamos para gerenciar isso)
+    return render(request, "galeriaform.html", {
+        "form": image_form, # Mudado de image_form para form para bater com o template
+        "imagens": imagens
     })
+
+@login_required
+def excluir_foto(request, foto_id):
+    foto = get_object_or_404(Image, id=foto_id)
+    foto.delete()
+    return redirect('imageform')
+
+# --- FUNÇÕES DE DELEÇÃO E EDIÇÃO EXTRAS ---
 
 @login_required
 def deletar_livro(request, livro_id):
     livro = get_object_or_404(Livro, id=livro_id)
-    if request.method == "POST":
-        livro.delete()
-        return redirect('gerenciar_livro')
-    return redirect('gerenciar_livro') 
-    
+    # Permite deletar via GET (clique no link) ou POST
+    livro.delete()
+    return redirect('administracao')
+
+@login_required
+def editar_textos(request):
+    """
+    View para renderizar o menu de seleção de textos para editar
+    (Home, Sobre, Livro)
+    """
+    return render(request, 'editar_textos.html')

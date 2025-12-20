@@ -1,0 +1,86 @@
+{% extends 'userbase.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-1">Gerenciar Carrossel</h2>
+            <p class="text-muted">Adicione ou remova as fotos do carrossel do livro.</p>
+        </div>
+        <a href="{% url 'administracao' %}" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Voltar
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="bi bi-cloud-arrow-up-fill me-2"></i>Nova Foto</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Imagem:</label>
+                            {{ form.imagem }} 
+                        </div>
+                        {% if form.titulo %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Título (Opcional):</label>
+                            {{ form.titulo }}
+                        </div>
+                        {% endif %}
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-success fw-bold">
+                                <i class="bi bi-plus-circle me-2"></i>Adicionar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light d-flex justify-content-between">
+                    <h5 class="mb-0">Fotos Atuais</h5>
+                    <span class="badge bg-primary">{{ imagens|length }} fotos</span>
+                </div>
+                <div class="card-body">
+                    {% if imagens %}
+                        <div class="row g-3">
+                            {% for img in imagens %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="position-relative" style="height: 120px; overflow: hidden; border-radius: 8px;">
+                                        <img src="{{ img.imagem.url }}" class="w-100 h-100" style="object-fit: cover;" alt="Foto">
+                                    </div>
+                                    <div class="card-body p-2 text-center">
+                                        <a href="{% url 'excluir_foto' img.id %}" class="btn btn-danger btn-sm w-100" 
+                                           onclick="return confirm('Tem certeza que deseja apagar?');">
+                                            <i class="bi bi-trash-fill"></i> Excluir
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-center text-muted py-5">O carrossel está vazio.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    input[type="file"], input[type="text"] {
+        display: block; width: 100%; padding: 0.375rem 0.75rem;
+        border: 1px solid #ced4da; border-radius: 0.375rem;
+    }
+</style>
+{% endblock %}

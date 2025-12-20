@@ -155,3 +155,15 @@
 .form-label {
   color: #000000 !important;
 }
+
+.cadastro-container {
+    background-color: #f4f6f9;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+    border-color: #86b7fe;
+}
