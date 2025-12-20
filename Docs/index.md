@@ -1,15 +1,5 @@
 # INTERACTIVE FLIPBOOK
 
-<br><br><br><br><br>
-
-
-## ELLAINY NAYARA MOTTA DOS SANTOS  
-## MATEUS COSME
-
-<br><br><br>
-
-# INTERACTIVE FLIPBOOK
-
 <br><br>
 
 Trabalho de Conclusão de Curso apresentado como requisito parcial para a obtenção do título de **Técnico Integrado em Informática para Internet** pelo Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte – Campus São Paulo do Potengi.
@@ -19,9 +9,6 @@ Trabalho de Conclusão de Curso apresentado como requisito parcial para a obten�
 **Orientador:** Diego Cirilo
 
 <br><br><br>
-
-### SÃO PAULO DO POTENGI  
-### 2025
 
 
 
