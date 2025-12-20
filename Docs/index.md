@@ -106,7 +106,6 @@ Funcionalidades principais:
 - Leitura em PDF ou **formato flipbook 3D**
 - Experiência responsiva (desktop e mobile)
 - Personalização do site pelo administrador (cores, textos e livro)
-- Página de internacionalização com **notícias e relatos de intercâmbio**
 
 ---
 
@@ -147,7 +146,7 @@ Funcionalidades principais:
 | ------ | ----------------------------------------------------------------------------------- | -------------- |
 | RNF01  | O sistema deve funcionar em ambiente web, compatível com navegadores modernos.      | Organizacional |
 | RNF02  | Deve utilizar HTML, CSS, Python e JavaScript.                                       | Organizacional |
-| RNF03  | Áreas administrativas devem ser restritas a usuários autenticados (incluindo SUAP). | Produto        |
+| RNF03  | Áreas administrativas devem ser restritas a usuários autenticados. | Produto        |
 | RNF04  | As senhas devem ser armazenadas de forma criptografada utilizando os mecanismos de segurança nativos do framework Django.                                           | Produto        |
 | RNF05  | O banco de dados utilizado será o SQLite.                                           | Organizacional |
 | RNF06  | A interface deve ser responsiva e acessível.                                        | Produto        |
