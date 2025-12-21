@@ -5,17 +5,7 @@ A proposta do sistema é criar uma versão digital do livro, proporcionando uma 
 
 ### Tecnologias Utilizadas
 
-**Frontend**  
-[![Frontend](https://skillicons.dev/icons?i=html,css,js,jquery,bootstrap)](https://skillicons.dev)
-
-**Backend**  
-[![Backend](https://skillicons.dev/icons?i=py,django)](https://skillicons.dev)
-
-**Banco de Dados**  
-[![Database](https://skillicons.dev/icons?i=sqlite)](https://skillicons.dev)
-
-**Outros**  
-[![Outros](https://skillicons.dev/icons?i=github)](https://skillicons.dev)
+[![Frontend](https://skillicons.dev/icons?i=html,css,js,jquery,bootstrap)](https://skillicons.dev)[![Backend](https://skillicons.dev/icons?i=py,django)](https://skillicons.dev)[![Database](https://skillicons.dev/icons?i=sqlite)](https://skillicons.dev)[![Outros](https://skillicons.dev/icons?i=github)](https://skillicons.dev)
 
 
 
