@@ -1,19 +1,20 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib.admin.views.decorators import staff_member_required
 from .models import Index, Livro, Sobre, Pagina, Site, IdentidadeVisual, ModoLeitura, Image
-from .forms import LivroForm, IndexForm, SobreForm, PaginaForm, SiteForm, IdentidadeVisualForm, ModoLeituraForm, ImageForm
+from .forms import LivroForm, IndexForm, SobreForm, PaginaForm, SiteForm, IdentidadeVisualForm, ImageForm
 
 def index(request):
-    index = Index.objects.first()   
+    index = Index.objects.first()
+    galeria = Image.objects.all()
     return render(request, 'index.html', {
         'index': index,
+        'galeria': galeria,
     })
 
 def livro(request):
     livro = Livro.objects.first() 
     modoleitura = ModoLeitura.objects.first() 
-    galeria = Image.objects.all() # Pega todas as fotos para o carrossel
+    galeria = Image.objects.all() 
 
     return render(request, 'livro.html', {
         'livro': livro,
@@ -56,11 +57,8 @@ def layout(request):
         'form': form,
     })
 
-# --- PÁGINAS ADMINISTRATIVAS ---
-
 @login_required
 def administracao(request):
-    # Envia o ID do livro para o botão de deletar funcionar no painel
     livro = Livro.objects.first()
     livro_id = livro.id if livro else None
     return render(request, 'paineladmin.html', {'livro_id': livro_id})
@@ -130,7 +128,6 @@ def livroform(request):
         "livro_form": livro_form
     })
 
-
 @login_required
 def livro_paginas(request):
     if request.method == "POST":
@@ -183,11 +180,8 @@ def gerenciar_livro(request):
         'livro': livro,
     })
 
-# --- GESTÃO DA GALERIA (CARROSSEL) ---
-
 @login_required
 def imageform(request):
-    # Alterado: Não usamos 'instance=image' porque queremos ADICIONAR novas fotos, não substituir a mesma
     if request.method == "POST":
         image_form = ImageForm(request.POST, request.FILES)
         if image_form.is_valid():
@@ -196,12 +190,10 @@ def imageform(request):
     else:
         image_form = ImageForm()
 
-    # Busca todas as imagens para exibir na lista lateral
     imagens = Image.objects.all()
 
-    # Nota: Renderiza galeriaform.html (o template que criamos para gerenciar isso)
     return render(request, "galeriaform.html", {
-        "form": image_form, # Mudado de image_form para form para bater com o template
+        "form": image_form,
         "imagens": imagens
     })
 
@@ -211,19 +203,12 @@ def excluir_foto(request, foto_id):
     foto.delete()
     return redirect('imageform')
 
-# --- FUNÇÕES DE DELEÇÃO E EDIÇÃO EXTRAS ---
-
 @login_required
 def deletar_livro(request, livro_id):
     livro = get_object_or_404(Livro, id=livro_id)
-    # Permite deletar via GET (clique no link) ou POST
     livro.delete()
     return redirect('administracao')
 
 @login_required
 def editar_textos(request):
-    """
-    View para renderizar o menu de seleção de textos para editar
-    (Home, Sobre, Livro)
-    """
     return render(request, 'editar_textos.html')

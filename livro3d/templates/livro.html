@@ -6,55 +6,58 @@ Livro
 {% endblock %}
 
 {% block content %}
+
 <div class="fade-in rounded-bottom-5 d-flex py-5 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" 
      {% if identidade_visual.cor_principal %}style="background-color: {{ identidade_visual.cor_principal }};"{% endif %}>
-    <div class="gradient py-5 row mx-auto">
-      <div class="container d-flex flex-column align-items-center text-white">
-        <img src="{% static 'imgs/whitebook.svg' %}" alt="Livro Branco" height="50" />
+    <div class="gradient py-5 row mx-auto w-100">
+      <div class="container d-flex flex-column align-items-center text-white text-center">
+        <i class="bi bi-book display-4 mb-3"></i>
         <h1 class="my-4 display-4 fw-bold mb-4">Selecione o modo de leitura</h1>
         <p class="lead mb-4">{{ livro.frase_inicio }}</p>
       </div>
   </div>
 </div>
 
-
-<div class="container">
+<div class="container" style="margin-top: -50px;">
   <div class="row justify-content-center p-4">
     
-    <div class="col-md-5">
-      <div class="card shadow-lg text-center p-4 h-100" style="border-radius: 15px">
+    <div class="col-md-5 mb-4">
+      <div class="card shadow-lg text-center p-4 h-100 border-0" style="border-radius: 15px">
         {% if livro.capa %}
-        <img src="{{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Capa Livro 3D" style="width: 80px;" />
+        <img src="{{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Capa Livro 3D" style="width: 100px; height: auto;" />
         {% else %}
         <img src="{% static 'imgs/placeholder.webp' %}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Placeholder" style="width: 80px;" />
         {% endif %}
         
-        <div class="card-body">
-          <h5 class="card-title fw-bold">Leia o Livro em 3D</h5>
-          <p class="card-text">Explore o livro interativo em 3D com animações imersivas.</p>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title fw-bold mt-3">Leia o Livro em 3D</h5>
+          <p class="card-text text-muted">Explore o livro interativo em 3D com animações imersivas.</p>
           
-          <a href="{% url 'lerlivro' %}" class="btn btn-sistema btn-lg mt-2">Acessar Livro 3D</a>
+          <div class="mt-auto pt-3">
+             <a href="{% url 'lerlivro' %}" class="btn btn-sistema btn-lg w-100">Acessar Livro 3D</a>
+          </div>
         </div>
       </div>
     </div>
 
     {% if livro.pdf %}
-    <div class="col-md-5">
-      <div class="card shadow-lg text-center p-4 h-100" style="border-radius: 15px">
-        {% if livro.capa %}
-        <img src="{{ livro.capa.url }}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Capa Livro PDF" style="width: 80px;" />
-        {% else %}
-        <img src="{% static 'imgs/placeholder.webp' %}" class="card-img-top mx-auto mt-3 rounded shadow" alt="Placeholder" style="width: 80px;" />
-        {% endif %}
+    <div class="col-md-5 mb-4">
+      <div class="card shadow-lg text-center p-4 h-100 border-0" style="border-radius: 15px">
+        <div class="mx-auto mt-3 d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm" style="width: 100px; height: 100px;">
+             <i class="bi bi-file-earmark-pdf text-danger" style="font-size: 3rem;"></i>
+        </div>
         
-        <div class="card-body">
-          <h5 class="card-title fw-bold">Ler Livro em PDF</h5>
-          <p class="card-text">Leia o livro em PDF ou faça o download para leitura offline.</p>
-          <a href="{{ livro.pdf.url }}" class="btn btn-sistema btn-lg mt-2" target="_blank" rel="noopener noreferrer">Abrir PDF</a>
-          <p class="text-muted mt-3 small">
-            <i class="fas fa-info-circle me-1"></i>
-            Tamanho: {{ livro.pdf.size|filesizeformat }}
-          </p>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title fw-bold mt-3">Ler Livro em PDF</h5>
+          <p class="card-text text-muted">Leia o livro em formato tradicional ou faça o download.</p>
+          
+          <div class="mt-auto pt-3">
+              <a href="{{ livro.pdf.url }}" class="btn btn-outline-danger btn-lg w-100" target="_blank" rel="noopener noreferrer">Abrir PDF</a>
+              <p class="text-muted mt-2 small mb-0">
+                <i class="bi bi-hdd me-1"></i>
+                Tamanho: {{ livro.pdf.size|filesizeformat }}
+              </p>
+          </div>
         </div>
       </div>
     </div>
@@ -63,19 +66,19 @@ Livro
   </div>
 </div>
 
-<section id="sobre" class="py-5 w-100 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" 
-         {% if identidade_visual.cor_principal %}style="background-color: {{ identidade_visual.cor_principal }};"{% endif %}>
+<section id="sobre" class="py-5 w-100 mt-5 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" 
+          {% if identidade_visual.cor_principal %}style="background-color: {{ identidade_visual.cor_principal }};"{% endif %}>
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-lg-5">
-        <h2 class="fw-bold mb-4 text-white">Sinopse:</h2>
-        <p class="mb-4 text-white">{{ livro.descricao }}</p>
+      <div class="col-lg-5 text-white mb-4 mb-lg-0">
+        <h2 class="fw-bold mb-4"><i class="bi bi-info-circle me-2"></i>Sinopse</h2>
+        <p class="mb-4 lead" style="text-align: justify; opacity: 0.9;">{{ livro.descricao }}</p>
       </div>
-      <div class="col-lg-7 d-flex">
+      <div class="col-lg-7 d-flex justify-content-center justify-content-lg-end">
         {% if livro.capa %}
-            <img src="{{ livro.capa.url }}" height="250" class="rounded shadow ms-auto" alt="Capa do Livro">
+            <img src="{{ livro.capa.url }}" class="img-fluid rounded shadow-lg" style="max-height: 350px;" alt="Capa do Livro">
         {% else %}
-            <img src="{% static 'imgs/placeholder.webp' %}" height="250" class="rounded shadow ms-auto" alt="Sem Capa">
+            <div class="bg-white rounded p-5 text-muted shadow">Sem Capa Disponível</div>
         {% endif %}
       </div>
     </div>
@@ -83,14 +86,10 @@ Livro
 </section>
 
 <div class="container my-5 fade-in">
-  <h2 class="fw-bold verdeTexto text-center mb-4">Galeria do Projeto</h2>
-  <div class="row d-flex justify-content-center">
-    {% for foto in galeria %}
-    <div class="col-md-4 mb-4"> <img class="w-100 img-fluid shadow rounded" src="{{ foto.imagem.url }}" alt="Foto da galeria">
-    </div>
-    {% empty %}
-    <p class="text-center text-muted">Nenhuma imagem na galeria.</p>
-    {% endfor %}
-  </div>
+  <h2 class="fw-bold verdeTexto text-center mb-5">Galeria do Projeto</h2>
+  
+  {% include '_carousel.html' %}
+
 </div>
+
 {% endblock %}

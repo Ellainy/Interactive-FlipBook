@@ -1,0 +1,140 @@
+{% load static %}
+
+<style>
+  .galeria-wrapper {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .galeria-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth; /* Animação suave nativa */
+    gap: 15px;
+    padding: 10px 0;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .galeria-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .galeria-item {
+    min-width: 250px;
+    max-width: 250px;
+    flex: 0 0 auto;
+    transition: transform 0.3s;
+  }
+
+  /* Efeito de zoom leve ao passar o mouse */
+  .galeria-item:hover {
+    transform: scale(1.02);
+  }
+
+  .galeria-img {
+    width: 100%;
+    height: 180px; 
+    object-fit: cover; 
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: block; 
+    background-color: #e0e0e0; 
+  }
+
+  /* Botões de Navegação (Setas) */
+  .btn-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    opacity: 0; /* Escondido por padrão para ficar mais limpo */
+    transition: opacity 0.3s, background 0.3s;
+  }
+  
+  /* Mostra as setas só quando passa o mouse na galeria */
+  .galeria-wrapper:hover .btn-nav {
+    opacity: 1;
+  }
+
+  .btn-nav:hover { background-color: rgba(0, 0, 0, 0.9); }
+  .btn-prev { left: -15px; }
+  .btn-next { right: -15px; }
+
+  @media (max-width: 768px) {
+    .btn-nav { display: none; } 
+  }
+</style>
+
+<div class="container position-relative px-3">
+  {% if galeria %}
+    <div class="galeria-wrapper" onmouseenter="pausarAutoScroll()" onmouseleave="iniciarAutoScroll()">
+      
+      <button class="btn-nav btn-prev" onclick="moverGaleria(-1)">&#10094;</button>
+
+      <div class="galeria-container" id="galeriaScroll">
+        {% for foto in galeria %}
+          <div class="galeria-item">
+            {% if foto.arquivo %}
+              <img src="{{ foto.arquivo.url }}" class="galeria-img">
+            {% elif foto.imagem %}
+              <img src="{{ foto.imagem.url }}" class="galeria-img">
+            {% elif foto.image %}
+              <img src="{{ foto.image.url }}" class="galeria-img">
+            {% elif foto.foto %}
+              <img src="{{ foto.foto.url }}" class="galeria-img">
+            {% else %}
+               <div class="galeria-img d-flex align-items-center justify-content-center text-muted">?</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <button class="btn-nav btn-next" onclick="moverGaleria(1)">&#10095;</button>
+      
+    </div>
+  {% else %}
+    <p class="text-center text-muted">Nenhuma foto encontrada.</p>
+  {% endif %}
+</div>
+
+<script>
+  const container = document.getElementById('galeriaScroll');
+  const scrollAmount = 300;
+  let autoScrollInterval;
+  function moverGaleria(direcao) {
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    if (direcao === 1 && container.scrollLeft >= maxScroll - 10) {
+      container.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+    else if (direcao === -1 && container.scrollLeft <= 0) {
+      container.scrollTo({ left: maxScroll, behavior: 'smooth' });
+    } 
+    else {
+      container.scrollBy({ left: direcao * scrollAmount, behavior: 'smooth' });
+    }
+  }
+  function iniciarAutoScroll() {
+    if (autoScrollInterval) clearInterval(autoScrollInterval);
+    autoScrollInterval = setInterval(() => {
+      moverGaleria(1);
+    }, 2000);
+  }
+  function pausarAutoScroll() {
+    clearInterval(autoScrollInterval);
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    iniciarAutoScroll();
+  });
+</script>
