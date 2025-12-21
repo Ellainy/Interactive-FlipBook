@@ -259,23 +259,41 @@ Fonte: Elaboração própria (2025)
 Protótipos de tela inicialmente planejados desenvolvidos no Figma, com foco em um layout simples, intuitivo e confortável para o usuário, utilizando bordas arredondadas e elementos visuais de maior destaque para facilitar a navegação e a usabilidade.
 
 ![Pagina inicial](imgs/Pagina%20inicial.png)
-Página inicial do sistema.
+
+Página inicial do sistema, responsável por apresentar o projeto Interactive FlipBook, destacando sua proposta, identidade visual e principais áreas de navegação, servindo como ponto de entrada para os usuários.
+
 ![Pagina livro](imgs/Livro.png)
-Pagina de informações do livro, mostra botões que redirecinam para a visualização do livr0 3d e em PDF.
+
+Página destinada à apresentação das informações gerais do livro “Um Festival de Mudanças”, contendo descrição, capa e botões que direcionam o usuário para a visualização do conteúdo em formato Flipbook 3D ou PDF.
+
 ![Pagina de visualização do livro](imgs/Ler%20Livro%203d.png)
-Páginas de visualização do livro em formato Flipbook.
+
+Interface de leitura do livro em formato Flipbook 3D, proporcionando uma experiência interativa e dinâmica, com navegação semelhante à de um livro físico.
+
 ![Pagina ver livro em tela cheia](imgs/Tela%20cheia.png)
+
+Modo de leitura em tela cheia, permitindo maior imersão no conteúdo, melhor aproveitamento do espaço da tela e maior conforto visual ao usuário.
+
 ![Pagina Sobre](imgs/Sobre.png)
-Página sobre mostra informações dos projeto, componentes.
+
+Página institucional que apresenta informações sobre o projeto, seus objetivos, contexto de desenvolvimento e os integrantes envolvidos na produção do sistema.
+
 ![Pagina do admin](imgs/Adm%20perfil.png)
-Página de deshbord onde mostra as opções de gerenciamento do administrador.
+
+Página restrita aos administradores do sistema, onde são exibidas as principais funcionalidades de gerenciamento, como controle de conteúdo, personalização visual e administração geral da plataforma.
+
 ![Pagina gerenciar páginas](imgs/Editar%20Pagina.png)
-Gerenciamento das páginas do sistema.
+
+Interface administrativa destinada ao cadastro, edição e exclusão das páginas do livro e demais conteúdos do sistema, permitindo atualizações dinâmicas de forma simples e organizada.
+
 ![Pagina de cadastro](imgs/Cadastro.png)
-Página de cadastro.
+
+Interface administrativa destinada ao cadastro, edição e exclusão das páginas do livro e demais conteúdos do sistema, permitindo atualizações dinâmicas de forma simples e organizada.
+
 ![login](imgs/log%20in.png)
 Página de login.
 
+Página destinada à autenticação dos usuários, permitindo o acesso às funcionalidades restritas do sistema de acordo com o perfil do usuário.
 
 ## CONCLUSÃO
 
