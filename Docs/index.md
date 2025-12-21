@@ -259,14 +259,22 @@ Fonte: Elaboração própria (2025)
 Protótipos de tela inicialmente planejados desenvolvidos no Figma, com foco em um layout simples, intuitivo e confortável para o usuário, utilizando bordas arredondadas e elementos visuais de maior destaque para facilitar a navegação e a usabilidade.
 
 ![Pagina inicial](imgs/Pagina%20inicial.png)
+Página inicial do sistema.
 ![Pagina livro](imgs/Livro.png)
+Pagina de informações do livro, mostra botões que redirecinam para a visualização do livr0 3d e em PDF.
 ![Pagina de visualização do livro](imgs/Ler%20Livro%203d.png)
+Páginas de visualização do livro em formato Flipbook.
 ![Pagina ver livro em tela cheia](imgs/Tela%20cheia.png)
 ![Pagina Sobre](imgs/Sobre.png)
+Página sobre mostra informações dos projeto, componentes.
 ![Pagina do admin](imgs/Adm%20perfil.png)
+Página de deshbord onde mostra as opções de gerenciamento do administrador.
 ![Pagina gerenciar páginas](imgs/Editar%20Pagina.png)
+Gerenciamento das páginas do sistema.
 ![Pagina de cadastro](imgs/Cadastro.png)
+Página de cadastro.
 ![login](imgs/log%20in.png)
+Página de login.
 
 
 ## CONCLUSÃO
