@@ -3,12 +3,6 @@ Este projeto faz parte de uma ação de extensão do IFRN – Campus São Paulo 
 
 A proposta do sistema é criar uma versão digital do livro, proporcionando uma experiência interativa em 3D, com gerenciamento dinâmico de páginas e conteúdos através de um sistema web.
 
-### Tecnologias Utilizadas
-
-[![Frontend](https://skillicons.dev/icons?i=html,css,js,jquery,bootstrap)](https://skillicons.dev)[![Backend](https://skillicons.dev/icons?i=py,django)](https://skillicons.dev)[![Database](https://skillicons.dev/icons?i=sqlite)](https://skillicons.dev)[![Outros](https://skillicons.dev/icons?i=github)](https://skillicons.dev)
-
-
-
 ## Tecnologias Utilizadas
 - **Frontend:** HTML, CSS, Bootstrap, JavaScript, jQuery, Turn.js
 - **Backend:** Python, Django, Pillow
