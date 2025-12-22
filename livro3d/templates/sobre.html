@@ -29,8 +29,8 @@
             <div class="col-md-4">
                 <div class="bg-white rounded-4 p-4"
                     style="height: 100%; transition: transform 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                    <div class="text-white rounded-circle d-flex align-items-center justify-content-center mb-2 mx-auto  {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}"
-                        style="width: 70px; height: 70px;">
+                    <div class="text-white rounded-circle d-flex align-items-center justify-content-center mb-2 mx-auto {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" 
+                         style="width: 70px; height: 70px; background-color: {% if identidade_visual.cor_principal %}{{ identidade_visual.cor_principal }}{% else %}#000000{% endif %};">
                         <h3 class="m-0">1</h3>
                     </div>
                     <p class="text-center">{% if sobre.objetivo_1 %}{{ sobre.objetivo_1 }}{% else %}Adicione um objetivo.{% endif %}</p>
@@ -39,8 +39,8 @@
             <div class="col-md-4">
                 <div class="bg-white rounded-4 p-4"
                     style="height: 100%; transition: transform 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                     <div class="text-white rounded-circle d-flex align-items-center justify-content-center mb-2 mx-auto  {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}"
-                        style="width: 70px; height: 70px;">
+                    <div class="text-white rounded-circle d-flex align-items-center justify-content-center mb-2 mx-auto {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" 
+                         style="width: 70px; height: 70px; background-color: {% if identidade_visual.cor_principal %}{{ identidade_visual.cor_principal }}{% else %}#000000{% endif %};">
                         <h3 class="m-0">2</h3>
                     </div>
                     <p class="text-center">{% if sobre.objetivo_2 %}{{ sobre.objetivo_2 }}{% else %}Adicione o segundo objetivo.{% endif %}</p>
@@ -49,11 +49,11 @@
             <div class="col-md-4">
                 <div class="bg-white rounded-4 p-4"
                     style="height: 100%; transition: transform 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                     <div class="text-white rounded-circle d-flex align-items-center justify-content-center mb-2 mx-auto  {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}"
-                        style="width: 70px; height: 70px;">
+                    <div class="text-white rounded-circle d-flex align-items-center justify-content-center mb-2 mx-auto {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" 
+                         style="width: 70px; height: 70px; background-color: {% if identidade_visual.cor_principal %}{{ identidade_visual.cor_principal }}{% else %}#000000{% endif %};">
                         <h3 class="m-0">3</h3>
                     </div>
-                    <p class="text-center">{% if sobre.objetivo_1 %}{{ sobre.objetivo_1 }}{% else %}Adicione um terceiro objetivo.{% endif %}</p>
+                    <p class="text-center">{% if sobre.objetivo_3 %}{{ sobre.objetivo_3 }}{% else %}Adicione um terceiro objetivo.{% endif %}</p>
                 </div>
             </div>
         </div>
