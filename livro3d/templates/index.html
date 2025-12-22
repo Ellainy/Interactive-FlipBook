@@ -12,11 +12,11 @@
       <div class="container">
         <div class="row align-items-center py-5">
           <div class="col-lg-6">
-            <h1 class="display-4 fw-bold mb-4">{{ index.titulo }}</h1>
-            <p class="lead mb-4">{{ index.frase_inicio }}</p>
+            <h1 class="display-4 fw-bold mb-4 text-white">{% if index.titulo %}{{ index.titulo }}{% else %}Adicione um titulo{% endif %}</h1>
+            <p class="lead mb-4">{% if index.frase_inicio %}{{ index.frase_inicio }}{% else %}Adicone uma frase{% endif %}</p>
             
             <div class="d-flex flex-wrap gap-3 justify-content-start">
-              <a href="{% url 'lerlivro' %}" class="btn btn-sistema btn-lg">Leia nosso livro!</a>
+              <a href="{% url 'lerlivro' %}" class="btn btn-sistema btn-lg {% if not identidade_visual.cor_principal %}bg-body-secondary text-dark{% endif %}">Leia nosso livro!</a>
             </div>
           </div>
           
@@ -30,11 +30,11 @@
       <div class="container">
         <div class="row my-5"> 
           <div class="col-md-8 py-5 text-start">
-            <h1 class="display-4 fw-bold mb-3">{{ index.titulo }}</h1>
-            <p class="lead text-white">{{ index.frase_inicio }}</p>
+            <h1 class="display-4 fw-bold mb-3">{% if index.titulo %}{{ index.titulo }}{% else %}Adicione um titulo{% endif %}</h1>
+            <p class="lead text-white">{% if index.frase_inicio %}{{ index.frase_inicio }}{% else %}Adicone uma frase{% endif %}</p>
             
             <div class="d-flex flex-wrap gap-3 justify-content-start">
-              <a href="{% url 'lerlivro' %}" class="btn btn-sistema btn-lg">Leia nosso livro!</a>
+              <a href="{% url 'lerlivro' %}" class="btn btn-sistema btn-lg {% if not identidade_visual.cor_principal %}bg-body-secondary text-dark{% endif %}">Leia nosso livro!</a>
             </div>
           </div>
         </div>
@@ -44,13 +44,13 @@
 
   <section id="sobre" class="py-5">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 mb-4 mb-lg-0">
-          <img src="https://images.unsplash.com/photo-1569163139394-de44cb54d521?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sobre nós" class="img-fluid rounded-section shadow-sm" />
+      <div class="row align-items-center d-flex justify-content-center">
+        <div class="col-7">
+          <h2 class="fw-bold mb-4">{% if index.sessao.titulo %}{% else %}Adicone um titulo{% endif %}</h2>
+          <p class="mb-4 text-muted">{% if index.sessao %}{% else %}Adicone o corpo da sessao{% endif %}</p>
         </div>
-        <div class="col-lg-6">
-          <h2 class="fw-bold mb-4">{{ index.sessao.titulo }}</h2>
-          <p class="mb-4 text-muted">{{ index.sessao }}</p>
+        <div class="col-3">
+          <i class="bi bi-book-half" style="font-size: 75px; {% if identidade_visual.cor_principal %}color: {{ identidade_visual.cor_principal }};{% endif %}"></i>
         </div>
       </div>
     </div>

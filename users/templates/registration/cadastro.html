@@ -9,7 +9,7 @@
     Preencha os dados abaixo
   </p>
 
-  <form method="post" id="signupForm">
+  <form method="post">
     {% csrf_token %}
     
     <div class="row">
@@ -20,7 +20,7 @@
         {% endfor %}
     </div>
     
-    <button type="submit" class="form-button w-100 mt-3">Criar Conta</button>
+    <button type="submit" class="form-button w-100 mt-3  {% if not identidade_visual.cor_principal %}bg-body-secondary text-dark{% endif %}">Criar Conta</button>
   </form>
 
   <div class="divider p-3" style="display: flex; align-items: center;">
@@ -54,7 +54,6 @@
 <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 
 <script>
-  // Função para alternar visibilidade da senha
   function togglePassword(fieldId) {
     const field = document.getElementById(fieldId);
     const icon = document.querySelector(`[data-toggle="${fieldId}"] i`);
@@ -76,24 +75,9 @@
 </script>
 
 <style>
-    /* Força os labels do Crispy a serem brancos para aparecer no fundo escuro */
     .form-label, label {
         color: white !important;
         font-weight: 500;
-    }
-    
-    /* Estilo do botão principal */
-    .form-button {
-        background-color: #198754; /* Verde */
-        color: white;
-        border: none;
-        padding: 12px;
-        border-radius: 5px;
-        font-weight: bold;
-        transition: background 0.3s;
-    }
-    .form-button:hover {
-        background-color: #146c43;
     }
 </style>
 {% endblock %}

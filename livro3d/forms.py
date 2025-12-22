@@ -103,6 +103,6 @@ class IdentidadeVisualForm(forms.ModelForm):
         widget=forms.TextInput(attrs={"type": "color", "class":"form-control form-control-color"})
         )
     cor_hover = forms.CharField(
-        label="Cor grifadora:",
+        label="Cor dos Destaques:",
         widget=forms.TextInput(attrs={"type": "color", "class":"form-control form-control-color"})
         )

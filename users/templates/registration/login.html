@@ -7,10 +7,10 @@
   <p class="text-center" style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem;">Faça login para acessar sua conta
   </p>
 
-  <form method="post" id="loginForm">
+  <form method="post">
     {% csrf_token %}
     {{ form|crispy }}
-    <button type="submit" class="form-button">Log in</button>
+    <button type="submit" class="form-button {% if not identidade_visual.cor_principal %}bg-body-secondary text-dark{% endif %}">Log in</button>
   </form>
 
   <div class="divider p-3" style="display: flex; align-items: center;">
