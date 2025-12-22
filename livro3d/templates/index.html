@@ -7,32 +7,54 @@
 
 {% block content %}
   <section class="fade-in rounded-bottom-5 d-flex text-white {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}">
-    
     {% if livro.capa %}
       <div class="container">
         <div class="row align-items-center py-5">
           <div class="col-lg-6">
-            <h1 class="display-4 fw-bold mb-4 text-white">{% if index.titulo %}{{ index.titulo }}{% else %}Adicione um titulo{% endif %}</h1>
-            <p class="lead mb-4">{% if index.frase_inicio %}{{ index.frase_inicio }}{% else %}Adicone uma frase{% endif %}</p>
-            
+            <h1 class="display-4 fw-bold mb-4 text-white">
+              {% if index.titulo %}
+                {{ index.titulo }}
+              {% else %}
+                Adicione um titulo
+              {% endif %}
+            </h1>
+            <p class="lead mb-4">
+              {% if index.frase_inicio %}
+                {{ index.frase_inicio }}
+              {% else %}
+                Adicone uma frase
+              {% endif %}
+            </p>
+
             <div class="d-flex flex-wrap gap-3 justify-content-start">
               <a href="{% url 'lerlivro' %}" class="btn btn-sistema btn-lg {% if not identidade_visual.cor_principal %}bg-body-secondary text-dark{% endif %}">Leia nosso livro!</a>
             </div>
           </div>
-          
+
           <div class="col-lg-6 text-center mt-4 mt-lg-0">
             <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Imagem Home" class="rounded shadow img-fluid" />
           </div>
         </div>
       </div>
-
     {% else %}
       <div class="container">
-        <div class="row my-5"> 
+        <div class="row my-5">
           <div class="col-md-8 py-5 text-start">
-            <h1 class="display-4 fw-bold mb-3">{% if index.titulo %}{{ index.titulo }}{% else %}Adicione um titulo{% endif %}</h1>
-            <p class="lead text-white">{% if index.frase_inicio %}{{ index.frase_inicio }}{% else %}Adicone uma frase{% endif %}</p>
-            
+            <h1 class="display-4 fw-bold mb-3">
+              {% if index.titulo %}
+                {{ index.titulo }}
+              {% else %}
+                Adicione um titulo
+              {% endif %}
+            </h1>
+            <p class="lead text-white">
+              {% if index.frase_inicio %}
+                {{ index.frase_inicio }}
+              {% else %}
+                Adicone uma frase
+              {% endif %}
+            </p>
+
             <div class="d-flex flex-wrap gap-3 justify-content-start">
               <a href="{% url 'lerlivro' %}" class="btn btn-sistema btn-lg {% if not identidade_visual.cor_principal %}bg-body-secondary text-dark{% endif %}">Leia nosso livro!</a>
             </div>
@@ -46,11 +68,28 @@
     <div class="container">
       <div class="row align-items-center d-flex justify-content-center">
         <div class="col-7">
-          <h2 class="fw-bold mb-4">{% if index.sessao.titulo %}{% else %}Adicone um titulo{% endif %}</h2>
-          <p class="mb-4 text-muted">{% if index.sessao %}{% else %}Adicone o corpo da sessao{% endif %}</p>
+          <h2 class="fw-bold mb-4">
+            {% if index.sessao.titulo %}
+
+            {% else %}
+              Adicone um titulo
+            {% endif %}
+          </h2>
+          <p class="mb-4 text-muted">
+            {% if index.sessao %}
+
+            {% else %}
+              Adicone o corpo da sessao
+            {% endif %}
+          </p>
         </div>
         <div class="col-3">
-          <i class="bi bi-book-half" style="font-size: 75px; {% if identidade_visual.cor_principal %}color: {{ identidade_visual.cor_principal }};{% endif %}"></i>
+          <i class="bi bi-book-half"
+            style="font-size: 75px; {% if identidade_visual.cor_principal %}
+              color: {{ identidade_visual.cor_principal }};
+            {% endif %}">
+
+          </i>
         </div>
       </div>
     </div>
@@ -59,15 +98,14 @@
   <div class="text-white py-5 rounded-5 my-5 mx-3 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}">
     <div class="container text-center">
       <h2 class="fw-bold mb-4">{{ index.sessao.titulo }}</h2>
-      <p class="lead mb-4">{{ index.sessao}}</p>
-      <a href="{% url "sobre" %}" class="btn btn-light text-dark fw-bold btn-lg">Sobre nós!</a>
+      <p class="lead mb-4">{{ index.sessao }}</p>
+      <a href="{% url 'sobre' %}" class="btn btn-light text-dark fw-bold btn-lg">Sobre nós!</a>
     </div>
   </div>
 
   <div class="container my-5 fade-in">
     <h2 class="fw-bold verdeTexto text-center mb-5">Galeria do Projeto</h2>
-    
+
     {% include '_carousel.html' %}
-    
   </div>
 {% endblock %}

@@ -78,21 +78,21 @@
   </header>
 
   <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
-    <div class="offcanvas-header bg-verde-principal text-white">
+    <div class="offcanvas-header text-white {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}">
       <h5 class="offcanvas-title">Menu</h5>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
       <div class="d-flex flex-column gap-3">
-        <a class="btn {% if request.resolver_match.url_name == 'index' %}btn-verde-principal text-white{% else %}btn-outline-verde-principal{% endif %} w-100 text-start py-3 rounded-3"
+        <a {% if request.resolver_match.url_name == 'index' %}{% if not identidade_visual.cor_principal %} style="background-color: firebrick ;" {% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }}; color: white; {% endif %}"{% else %}{% endif %} class="btn w-100 text-start py-3 rounded-3"
           href="{% url 'index' %}">
           <i class="bi bi-house me-2"></i>Início
         </a>
-        <a class="btn {% if request.resolver_match.url_name == 'livro' %}btn-verde-principal text-white{% else %}btn-outline-verde-principal{% endif %} w-100 text-start py-3 rounded-3"
+        <a {% if request.resolver_match.url_name == 'livro' %}{% if not identidade_visual.cor_principal %} style="background-color: firebrick ;" {% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }}; color: white; {% endif %}"{% else %}{% endif %} class="btn w-100 text-start py-3 rounded-3"
           href="{% url 'livro' %}">
           <i class="bi bi-book me-2"></i>Livro
         </a>
-        <a class="btn {% if request.resolver_match.url_name == 'sobre' %}btn-verde-principal text-white{% else %}btn-outline-verde-principal{% endif %} w-100 text-start py-3 rounded-3"
+        <a {% if request.resolver_match.url_name == 'sobre' %}{% if not identidade_visual.cor_principal %} style="background-color: firebrick ;" {% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }}; color: white; {% endif %}"{% else %}{% endif %} class="btn w-100 text-start py-3 rounded-3"
           href="{% url 'sobre' %}">
           <i class="bi bi-info-circle me-2"></i>Sobre
         </a>
@@ -102,7 +102,7 @@
         {% if user.is_authenticated %}
         <div class="text-center mb-2 fw-bold text-success">Olá, {{ user.username }}</div>
 
-        <a href="{% url 'administracao' %}" class="btn btn-verde-principal text-white w-100 py-3 rounded-3">
+        <a href="{% url 'administracao' %}" class="btn text-white w-100 py-3 rounded-3 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }}; color: white; {% endif %}">
           <i class="fas fa-tachometer-alt me-2"></i>Dashboard
         </a>
 
@@ -111,10 +111,10 @@
         </a>
 
         {% else %}
-        <a href="{% url 'cadastro' %}" class="btn btn-verde-principal text-white w-100 py-3 rounded-3">
+        <a href="{% url 'cadastro' %}" class="btn text-white w-100 py-3 rounded-3 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }}; color: white; {% endif %}">
           <i class="fas fa-user-plus me-2"></i>Cadastrar
         </a>
-        <a href="{% url 'login' %}" class="btn btn-outline-verde-principal w-100 py-3 rounded-3">
+        <a href="{% url 'login' %}" class="btn w-100 py-3 rounded-3 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }}; color: white; {% endif %}">
           <i class="fas fa-sign-in-alt me-2"></i>Entrar
         </a>
         {% endif %}

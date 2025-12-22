@@ -80,11 +80,11 @@ class MembroForm(forms.ModelForm):
 class SiteForm(forms.ModelForm):
     class Meta:
         model = Site
-        fields = ['titulo', 'contato', 'logo', 'saiba_mais_footer']
+        fields = ['titulo', 'contato', 'imagem_footer', 'saiba_mais_footer']
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),
             'contato': forms.EmailInput(attrs={'class': 'form-control'}),
-            'logo': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'imagem_footer': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'saiba_mais_footer': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
 

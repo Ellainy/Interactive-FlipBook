@@ -44,7 +44,7 @@ class Membro(models.Model):
 class Site(models.Model):
     titulo = models.CharField(max_length=50)
     contato = models.EmailField(max_length=254, null=True, blank=True)
-    logo =models.ImageField(upload_to='logo/', null=True, blank=True)
+    imagem_footer = models.ImageField(upload_to='logo/', null=True, blank=True)
     saiba_mais_footer =models.CharField(max_length=1000, blank=True, null=True)
     
 
