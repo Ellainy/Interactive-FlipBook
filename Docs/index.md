@@ -250,7 +250,7 @@ O diagrama de classes representa a estrutura de um sistema mostrando suas classe
 
 ---
 
-#a imagen irá aqui
+![Diagrama de Classes](imgs/DDC%20projeto%20livro.svg)
 
 Fonte: Elaboração própria (2025)
 
