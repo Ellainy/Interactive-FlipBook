@@ -162,3 +162,45 @@
     display: flex;
     align-items: center;
 }
+
+ .users-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .users-table th {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 2px solid #eee;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .users-table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+
+ .page-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s;
+        }
+
+        .page-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .page-item:last-child {
+            border-bottom: none;
+        }
+
+        .page-actions button {
+            margin-left: 5px;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
