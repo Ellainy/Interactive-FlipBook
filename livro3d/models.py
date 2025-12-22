@@ -25,8 +25,9 @@ class Sobre(models.Model):
     sessao_titulo = models.CharField(max_length=300, blank=True, null=True)
     sessao_texto = models.CharField(max_length=2000, blank=True, null=True)
     sessao_foto = models.ImageField(upload_to='sobre_imgs/', null=True, blank=True)
-    galeria = models.ManyToManyField('Image')
-    membros = models.ManyToManyField('Membro')
+    objetivo_1 = models.CharField(max_length=2000, null=True, blank=True)
+    objetivo_2 = models.CharField(max_length=2000, null=True, blank=True)
+    objetivo_3 = models.CharField(max_length=2000, null=True, blank=True)
 
     def __str__(self):
 

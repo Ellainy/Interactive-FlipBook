@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Index, Livro, Sobre, Pagina, Site, IdentidadeVisual, ModoLeitura, Image
-from .forms import LivroForm, IndexForm, SobreForm, PaginaForm, SiteForm, IdentidadeVisualForm, ImageForm
+from .models import Index, Livro, Sobre, Pagina, Site, IdentidadeVisual, ModoLeitura, Image, Membro
+from .forms import LivroForm, IndexForm, SobreForm, PaginaForm, SiteForm, IdentidadeVisualForm, ImageForm, MembroForm
 
 def index(request):
     index = Index.objects.first()
@@ -33,9 +33,12 @@ def lerlivro(request):
 def sobre(request):
     sobre_info = Sobre.objects.first()
     livro = Livro.objects.first()
+    membros = Membro.objects.all
+
     return render(request, 'sobre.html', {
         'sobre': sobre_info,
-        'livro': livro
+        'livro': livro,
+        "membros": membros
     })
 
 def layout(request):
@@ -99,6 +102,7 @@ def indexform(request):
 @login_required
 def sobreform(request):
     sobre = Sobre.objects.first()
+    membros = Membro.objects.all
 
     if request.method == "POST":
         sobre_form = SobreForm(request.POST, request.FILES, instance=sobre)
@@ -108,8 +112,19 @@ def sobreform(request):
     else:
         sobre_form = SobreForm(instance=sobre)
 
+
+    if request.method == "POST":
+        membro_form = MembroForm(request.POST, request.FILES)
+        if membro_form.is_valid():
+            membro_form.save()
+            return redirect('sobreform')
+    else:
+        membro_form = MembroForm()
+
     return render(request, "sobreform.html", {
-        "sobre_form": sobre_form
+        "sobre_form": sobre_form,
+        "membro_form": membro_form,
+        "membros": membros
     })
 
 @login_required

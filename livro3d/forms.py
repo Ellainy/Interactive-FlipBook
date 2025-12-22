@@ -1,5 +1,5 @@
 from django import forms
-from .models import Livro, Index, ModoLeitura, Sobre, Pagina, Site, IdentidadeVisual, Image
+from .models import Livro, Index, ModoLeitura, Sobre, Pagina, Site, IdentidadeVisual, Image, Membro
 
 class LivroForm(forms.ModelForm):
     class Meta:
@@ -56,13 +56,25 @@ class ModoLeituraForm(forms.ModelForm):
 class SobreForm(forms.ModelForm):
     class Meta:
         model = Sobre
-        fields = ['frase_inicio', 'sessao_titulo', 'sessao_texto', 'sessao_foto', 'galeria']
+        fields = ['frase_inicio', 'sessao_titulo', 'sessao_texto', 'sessao_foto', 'objetivo_1', 'objetivo_2', 'objetivo_3']
         widgets = {
             'frase_inicio': forms.TextInput(attrs={'class': 'form-control'}),
             'sessao_titulo': forms.TextInput(attrs={'class': 'form-control'}),
             'sessao_texto': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
             'sessao_foto': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'galeria': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'objetivo_1': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'objetivo_2': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'objetivo_3': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+        }
+
+class MembroForm(forms.ModelForm):
+    class Meta:
+        model = Membro
+        fields = ['nome', 'cargo', 'foto']
+        widgets = {
+            'nome': forms.TextInput(attrs={'class': 'form-control'}),
+            'cargo': forms.TextInput(attrs={'class': 'form-control'}),
+            'foto': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
 
 class SiteForm(forms.ModelForm):
