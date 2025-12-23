@@ -25,6 +25,7 @@ urlpatterns = [
     path('gerenciar-livro-completo/', views.gerenciar_livro, name='gerenciar_livro'),
     path('paginas/', views.paginas, name='paginas'),
     path('deletar-livro/<int:livro_id>/', views.deletar_livro, name='deletar_livro'),
+    path('deletar-pagina/<int:id>/', views.excluir_pagina, name='excluir_pagina'),
     
     # Galeria
     path('galeria/', views.imageform, name='imageform'),

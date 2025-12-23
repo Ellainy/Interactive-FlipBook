@@ -173,6 +173,14 @@ def livro_paginas(request):
     })
 
 @login_required
+def excluir_pagina(request, id):
+    pagina = get_object_or_404(Pagina, id=id)
+
+    if request.method == "POST":
+        pagina.delete()
+        return redirect('paginas')
+
+@login_required
 def paginas(request):
     paginas = Pagina.objects.all()
     return render(request, "paginas.html", {

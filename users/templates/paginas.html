@@ -32,10 +32,10 @@
         <div class="page-item">
           <div>
             <h6 class="mb-1">Pagina livro</h6>
-            <p class="mb-0 small text-muted">/livro.html - Lista de serviços oferecidos</p>
+            <p class="mb-0 small text-muted">/livro.html - Informações sobre o livro.</p>
           </div>
           <div class="page-actions">
-            <a href="{% url "livroform" %}" class="btn btn-sm btn-outline-primary">Editar</a>
+            <a href="{% url 'livroform' %}" class="btn btn-sm btn-outline-primary">Editar</a>
             <a href="{% url 'livro' %}" class="btn btn-sm btn-outline-success">Visualizar</a>
           </div>
         </div>
@@ -61,7 +61,7 @@
 
       <div class="page-item">
         <div>
-          <h6 class="mb-1">Adicionar paginas 3d</h6>
+          <h6 class="mb-1">Gerenciar Páginas paginas 3d</h6>
           <p class="mb-0 small text-muted">Acione as paginas com o número que aparecerão</p>
         </div>
         <div class="page-actions">
@@ -70,17 +70,7 @@
         </div>
       </div>
 
-      <h3 class="mt-5">Páginas já cadastradas</h3>
-      <ul class="list-group mt-3">
-        {% for p in paginas %}
-          <div class="list-group-item">
-            <strong>Página {{ p.numero_pagina }}</strong>
-            <img src="{{ p.pagina.url }}" alt="Página {{ p.numero_pagina }}" class="img-fluid border rounded shadow-sm" style="height:100px;" />
-          </div>
-        {% empty %}
-          <li class="list-group-item">Nenhuma página cadastrada ainda.</li>
-        {% endfor %}
-      </ul>
+    {% include "partials/_paginaslivro.html" %}
     </div>
   </div>
 {% endblock %}
