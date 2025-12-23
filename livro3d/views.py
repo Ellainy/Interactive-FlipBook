@@ -102,30 +102,43 @@ def indexform(request):
 @login_required
 def sobreform(request):
     sobre = Sobre.objects.first()
-    membros = Membro.objects.all
+    membros = Membro.objects.all()
+
+    sobre_form = SobreForm(instance=sobre)
+    membro_form = MembroForm()
 
     if request.method == "POST":
-        sobre_form = SobreForm(request.POST, request.FILES, instance=sobre)
-        if sobre_form.is_valid():
-            sobre_form.save()
-            return redirect('sobreform')
-    else:
-        sobre_form = SobreForm(instance=sobre)
+        if 'salvar_sobre' in request.POST:
+            sobre_form = SobreForm(request.POST, request.FILES, instance=sobre)
+            if sobre_form.is_valid():
+                sobre_form.save()
+                return redirect('sobreform')
 
-
-    if request.method == "POST":
-        membro_form = MembroForm(request.POST, request.FILES)
-        if membro_form.is_valid():
-            membro_form.save()
-            return redirect('sobreform')
-    else:
-        membro_form = MembroForm()
+        elif 'salvar_membro' in request.POST:
+            membro_id = request.POST.get('membro_id')
+            if membro_id:
+                membro = get_object_or_404(Membro, id=membro_id)
+                membro_form = MembroForm(request.POST, request.FILES, instance=membro)
+            else:
+                membro_form = MembroForm(request.POST, request.FILES)
+            
+            if membro_form.is_valid():
+                membro_form.save()
+                return redirect('sobreform')
 
     return render(request, "sobreform.html", {
         "sobre_form": sobre_form,
         "membro_form": membro_form,
         "membros": membros
     })
+
+@login_required
+def excluir_membro(request, id):
+    membro = get_object_or_404(Membro, id=id)
+    if request.method == "POST":
+        membro.delete()
+        return redirect('sobreform')
+    return redirect('sobreform')
 
 @login_required
 def livroform(request):

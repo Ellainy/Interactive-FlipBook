@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from .models import User
 from .forms import CadastroForm
-from livro3d.models import Livro  # Importante: Importa o Livro para checar se existe
+from livro3d.models import Livro 
 
 def first_superuser(request):
     try:
@@ -30,15 +30,13 @@ def sair(request):
     logout(request)
     return redirect('index')
 
-# --- ESSA É A VIEW QUE FALTAVA PARA O PAINEL ---
+
 @login_required
 def administracao(request):
-    # Verifica se existe algum livro criado para passar o ID ao template
     livro = Livro.objects.first()
     livro_id = livro.id if livro else None
     
     return render(request, 'paineladmin.html', {'livro_id': livro_id})
-# -----------------------------------------------
 
 @staff_member_required
 def users(request):

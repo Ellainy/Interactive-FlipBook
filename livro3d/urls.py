@@ -15,7 +15,8 @@ urlpatterns = [
     
     # Edição de Textos e Conteúdo
     path('editar-home/', views.indexform, name='indexform'),
-    path('editar-sobre/', views.sobreform, name='sobreform'), # O erro estava aqui
+    path('editar-sobre/', views.sobreform, name='sobreform'),
+    path('excluir-membro/<int:id>/', views.excluir_membro, name='excluir_membro'),
     path('editar-livro/', views.livroform, name='livroform'),
     path('editar-textos/', views.editar_textos, name='editar_textos'),
 

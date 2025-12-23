@@ -1,48 +1,124 @@
-{% load static %}
-<h1 class="text-center">Membros Adicionados</h1>
-{% if membros.exists %}
-<div id="membrosCarousel" class="carousel slide w-75 mx-auto my-4" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        {% for membro in membros.all %}
-            {% if forloop.counter0|divisibleby:4 or forloop.first %}
-                <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                    <div class="row justify-content-center">
-            {% endif %}
-                        <div class="col-md-3 col-sm-6">
-                            <div class="text-center">
-                                {% if membro.foto %}
-                                <img src="{{ membro.foto.url }}" 
-                                     class="rounded-circle w-50 object-fit-cover" 
-                                     alt="{{ membro.nome }}" style="aspect-ratio: 1/1;">
-                                     {% else %}
-                                     <img src="{% static 'imgs/perfil.png' %}" 
-                                          class="rounded-circle w-50" 
-                                          alt="{{ membro.nome }}">
-                                {% endif %}
-                                <h5 class="verdeTexto mt-2 fw-bold">{{ membro.nome }}</h5>
-                                <p class="verdinho fw-bold">{{ membro.cargo }}</p>
-                            </div>
+<div class="container mt-5">
+    <h2>Membros Cadastrados</h2>
+    
+    {% if membros %}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Foto</th>
+                    <th>Nome</th>
+                    <th>Cargo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for membro in membros %}
+                <tr>
+                    <td>
+                        {% if membro.foto %}
+                            <img src="{{ membro.foto.url }}" alt="{{ membro.nome }}" 
+                                 class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover;">
+                        {% else %}
+                            <span class="text-muted">Sem foto</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ membro.nome }}</td>
+                    <td>{{ membro.cargo }}</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <!-- Botão Editar -->
+                            <button type="button" class="btn btn-warning btn-sm" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#editarMembroModal"
+                                    data-membro-id="{{ membro.id }}"
+                                    data-membro-nome="{{ membro.nome }}"
+                                    data-membro-cargo="{{ membro.cargo }}">
+                                <i class="bi bi-pencil"></i> Editar
+                            </button>
+                            
+                            <!-- Botão Excluir com confirmação -->
+                            <form method="post" action="{% url 'excluir_membro' membro.id %}" 
+                                  class="d-inline ms-3" 
+                                  onsubmit="return confirm('Tem certeza que deseja excluir este membro?');">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Excluir
+                                </button>
+                            </form>
                         </div>
-            
-            {% if forloop.counter|divisibleby:4 or forloop.last %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        Nenhum membro cadastrado ainda.
+    </div>
+    {% endif %}
+</div>
+
+<!-- Modal para Editar Membro -->
+<div class="modal fade" id="editarMembroModal" tabindex="-1" aria-labelledby="editarMembroModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarMembroModalLabel">Editar Membro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" enctype="multipart/form-data" id="formEditarMembro">
+                <div class="modal-body">
+                    {% csrf_token %}
+                    <input type="hidden" name="membro_id" id="membroId">
+                    
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="cargo" class="form-label">Cargo</label>
+                        <input type="text" class="form-control" id="cargo" name="cargo" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="foto" class="form-label">Foto (deixe em branco para manter a atual)</label>
+                        <input type="file" class="form-control" id="foto" name="foto" accept="image/*">
                     </div>
                 </div>
-            {% endif %}
-        {% endfor %}
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" name="salvar_membro" class="btn btn-primary">Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
     </div>
+</div>
+
+<!-- JavaScript para o Modal -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const editarMembroModal = document.getElementById('editarMembroModal');
     
-    <!-- Controles -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#membrosCarousel" data-bs-slide="prev">
-    <i class="bi bi-arrow-left-circle-fill text-dark fs-2" aria-hidden="true"></i>
-        <span class="visually-hidden">Anterior</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#membrosCarousel" data-bs-slide="next">
-        <i class="bi bi-arrow-right-circle-fill text-dark fs-2" aria-hidden="true" style="font-size: 2.8;"></i>
-        <span class="visually-hidden">Próximo</span>
-    </button>
-</div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-{% else %}
-<p class="text-dark text-center">Nenhum membro adicionando.</p>
-{% endif %}
+    editarMembroModal.addEventListener('show.bs.modal', function(event) {
+        const button = event.relatedTarget;
+        
+        const membroId = button.getAttribute('data-membro-id');
+        const membroNome = button.getAttribute('data-membro-nome');
+        const membroCargo = button.getAttribute('data-membro-cargo');
+        
+        document.getElementById('membroId').value = membroId;
+        document.getElementById('nome').value = membroNome;
+        document.getElementById('cargo').value = membroCargo;
+        
+        document.getElementById('editarMembroModalLabel').textContent = 'Editar Membro: ' + membroNome;
+    });
+    
+    editarMembroModal.addEventListener('hidden.bs.modal', function() {
+        document.getElementById('formEditarMembro').reset();
+        document.getElementById('membroId').value = '';
+    });
+});
+</script>
