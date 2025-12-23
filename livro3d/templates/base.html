@@ -137,7 +137,7 @@
           <p class="mb-3 lead">Conheça mais sobre nosso projeto, nossa missão e impacto. Clique no botão
             abaixo para saber mais!</p>
           {% endif %}
-          <button href="sobre.html" class="btn btn-sistema fw-bold">Saiba mais!</button>
+          <a href="{% url 'sobre' %}" class="btn btn-sistema fw-bold {% if not identidade_visual.cor_principal %}bg-body-secondary text-dark{% endif %}"">Saiba mais!</a>
         </div>
 
         <div class="col-md-3 col-sm-6 footer-col mb-4">
