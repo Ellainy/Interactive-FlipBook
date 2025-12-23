@@ -287,6 +287,9 @@ Footer do sistema.
 Tela de informações do livro.
 ![Tela Livro](imgs/livrosistema.png)
 
+Tela de visualização dom livro em 3d.
+![Tela Livro 3d](imgs/livro3d.png)
+
 Tela "sobre o sistema".
 ![Tela Sobre](imgs/sobresistema.png)
 
