@@ -265,13 +265,9 @@ Protótipos de tela inicialmente planejados desenvolvidos no Figma, com foco em 
 
 ![Pagina de visualização do livro](imgs/Ler%20Livro%203d.png)
 
-![Pagina ver livro em tela cheia](imgs/Tela%20cheia.png)
-
 ![Pagina Sobre](imgs/Sobre.png)
 
 ![Pagina do admin](imgs/Adm%20perfil.png)
-
-![Pagina gerenciar páginas](imgs/Editar%20Pagina.png)
 
 ![Pagina de cadastro](imgs/Cadastro.png)
 
