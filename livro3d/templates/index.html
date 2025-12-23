@@ -69,15 +69,15 @@
       <div class="row align-items-center d-flex justify-content-center">
         <div class="col-7">
           <h2 class="fw-bold mb-4">
-            {% if index.sessao.titulo %}
-
+            {% if index.sessao_titulo %}
+              {{ index.sessao_titulo }}
             {% else %}
-              Adicone um titulo
+              Adicone o texto da sessao
             {% endif %}
           </h2>
           <p class="mb-4 text-muted">
-            {% if index.sessao %}
-
+            {% if index.sessao_texto %}
+              {{ index.sessao_texto }}
             {% else %}
               Adicone o corpo da sessao
             {% endif %}
@@ -97,8 +97,8 @@
 
   <div class="text-white py-5 rounded-5 my-5 mx-3 {% if not identidade_visual.cor_principal %}bg-dark{% endif %}" {% if identidade_visual.cor_principal %} style="background-color: {{ identidade_visual.cor_principal }} {% endif %}">
     <div class="container text-center">
-      <h2 class="fw-bold mb-4">{{ index.sessao.titulo }}</h2>
-      <p class="lead mb-4">{{ index.sessao }}</p>
+      <h2 class="fw-bold mb-4">{{ index.sessao_titulo }}</h2>
+      <p class="lead mb-4">{{ index.sessao_texto }}</p>
       <a href="{% url 'sobre' %}" class="btn btn-light text-dark fw-bold btn-lg">Sobre nós!</a>
     </div>
   </div>
