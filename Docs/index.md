@@ -133,8 +133,9 @@ Funcionalidades principais:
 | RF05   | Personalizar textos         | Administradores poderão adicionar e editar os textos das páginas do sistema. | Alta       |
 | RF06   | Personalizar Sistema        | Administradores poderão adicionar e editar informações do site               | Alta       |
 | RF07   | Personalizar tema           | Administradores poderão selecionar paletas de cores.                         | Média      |
-| RF08   | Perfil do usuário           | Visualizar e editar informações pessoais.                                    | Média      |
-| RF09   | Baixar PDF                  | Permitir o download do livro em PDF.                                         | Baixa      |
+| RF08   | Baixar PDF                  | Permitir o download do livro em PDF.                                         | Baixa      |
+| RF09   | Exibir DashBoard            | O usuário logado poderá visualizar as informações do seu perfil. Esta página deve exibir seu nome, sua classe, as ações que ele pode executar no sistema.                               | Média      |
+
 
 > Fonte: Elaboração própria (2025)
 
