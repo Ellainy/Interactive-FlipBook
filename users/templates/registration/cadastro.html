@@ -20,7 +20,7 @@
         {% endfor %}
     </div>
     
-    <button type="submit" class="form-button w-100 mt-3  {% if not identidade_visual.cor_principal %}bg-body-secondary text-dark{% endif %}">Criar Conta</button>
+    <button type="submit" class="form-button w-100 mt-1  {% if not identidade_visual.cor_principal %}bg-body-secondary text-dark{% endif %}">Criar Conta</button>
   </form>
 
   <div class="divider p-3" style="display: flex; align-items: center;">
@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <div class="text-center mt-4 pt-3">
+  <div class="text-center mt-3 pt-3">
     <p class="mb-0" style="color: white;">
       Já possui uma conta? 
       <a href="{% url 'login' %}" class="form-link fw-bold text-decoration-none">

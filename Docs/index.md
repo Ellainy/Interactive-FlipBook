@@ -256,47 +256,52 @@ O diagrama de classes representa a estrutura de um sistema mostrando suas classe
 Fonte: Elaboração própria (2025)
 
 
-## Prototipos de tela
+## PROTOTIPOS DE TELA
 Protótipos de tela inicialmente planejados desenvolvidos no Figma, com foco em um layout simples, intuitivo e confortável para o usuário, utilizando bordas arredondadas e elementos visuais de maior destaque para facilitar a navegação e a usabilidade.
-
-
-Página inicial do sistema, responsável por apresentar o projeto Interactive FlipBook, destacando sua proposta, identidade visual e principais áreas de navegação, servindo como ponto de entrada para os usuários.
 
 ![Pagina inicial](imgs/Pagina%20inicial.png)
 
-Página destinada à apresentação das informações gerais do livro “Um Festival de Mudanças”, contendo descrição, capa e botões que direcionam o usuário para a visualização do conteúdo em formato Flipbook 3D ou PDF.
-
 ![Pagina livro](imgs/Livro.png)
-
-Interface de leitura do livro em formato Flipbook 3D, proporcionando uma experiência interativa e dinâmica, com navegação semelhante à de um livro físico.
 
 ![Pagina de visualização do livro](imgs/Ler%20Livro%203d.png)
 
-Modo de leitura em tela cheia, permitindo maior imersão no conteúdo, melhor aproveitamento do espaço da tela e maior conforto visual ao usuário.
-
 ![Pagina ver livro em tela cheia](imgs/Tela%20cheia.png)
-
-Página institucional que apresenta informações sobre o projeto, seus objetivos, contexto de desenvolvimento e os integrantes envolvidos na produção do sistema.
 
 ![Pagina Sobre](imgs/Sobre.png)
 
-Página restrita aos administradores do sistema, onde são exibidas as principais funcionalidades de gerenciamento, como controle de conteúdo, personalização visual e administração geral da plataforma.
-
 ![Pagina do admin](imgs/Adm%20perfil.png)
-
-Interface administrativa destinada ao cadastro, edição e exclusão das páginas do livro e demais conteúdos do sistema, permitindo atualizações dinâmicas de forma simples e organizada.
 
 ![Pagina gerenciar páginas](imgs/Editar%20Pagina.png)
 
-Página responsável pelo cadastro de novos usuários no sistema, permitindo a criação de contas por meio do preenchimento de dados básicos de acesso.
-
 ![Pagina de cadastro](imgs/Cadastro.png)
-
-Página destinada à autenticação dos usuários, permitindo o acesso às funcionalidades restritas do sistema de acordo com o perfil do usuário.
 
 ![login](imgs/log%20in.png)
 Página de login.
 
+## TELAS DO SISTEMA
+
+Seguem as telas do sistema em funcionamento:
+
+Tela inicial.
+![Tela inicial](imgs/tela%20inicial.png)
+
+Footer do sistema.
+![Footer](imgs/footer.png)
+
+Tela de informações do livro.
+![Tela Livro](imgs/livrosistema.png)
+
+Tela "sobre o sistema".
+![Tela Sobre](imgs/sobresistema.png)
+
+Dashboard administrativo.
+![Tela Dashboard](imgs/dashboard.png)
+
+Tela onde são feitas as alterações de cores do sistema.
+![Tela alterar tema](imgs/cores.png)
+
+Tela de cadastro.
+![Tela inicial](imgs/singup.png)
 
 ## CONCLUSÃO
 
