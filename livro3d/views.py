@@ -228,7 +228,7 @@ def imageform(request):
 
     imagens = Image.objects.all()
 
-    return render(request, "galeriaform.html", {
+    return render(request, "galeriaForm.html", {
         "form": image_form,
         "imagens": imagens
     })
